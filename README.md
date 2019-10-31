@@ -23,6 +23,12 @@ _Remember_: What is the scrum all about? - **improvement**
 -   [DevOps - Azure](https://dev.azure.com/rumentsk/5001CEM)
 -   Team main communication tool - **_What's App_**!
 
+#### Agile conventions:
+-   *Feature* - given tasks by the exercise
+-   *Epic story* - a page
+-   *User story* - a particular page component (i.e. navbar, table, etc...)
+-   *Task* - specific and precise tasks for US
+
 Any questions? Ask me, [Armandas Barkauskas](https://www.instagram.com/armandasbarkauskas/) _(barkausa)_
 
 Good luck!
