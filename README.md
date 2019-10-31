@@ -1,5 +1,5 @@
-
 # Assignment Template
+
 This repository contains the base files for the assignment. You will need to create a _private duplicate_ in your module organisation. Carry out the following steps, taken from the [GitHub documentation](https://help.github.com/en/enterprise/2.16/user/articles/duplicating-a-repository):
 
 Temporarily clone this repository to your development computer. This will create a directory on your computer called `temp` which contains the repository files:
@@ -17,7 +17,7 @@ Once you are sure the code is in your new repository, delete the temporary local
 `cd .. && rm -rf temp/`
 Your private repository on GitHub will now contain a complete copy of this template including the commits that were already made. You can now start your assignment by carrying out the following steps:
 
-Clone your private repository
+Clone your private repositorys
 
 Change your [local config settings](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup). This is a vital step otherwise your commits won't show on the GitHub _graph_ and your grade will be affected.
 
