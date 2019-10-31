@@ -1,24 +1,28 @@
-# Assignment Template
+## 5001CEM - Domestic repairs
 
-This repository contains the base files for the assignment. You will need to create a _private duplicate_ in your module organisation. Carry out the following steps, taken from the [GitHub documentation](https://help.github.com/en/enterprise/2.16/user/articles/duplicating-a-repository):
+_Remember_: What is the scrum all about? - **improvement**
 
-Temporarily clone this repository to your development computer. This will create a directory on your computer called `temp` which contains the repository files:
+##### Main team focus:
 
-`git clone https://github.coventry.ac.uk/web/template-dynamic-websites.git temp`
+1. Completing product backlog on dev.azure.com
+1. Interface design (build bulk html, css pages using mocks)
+1. Design ERD
 
-Create a new **private** repository in the module organisation on the GitHub server and copy the _clone url_ to the clipboard (the one that begins with `https://` and ends in `.git`. The repository name should be your username (the one you use to log into the University computers).
+##### Setup guide:
 
-Mirror Push to this new repository, replacing xxx with the url from the clipboard making sure you are _in_ the `temp/` directory:
+-   Open terminal and navigate to `Desktop` folder (or any other)
+-   `git clone https://github.coventry.ac.uk/barkausa/5001CEM`
+-   `cd 5001CEM && code .` **_To open in VS Code_**
+-   `npm install`
+-   `npm start` **_Done_**
 
-`cd temp/ && git push --mirror xxx`
+#####Useful links:
 
-Once you are sure the code is in your new repository, delete the temporary local repository.
+-   [Task description - Github](https://github.coventry.ac.uk/web/assignment-topics/blob/master/02%20Domestic%20Repairs.md)
+-   [Agile labs - GitHub](https://github.coventry.ac.uk/agile/foundation)
+-   [DevOps - Azure](https://dev.azure.com/rumentsk/5001CEM)
+-   Team main communication tool - **_What's App_**!
 
-`cd .. && rm -rf temp/`
-Your private repository on GitHub will now contain a complete copy of this template including the commits that were already made. You can now start your assignment by carrying out the following steps:
+Any questions? Ask me, [Armandas Barkauskas](https://www.instagram.com/armandasbarkauskas/) _(barkausa)_
 
-Clone your private repositorys
-
-Change your [local config settings](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup). This is a vital step otherwise your commits won't show on the GitHub _graph_ and your grade will be affected.
-
-Start working on the assignment. Remember to install all the dependencies listed in the `package.json` file.
+Good luck!
