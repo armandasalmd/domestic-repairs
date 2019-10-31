@@ -2,13 +2,13 @@
 
 _Remember_: What is the scrum all about? - **improvement**
 
-##### Main team focus:
+#### Main team focus:
 
 1. Completing product backlog on dev.azure.com
 1. Interface design (build bulk html, css pages using mocks)
 1. Design ERD
 
-##### Setup guide:
+#### Setup guide:
 
 -   Open terminal and navigate to `Desktop` folder (or any other)
 -   `git clone https://github.coventry.ac.uk/barkausa/5001CEM`
@@ -16,7 +16,7 @@ _Remember_: What is the scrum all about? - **improvement**
 -   `npm install`
 -   `npm start` **_Done_**
 
-#####Useful links:
+#### Useful links:
 
 -   [Task description - Github](https://github.coventry.ac.uk/web/assignment-topics/blob/master/02%20Domestic%20Repairs.md)
 -   [Agile labs - GitHub](https://github.coventry.ac.uk/agile/foundation)
