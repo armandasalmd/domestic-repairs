@@ -1,7 +1,7 @@
 {
-	"name": "10_auth",
+	"name": "5001_cem",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Sotfware engineering project - Domestic Repairs",
 	"main": "index.js",
 	"engines": {
 		"node": "12.x"
