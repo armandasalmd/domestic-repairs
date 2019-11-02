@@ -50,6 +50,7 @@
 		"jest": "^24.1.0",
 		"jsdoc": "^3.6.3",
 		"jsdoc-route-plugin": "^0.1.0",
+		"koa-logger": "^3.2.1",
 		"markdownlint": "^0.17.0",
 		"nodemon": "^1.19.4"
 	}

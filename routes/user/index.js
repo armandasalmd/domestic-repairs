@@ -1,14 +1,11 @@
-import Router from 'koa-router'; // const Router = require('koa-router');
+const Router = require('koa-router'); // const Router = require('koa-router');
 
 const router = new Router();
+const pathPrefix = '/user';
 
-/*router.get('/', ctx () => {
-    
-});*/
-
-router.get('/dashboard', async (ctx) => {
+router.get(`${pathPrefix}/`, async (ctx) => {
 	// User main page
 	ctx.body = 'User dashboard';
 });
 
-export default router;
+module.exports = router;
