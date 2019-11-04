@@ -1,3 +1,20 @@
 <nav id="headerContainer">
-    This is my navbar
+    <p style="display: inline">Logo placeholder</p>
+
+    {{#if_eq navbarType 'offline'}}
+    <div style="display:inline">
+        <a href="/">Home</a>
+        <a href="/contacts">Contacts</a>
+        <a href="/login">Sign up/in</a>
+    </div>
+    {{/if_eq}}
+
+
+    {{#if_eq navbarType 'online'}}
+    <div style="display:inline">
+        <a href="#">Notification Icon</a>
+        <a href="#">Account settings</a>
+        <a href="/logout">Log out</a>
+    </div>
+    {{/if_eq}}
 </nav>

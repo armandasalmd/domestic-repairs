@@ -1,3 +1,12 @@
 <aside id="navContainer">
-    This is a side panel
+    <p>This is a side panel</p>
+
+    {{#each sidebarSections}}
+    <h3>{{title}}</h3>
+    <ul>
+        {{#each items}}
+        <li><a href="{{link}}">{{title}}</a></li>
+        {{/each}}
+    </ul>
+    {{/each}}
 </aside>

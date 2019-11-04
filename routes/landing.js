@@ -18,10 +18,30 @@ router.get('/', async (ctx) => {
 		}
 		const data = {
 			title: 'Domestic Repairs',
-			layout: 'nav-footer'
+			layout: 'nav-footer',
+			navbarType: 'offline'
 		};
 
 		await ctx.render('index', data);
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+});
+
+router.get('/contacts', async (ctx) => {
+	try {
+		if (ctx.session.authorised === true) {
+			// console.log(`User ${ctx.session.user} has been logged off!`);
+			ctx.session.authorised = null;
+			ctx.session.user = null;
+		}
+		const data = {
+			title: 'Contacts',
+			layout: 'nav-footer',
+			navbarType: 'offline'
+		};
+
+		await ctx.render('contacts', data);
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}

@@ -17,7 +17,8 @@ const { dbName } = require('../../constants');
 router.get('/register', async (ctx) => {
 	const data = {
 		title: 'Please log in',
-		layout: 'nav-footer'
+		layout: 'nav-footer',
+		navbarType: 'offline'
 	};
 	await ctx.render('auth/register', data);
 });
@@ -47,7 +48,8 @@ router.post('/register', koaBody, async (ctx) => {
 router.get('/login', async (ctx) => {
 	const data = {
 		title: 'Please log in',
-		layout: 'nav-footer'
+		layout: 'nav-footer',
+		navbarType: 'offline'
 	};
 	if (ctx.query.msg) data.msg = ctx.query.msg;
 	if (ctx.query.user) data.user = ctx.query.user;
@@ -61,16 +63,17 @@ router.post('/login', async (ctx) => {
 		await user.login(body.user, body.pass);
 		ctx.session.authorised = true;
 		ctx.session.user = body.user;
-		return ctx.redirect('/user/?msg=you are now logged in...');
+		return ctx.redirect('/user');
 	} catch (err) {
-		await ctx.render('error', { message: err.message });
+		return ctx.redirect(`/login/?msg=${err.message}`);
+		//await ctx.render('error', { message: err.message });
 	}
 });
 
 router.get('/logout', async (ctx) => {
 	ctx.session.authorised = null;
 	ctx.session.user = null;
-	ctx.redirect('/?msg=you are now logged out');
+	ctx.redirect('/');
 });
 
 module.exports = router;
