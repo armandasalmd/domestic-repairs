@@ -1,0 +1,46 @@
+body {
+	display: grid;
+	grid-template-areas:
+		'header'
+		'article'
+		'footer';
+	grid-template-rows: 80px 1fr 70px;
+	grid-template-columns: 1fr;
+	grid-row-gap: 10px;
+	grid-column-gap: 10px;
+	height: 100vh;
+	margin: 0;
+}
+header,
+footer,
+article,
+nav,
+aside,
+div {
+	padding: 1.2em;
+	background: #d2d2d2;
+}
+#headerContainer {
+	grid-area: header;
+}
+#footerContainer {
+	grid-area: footer;
+}
+#rootContainer {
+	grid-area: article;
+}
+#navContainer {
+	grid-area: nav;
+}
+
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+	body {
+		grid-template-areas:
+			'header'
+			'article'
+			'footer';
+		grid-template-rows: 80px 1fr 70px;
+		grid-template-columns: 1fr;
+	}
+}

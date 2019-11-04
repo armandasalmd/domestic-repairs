@@ -11,11 +11,17 @@ const router = new Router();
  */
 router.get('/', async (ctx) => {
 	try {
-		if (ctx.session.authorised !== true)
-			return ctx.redirect('/login?msg=you need to log in');
-		const data = {};
-		if (ctx.query.msg) data.msg = ctx.query.msg;
-		await ctx.render('index');
+		if (ctx.session.authorised === true) {
+			// console.log(`User ${ctx.session.user} has been logged off!`);
+			ctx.session.authorised = null;
+			ctx.session.user = null;
+		}
+		const data = {
+			title: 'Domestic Repairs',
+			layout: 'nav-footer'
+		};
+
+		await ctx.render('index', data);
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}

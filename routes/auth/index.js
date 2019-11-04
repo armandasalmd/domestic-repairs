@@ -14,7 +14,13 @@ const { dbName } = require('../../constants');
  * @name Register Page
  * @route {GET} /register
  */
-router.get('/register', async (ctx) => await ctx.render('auth/register'));
+router.get('/register', async (ctx) => {
+	const data = {
+		title: 'Please log in',
+		layout: 'nav-footer'
+	};
+	await ctx.render('auth/register', data);
+});
 
 /**
  * The script to process new user registrations.
@@ -39,7 +45,10 @@ router.post('/register', koaBody, async (ctx) => {
 });
 
 router.get('/login', async (ctx) => {
-	const data = {};
+	const data = {
+		title: 'Please log in',
+		layout: 'nav-footer'
+	};
 	if (ctx.query.msg) data.msg = ctx.query.msg;
 	if (ctx.query.user) data.user = ctx.query.user;
 	await ctx.render('auth/login', data);
@@ -51,8 +60,8 @@ router.post('/login', async (ctx) => {
 		const user = await new User(dbName);
 		await user.login(body.user, body.pass);
 		ctx.session.authorised = true;
-		ctx.session.user = 'user';
-		return ctx.redirect('/?msg=you are now logged in...');
+		ctx.session.user = body.user;
+		return ctx.redirect('/user/?msg=you are now logged in...');
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+{{> head}}
+
+<body>
+    {{> navbar}}
+    {{> aside}}
+    <div id="rootContainer">
+        <h1>{{title}}</h1>
+        <h4>Welcome, <span style="color:brown">{{username}}</span></h4>
+        <p>This is the user dashboard. this route is secure</p>
+        <p><a href="/logout">Want to logout?</a></p>
+    </div>
+    {{> footer}}
+</body>
+{{> scripts}}
+
+</html>

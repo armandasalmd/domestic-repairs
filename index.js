@@ -7,6 +7,7 @@ const views = require('koa-views');
 const staticDir = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
+require('./views/helpers'); // register handlebars
 
 //const koaBody = require('koa-body')({ multipart: true, uploadDir: '.' });
 //const jimp = require('jimp')
@@ -42,11 +43,19 @@ app.use(async (ctx, next) => {
 app.use(logger());
 app.use(session(app));
 app.use(
-	views(
-		`${__dirname}/views`,
-		{ extension: 'handlebars' },
-		{ map: { handlebars: 'handlebars' } }
-	)
+	views(`${__dirname}/views`, {
+		extension: 'handlebars',
+		map: { handlebars: 'handlebars' },
+		options: {
+			partials: {
+				aside: `${__dirname}/views/partials/aside`,
+				footer: `${__dirname}/views/partials/footer`,
+				head: `${__dirname}/views/partials/head`,
+				navbar: `${__dirname}/views/partials/navbar`,
+				scripts: `${__dirname}/views/partials/scripts`
+			}
+		}
+	})
 );
 
 // Applying routes to the app
