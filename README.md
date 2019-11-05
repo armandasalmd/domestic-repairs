@@ -11,7 +11,7 @@ _Remember_: What is the scrum all about? - **improvement**
 #### Setup guide:
 
 -   Open terminal and navigate to `Desktop` folder (or any other)
--   `git clone https://github.coventry.ac.uk/barkausa/5001CEM`
+-   `git clone https://github.coventry.ac.uk/5001CEM-1920SEPJAN/5001CEM.git`
 -   `cd 5001CEM && code .` **_To open in VS Code_**
 -   `npm install`
 -   `npm start` **_Done_**
