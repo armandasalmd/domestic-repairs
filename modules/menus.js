@@ -23,6 +23,10 @@ function getUserSidebarMenu() {
 				{
 					title: 'Log out',
 					link: '/logout'
+				},
+				{
+					title: 'test',
+					link: '/user/test'
 				}
 			]
 		}

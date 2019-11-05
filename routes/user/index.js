@@ -63,4 +63,21 @@ router.get(`${pathPrefix}/order/new`, async (ctx) => {
 	}
 });
 
+router.get(`${pathPrefix}/test`, async (ctx) => {
+	try {
+		if (ctx.session.authorised !== true)
+			return ctx.redirect('/login?msg=you need to log in');
+		// if user is logged in
+		const data = {
+			title: 'test',
+			layout: 'nav-sidebar-footer',
+			navbarType: 'online',
+			sidebarSections: menus.user
+		};
+
+		await ctx.render('user/test', data);
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+});
 module.exports = router;
