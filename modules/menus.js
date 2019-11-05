@@ -1,4 +1,4 @@
-function getSidebarMenu() {
+function getUserSidebarMenu() {
 	return [
 		{
 			title: 'Main actions',
@@ -29,4 +29,38 @@ function getSidebarMenu() {
 	];
 }
 
-module.exports = getSidebarMenu;
+function getTechSidebarMenu() {
+	return [
+		{
+			title: 'Home page',
+			items: [
+				{
+					title: 'Find a new order',
+					link: '/tech'
+				},
+				{
+					title: 'Manage orders',
+					link: '/tech/order/manage'
+				}
+			]
+		},
+		{
+			title: 'Other actions',
+			items: [
+				{
+					title: 'Contacts',
+					link: '/tech/contacts'
+				},
+				{
+					title: 'Log out',
+					link: '/logout'
+				}
+			]
+		}
+	];
+}
+
+module.exports = {
+	user: getUserSidebarMenu(),
+	technician: getTechSidebarMenu()
+};

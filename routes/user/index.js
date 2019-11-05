@@ -1,5 +1,5 @@
 const Router = require('koa-router'); // const Router = require('koa-router');
-const getSidebarMenu = require('../../modules/menus');
+const menus = require('../../modules/menus');
 
 const router = new Router();
 const pathPrefix = '/user';
@@ -14,7 +14,7 @@ router.get(`${pathPrefix}/`, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: getSidebarMenu()
+			sidebarSections: menus.user
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -34,7 +34,7 @@ router.get(`${pathPrefix}/contacts`, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: getSidebarMenu()
+			sidebarSections: menus.user
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -54,7 +54,7 @@ router.get(`${pathPrefix}/order/new`, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: getSidebarMenu()
+			sidebarSections: menus.user
 		};
 
 		await ctx.render('user/placeAnOrder', data);
