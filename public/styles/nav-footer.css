@@ -12,8 +12,8 @@ body {
 	margin: 0;
 }
 header,
-footer,
-article,
+/*footer,
+article,*/
 nav,
 aside,
 div {
@@ -31,6 +31,70 @@ div {
 }
 #navContainer {
 	grid-area: nav;
+}
+
+footer {
+	background: #353B3C;
+	font-family: 'Open Sans', sans-serif;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	
+}
+
+footer article{
+	padding: 30px;
+	background: #353B3C;
+	color: #EEF0F2;
+}
+
+footer li{
+	list-style-type: none;
+}
+
+footer li a{
+	text-decoration: none;
+	color: #EEF0F2;
+}
+
+footer h3{
+	color:#2ECC71;
+}
+
+section{
+	background: #353B3C;
+	grid-column: 1/5;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.socials{
+	font-size: 25px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 0;
+}
+
+.fa-phone, .fa-envelope{
+	font-size: 17px;
+}
+
+p a{
+	color: #EEF0F2;
+	text-decoration: none;
+}
+
+
+input{
+	padding: 10px;
+	margin: 10px 0px 10px 0;
+	border: none;
+	
+}
+
+form .button{
+	display: block;
+	border-radius: 2px;
+	
 }
 
 /* Stack the layout on small devices/viewports. */
