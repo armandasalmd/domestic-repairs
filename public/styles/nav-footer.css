@@ -60,6 +60,11 @@ footer h3{
 	color:#2ECC71;
 }
 
+footer a:hover{
+	text-decoration: underline;
+
+}
+
 section{
 	background: #353B3C;
 	grid-column: 1/5;
@@ -99,6 +104,8 @@ form .button{
 .logo{
 	padding: 0;
 }
+
+
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
 	body {

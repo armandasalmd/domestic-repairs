@@ -65,6 +65,11 @@ footer h3{
 	color:#2ECC71;
 }
 
+footer a:hover{
+	text-decoration: underline;
+
+}
+
 section{
 	background: #353B3C;
 	grid-column: 1/5;
