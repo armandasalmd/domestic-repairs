@@ -96,7 +96,9 @@ form .button{
 	border-radius: 2px;
 	
 }
-
+.logo{
+	padding: 0;
+}
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 575px) {
 	body {
