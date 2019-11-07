@@ -69,7 +69,10 @@ section{
 	background: #353B3C;
 	grid-column: 1/5;
 	text-align: center;
-	padding-bottom: 20px;
+	color: #EEF0F2;
+	font-size: 10px;
+	padding-bottom: 10px;
+	
 }
 
 .socials{
