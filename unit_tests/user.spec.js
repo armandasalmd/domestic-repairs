@@ -1,5 +1,3 @@
-'use strict';
-
 const Accounts = require('../modules/user.js');
 
 describe('register()', () => {
@@ -60,7 +58,7 @@ describe('login()', () => {
 		const account = await new Accounts();
 		await account.register('doej', 'password');
 		await expect(account.login('roej', 'password')).rejects.toEqual(
-			Error('User "roej" does not exist!')
+			Error('User does not exist')
 		);
 		done();
 	});
@@ -70,7 +68,7 @@ describe('login()', () => {
 		const account = await new Accounts();
 		await account.register('doej', 'password');
 		await expect(account.login('doej', 'bad')).rejects.toEqual(
-			Error('Incorrect password!')
+			Error('Wrong password')
 		);
 		done();
 	});

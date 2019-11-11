@@ -45,11 +45,11 @@ module.exports = class User {
 			let sql = `SELECT count(id) AS count FROM users WHERE user="${username}";`;
 			const records = await this.db.get(sql);
 			if (!records.count)
-				throw new Error(`User "${username}" does not exist!`);
+				throw new Error('User does not exist');
 			sql = `SELECT pass FROM users WHERE user = "${username}";`;
 			const record = await this.db.get(sql);
 			const valid = await bcrypt.compare(password, record.pass);
-			if (valid === false) throw new Error('Incorrect password!');
+			if (valid === false) throw new Error('Wrong password');
 			return true;
 		} catch (err) {
 			throw err;

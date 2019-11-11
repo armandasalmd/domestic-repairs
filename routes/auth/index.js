@@ -29,7 +29,7 @@ router.get('/register', async (ctx) => {
  * @name Register Script
  * @route {POST} /register
  */
-router.post('/register', koaBody, async (ctx) => {
+router.post('/register', async (ctx) => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;
@@ -63,6 +63,7 @@ router.post('/login', async (ctx) => {
 		await user.login(body.user, body.pass);
 		ctx.session.authorised = true;
 		ctx.session.user = body.user;
+		ctx.status = 200;
 		return ctx.redirect('/user');
 	} catch (err) {
 		return ctx.redirect(`/login/?msg=${err.message}`);
