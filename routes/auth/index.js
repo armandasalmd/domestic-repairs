@@ -1,9 +1,9 @@
 /* MODULE IMPORTS */
 const Router = require('koa-router');
-const koaBody = require('koa-body')({ multipart: true, uploadDir: '../../' });
 
 /* IMPORT CUSTOM MODULES */
 const User = require('../../modules/user');
+const Valid = require('../../modules/validators');
 
 const router = new Router();
 const { dbName } = require('../../constants');
@@ -20,6 +20,10 @@ router.get('/register', async (ctx) => {
 		layout: 'nav-footer',
 		navbarType: 'offline'
 	};
+	if (ctx.query.msg) data.msg = ctx.query.msg;
+	/*if (ctx.body.name) data.name = ctx.body.name;
+	if (ctx.body.email) data.email = ctx.body.email;
+	if (ctx.body.user) data.user = ctx.body.user;*/
 	await ctx.render('auth/register', data);
 });
 
@@ -33,15 +37,25 @@ router.post('/register', async (ctx) => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;
-		console.log(body);
+		// data validation
+		if (!Valid.name(body.name)) 
+			throw new Error('Name must include first and last names');
+		if (!Valid.email(body.email))
+			throw new Error('Enter valid email address');
+		if (!Valid.user(body.user))
+			throw new Error('Username is to short');
+		if (!Valid.pass(body.pass))
+			throw new Error('Password is to short');
+
 		// call the functions in the module
 		const user = await new User(dbName);
 		await user.register(body.user, body.pass);
 		// await user.uploadPicture(path, type)
-		// redirect to the home page
-		ctx.redirect(`/?msg=new user "${body.name}" added`);
+		// redirect to the login page
+		ctx.redirect('/login');
 	} catch (err) {
-		await ctx.render('error', { message: err.message });
+		return ctx.redirect(`/register/?msg=${err.message}`);
+		//await ctx.render('error', { message: err.message });
 	}
 });
 
@@ -52,18 +66,21 @@ router.get('/login', async (ctx) => {
 		navbarType: 'offline'
 	};
 	if (ctx.query.msg) data.msg = ctx.query.msg;
-	if (ctx.query.user) data.user = ctx.query.user;
+	//if (ctx.body.user) data.user = ctx.request.body.user;
 	await ctx.render('auth/login', data);
 });
 
 router.post('/login', async (ctx) => {
 	try {
 		const body = ctx.request.body;
+		if (!body.user) 
+			throw new Error('Username cannot be empty');
+		if (!body.pass)
+			throw new Error('Password cannot be empty');
 		const user = await new User(dbName);
 		await user.login(body.user, body.pass);
 		ctx.session.authorised = true;
 		ctx.session.user = body.user;
-		ctx.status = 200;
 		return ctx.redirect('/user');
 	} catch (err) {
 		return ctx.redirect(`/login/?msg=${err.message}`);
