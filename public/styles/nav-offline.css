@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: auto;
+    height: 64px;
     background: #353B3C !important;
     font-family: "livvic" !important;
   }
@@ -13,7 +13,7 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 10px 0px;
+    /* padding: 10px 0px; */
     color: #ffffff;
     background: #353B3C !important;
   }

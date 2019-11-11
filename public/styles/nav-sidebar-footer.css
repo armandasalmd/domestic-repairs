@@ -4,21 +4,14 @@ body {
 		'header header'
 		'nav article'
 		'nav footer';
-	grid-template-rows: 1fr 2fr 1fr;
+	grid-template-rows: 64px 2fr 1fr;
 	grid-template-columns: 20% 1fr;
 	
 	
 	height: 100vh;
 	margin: 0;
 }
-header,
-footer,
-article,
-aside,
-nav,
-div {
-	background: #d2d2d2;
-}
+
 #headerContainer {
 	grid-area: header;
 }
