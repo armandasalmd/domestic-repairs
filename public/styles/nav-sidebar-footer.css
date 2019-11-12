@@ -118,3 +118,114 @@ form .button{
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
+/* ============================
+	START Sidebar
+	=========================== */
+
+/*aside#navContainer {
+	background: #a5a3a3;
+}
+
+.dark-card {
+	background: rgb(145, 143, 143);
+	margin: 10px 0px;
+	padding: 12px;
+}
+
+.dark-card h2 {
+	margin: 0;
+	color: #1e2919;
+	font-size: 18px;
+	text-align: center;
+	
+}
+
+.dark-card h3 {
+	margin: 0;
+	color: #2d4422;
+	padding-left: 4px;
+}
+
+.dark-card li {
+	list-style-type: none;
+	margin-bottom: 6px;
+}
+
+.dark-card ul {
+	padding-left: inherit;
+}
+
+.dark-card a {
+	text-decoration: none;
+	color: #232523;
+	font-weight: 600;
+	
+}*/
+
+#navContainer {
+	margin: 0;
+	padding: 0;
+}
+
+.dark-card h2 {
+	margin: 0;
+	color: #c6c7c6;
+	font-size: 20px;
+	padding: 24px 0 0 10px;
+	text-align: center;
+}
+
+.dark-card h3 {
+	margin: 32px 0 0 0;
+	color: #6c6d6b;
+	padding-left: 4px;
+}
+
+
+aside#navContainer {
+	background: #202325;
+	font-family: sans-serif;
+}
+
+#navContainer ul {
+	padding: 0;
+	margin: 0 8px 0;
+}
+
+#navContainer ul li {
+	color: rgba(231, 229, 229, 0.88);
+	list-style: none;
+	padding: 12px 10px;
+	border-bottom: 1px solid rgba(100,100,100, 0.4);
+}
+
+#navContainer ul li:hover {
+	color: rgba(207, 204, 204, 0.88);
+	background: #353a3b;
+}
+
+.separator {
+	margin: 6px auto 0 auto;
+	width: 60%;
+	height: 2px;
+	background: rgb(43, 104, 48);
+}
+
+.dark-card a {
+	text-decoration: none;
+	color: #afb4af;
+	
+}
+
+.menu-card {
+	padding-left: 16px;
+}
+
+.dark-card:last-child {
+	margin-bottom: 32px;
+}
+
+/* ============================
+	END Sidebar
+	=========================== */

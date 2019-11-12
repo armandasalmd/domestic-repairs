@@ -18,7 +18,7 @@ body {
 
 /* ============================
 	START Login and Register
-	========================== */
+	=========================== */
 
 .form-container {
 	position: relative;
@@ -104,46 +104,45 @@ h1.title {
 
 /* ============================
 	END Login and Register
-	========================== */
-
+	=========================== */
 /* ============================
 	START Contact Cards and Social
 	========================== */
 
-.contacts {
-	max-width: 1600px;
-	margin: 0 auto;
-}
-
-.card {
-	max-width: 530px;
-	padding: 0px;
-	border-radius: 5px;
-	background-color: #ecf0f1;
-}
-
-.card-head {
-	width: 100%;
-	height: auto;
-	text-align: center;
-	color: black;
-	font-size: 18px;
-	padding: 5px 0px;
-	border-radius: 5px;
-	border-bottom: 2px solid black;
-	font-family: 'Livvic';
-}
-
-.card-head > h4 {
-	margin: 0;
-}
-
-.card-body {
-	background-color: white;
-	margin: 0;
-	padding: 0;
-}
-
-.card-footer {
-	margin: 0;
-}
+	.contacts {
+		max-width: 1600px;
+		margin: 0 auto;
+	}
+	
+	.card {
+		max-width: 530px;
+		padding: 0px;
+		border-radius: 5px;
+		background-color: #ecf0f1;
+	}
+	
+	.card-head {
+		width: 100%;
+		height: auto;
+		text-align: center;
+		color: black;
+		font-size: 18px;
+		padding: 5px 0px;
+		border-radius: 5px;
+		border-bottom: 2px solid black;
+		font-family: 'Livvic';
+	}
+	
+	.card-head > h4 {
+		margin: 0;
+	}
+	
+	.card-body {
+		background-color: white;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.card-footer {
+		margin: 0;
+	}
