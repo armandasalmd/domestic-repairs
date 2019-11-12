@@ -51,7 +51,7 @@ router.post('/register', async (ctx) => {
 		const user = await new User(dbName);
 		await user.register(body.user, body.pass);
 		// await user.uploadPicture(path, type)
-		// redirect to the login page
+		// redirect to the logintest page
 		ctx.redirect('/login');
 	} catch (err) {
 		return ctx.redirect(`/register/?msg=${err.message}`);
