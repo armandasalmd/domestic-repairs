@@ -20,6 +20,7 @@ body {
 }
 #rootContainer {
 	grid-area: article;
+	padding: 8px 16px;
 }
 #navContainer {
 	grid-area: nav;
@@ -123,46 +124,6 @@ form .button{
 	START Sidebar
 	=========================== */
 
-/*aside#navContainer {
-	background: #a5a3a3;
-}
-
-.dark-card {
-	background: rgb(145, 143, 143);
-	margin: 10px 0px;
-	padding: 12px;
-}
-
-.dark-card h2 {
-	margin: 0;
-	color: #1e2919;
-	font-size: 18px;
-	text-align: center;
-	
-}
-
-.dark-card h3 {
-	margin: 0;
-	color: #2d4422;
-	padding-left: 4px;
-}
-
-.dark-card li {
-	list-style-type: none;
-	margin-bottom: 6px;
-}
-
-.dark-card ul {
-	padding-left: inherit;
-}
-
-.dark-card a {
-	text-decoration: none;
-	color: #232523;
-	font-weight: 600;
-	
-}*/
-
 #navContainer {
 	margin: 0;
 	padding: 0;
@@ -224,6 +185,11 @@ aside#navContainer {
 
 .dark-card:last-child {
 	margin-bottom: 32px;
+}
+
+.dark-card {
+	position: sticky;
+	top: 0px;
 }
 
 /* ============================
