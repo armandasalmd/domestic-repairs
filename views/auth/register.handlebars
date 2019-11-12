@@ -5,13 +5,27 @@
 <body>
 	{{> navbar}}
 	<div id="rootContainer">
-		<h1>Create an Account</h1>
-		<form action="/register" enctype="multipart/form-data" method="post">
-			<p>Username:<br /><input type="text" name="user" placeholder="your preferred username (no spaces)" value="">
-			</p>
-			<p>Password:<br /><input type="password" name="pass" placeholder="your chosen password" value=""></p>
-			<p>Profile Picture:<br /><input type="file" name="avatar"></p>
-			<p><input type="submit" value="Create"></p>
+		<form action="/register" method="POST" class="login-form">
+			<h1 class="title">Sign Up</h1>
+			<div class="input-text">
+				<input type="text" name="name" placeholder="Enter full name" value="{{name}}">
+			</div>
+			<div class="input-text">
+				<input type="email" name="email" placeholder="Enter email" value="{{email}}">
+			</div>
+			<div class="input-text">
+				<input type="text" name="user" placeholder="Enter username" value="{{user}}">
+			</div>
+			<div class="input-text">
+				<input type="password" name="pass" placeholder="Enter password" value="">
+			</div>
+			<input type="submit" class="submit-button" value="Register">
+			<div class="signup-text">
+				Already a user? <a href="/login">Login</a>
+			</div>
+			{{#if msg}}
+			<p class="msg">{{msg}}</p>
+			{{/if}}
 		</form>
 	</div>
 	{{> footer}}

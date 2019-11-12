@@ -6,6 +6,7 @@ const pathPrefix = '/user';
 
 router.get(`${pathPrefix}/`, async (ctx) => {
 	try {
+		console.log(ctx.session.authorised)
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in

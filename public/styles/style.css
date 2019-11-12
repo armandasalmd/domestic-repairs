@@ -1,10 +1,148 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
 .msg {
-	border: 1px solid red;
+	border: 2px solid rgb(212, 140, 45);
 	font-weight: bold;
-	color: red;
+	color: rgb(156, 95, 44);
+	border-radius: 8px;
 	padding: 1em;
 }
+
+/* ============================
+	START Login and Register
+	=========================== */
+
+.form-container {
+	position: relative;
+	padding: 20px 0px;
+}
+
+.login-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 0;
+	text-decoration: none;
+	background-image: linear-gradient(135deg, #cfcaca, #c7dfcf);
+	width: 360px;
+	height: auto;
+	padding: 80px 40px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	border: 1px solid #aeddc7;
+	/* margin: 48px auto; */
+
+
+}
+
+h1.title {
+	text-align: center;
+	margin-bottom: 48px;
+	margin-top: 0px;
+}
+
+.input-text {
+	border-bottom: 2px solid #565656;
+	position: relative;
+	margin: 30px 0;
+}
+
+.input-text input {
+	font-size: 18px;
+	color: #343434;
+	border: none;
+	width: 100%;
+	margin: 0px;
+	padding: 10px 0px 10px 5px;
+	outline: none;
+	background: none;
+	
+}
+
+.submit-button {
+	display: block;
+	width: 100%;
+	height: 48px;
+	border: none;
+	font-weight: 400;
+	font-size: 18px;
+	color: #d0f0cd;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background: linear-gradient(120deg, #23664a, #2c6e12);
+}
+
+.submit-button:hover {
+	background: linear-gradient(120deg, #709988, #337a17);
+	cursor: pointer;
+}
+
+.signup-text {
+	margin-top: 48px;
+	text-align: center;
+}
+
+.signup-text a {
+	text-decoration: none;
+	font-weight: 600;
+	color: #275714;
+}
+
+.signup-text a:hover {
+	color: #39811e;
+}
+
+
+/* ============================
+	END Login and Register
+	=========================== */
+/* ============================
+	START Contact Cards and Social
+	========================== */
+
+	.contacts {
+		max-width: 1600px;
+		margin: 0 auto;
+	}
+	
+	.card {
+		max-width: 530px;
+		padding: 0px;
+		border-radius: 5px;
+		background-color: #ecf0f1;
+	}
+	
+	.card-head {
+		width: 100%;
+		height: auto;
+		text-align: center;
+		color: black;
+		font-size: 18px;
+		padding: 5px 0px;
+		border-radius: 5px;
+		border-bottom: 2px solid black;
+		font-family: 'Livvic';
+	}
+	
+	.card-head > h4 {
+		margin: 0;
+	}
+	
+	.card-body {
+		background-color: white;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.card-footer {
+		margin: 0;
+	}

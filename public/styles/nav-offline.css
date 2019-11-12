@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Livvic';
+  src: url('/styles/fonts/Livvic/Livvic-Regular.ttf') format('truetype');
+}
+
+header {
+    width: 100%;
+    max-height: 64px;
+    background: #353B3C !important;
+    font-family: "Livvic" !important;
+  }
+  
+  .main-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex !important;
+    flex: 1 1 0px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 12px 0px;
+    color: #ffffff;
+    background: #353B3C !important;
+  }
+  
+  .logo {
+    flex: auto;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .logo:hover {
+    cursor: default;
+  }
+  
+  .links {
+    flex: auto;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .links > li {
+    display: inline-block;
+    list-style-type: none;
+    cursor: default;
+  }
+  
+  .links > li > a {
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.5s;
+  }
+  
+  .links > li > a:hover {
+    color: #dfe6e9;
+    text-decoration: none;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 0px;
+    transition: all 0.5s;
+  }
+  
+  header > nav > ul > li > .ls-btn {
+    border-width: 3px;
+    border-style: solid;
+    border-color: #0be881;
+    border-radius: 0px;
+    color: #0be881;
+  }
+  
+  .tooltips > form > input {
+    border: 3px solid #dfe6e9;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px;
+  }
+  
+  .tooltips > form > input:focus {
+    border: 3px solid #b2bec3;
+  }
+  
+  .tooltips > form > button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin-top: 5px;
+  }
+  
+  .tooltips {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    width: auto;
+    background-color: #ffffff;
+    color: #2D3436;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 15%;
+    margin-left: -60px;
+    transition: opacity 1s;
+  }
+  
+  .tooltips .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s;
+  }

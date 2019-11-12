@@ -1,20 +1,32 @@
-<nav id="headerContainer">
-    <p style="display: inline">Logo placeholder</p>
-
     {{#if_eq navbarType 'offline'}}
-    <div style="display:inline">
-        <a href="/">Home</a>
-        <a href="/contacts">Contacts</a>
-        <a href="/login">Sign up/in</a>
-    </div>
+    <header>
+	    <nav class="main-container">
+		    <h1 class="logo">Domestic <i class="fa fa-magic" aria-hidden="true"></i> Repairs</h1>
+		    <ul style="margin:0px" class="links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Reviews</a></li>
+                <li><a href="/contacts">Contact Us</a></li>
+			    <li class="tooltips"><a href="/login" class="ls-btn">Login/Signup</a>
+					<!--<form method="POST" action="/" class="tooltiptext" id="drop-content">
+						<input type="text" name="username" id="username" placeholder="Username">
+						<br />
+						<input type="password" name="password" id="password" placeholder="Password">
+						<button type="submit" class="btn btn-primary">Login</button>
+					</form>-->
+			    </li>
+            </ul>
+	    </nav>
+    </header>
     {{/if_eq}}
 
 
     {{#if_eq navbarType 'online'}}
-    <div style="display:inline">
-        <a href="#">Notification Icon</a>
-        <a href="#">Account settings</a>
-        <a href="/logout">Log out</a>
-    </div>
+    <nav style="background:green;" id="headerContainer">
+        <p style="display: inline">Logo placeholder</p>
+        <div style="display:inline">
+            <a href="#">Notification Icon</a>
+            <a href="#">Account settings</a>
+            <a href="/logout">Log out</a>
+        </div>
+    </nav>
     {{/if_eq}}
-</nav>

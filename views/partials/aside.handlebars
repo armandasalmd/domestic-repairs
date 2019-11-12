@@ -1,12 +1,17 @@
 <aside id="navContainer">
-    <p>This is a side panel</p>
+    <div class="dark-card title-card">
+        <h2>{{title}}</h2>
+        <div class="separator" />
+    </div>
+    <div class="dark-card menu-card">
 
-    {{#each sidebarSections}}
-    <h3>{{title}}</h3>
-    <ul>
-        {{#each items}}
-        <li><a href="{{link}}">{{title}}</a></li>
+        {{#each sidebarSections}}
+        <h3>{{title}}</h3>
+        <ul>
+            {{#each items}}
+            <li><a href="{{link}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
         {{/each}}
-    </ul>
-    {{/each}}
+    </div>
 </aside>

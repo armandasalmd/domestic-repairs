@@ -5,16 +5,22 @@
 <body>
 	{{> navbar}}
 	<div id="rootContainer">
-		<h1>Log In</h1>
-		{{#if msg}}
-		<p class="msg">{{msg}}</p>
-		{{/if}}
-		<form action="/login" method="post">
-			<p>Username:<br /><input type="text" name="user" placeholder="your username" value="{{user}}" autofocus></p>
-			<p>Password:<br /><input type="password" name="pass" placeholder="your password" value=""></p>
-			<p><input type="submit" value="Log in"></p>
+		<form action="/login" method="POST" class="login-form">
+			<h1 class="title">Sign In</h1>
+			<div class="input-text">
+				<input type="text" name="user" placeholder="Enter username" value="{{user}}">
+			</div>
+			<div class="input-text">
+				<input type="password" name="pass" placeholder="Enter password" value="">
+			</div>
+			<input type="submit" class="submit-button" value="Login">
+			<div class="signup-text">
+				Don't have an account? <a href="/register">Register</a>
+			</div>
+			{{#if msg}}
+			<p class="msg">{{msg}}</p>
+			{{/if}}
 		</form>
-		<p><a href="/register">register</a></p>
 	</div>
 	{{> footer}}
 
