@@ -13,6 +13,7 @@ body {
 }
 
 
+
 #headerContainer {
 	grid-area: header;
 }
@@ -38,15 +39,20 @@ footer article{
 	padding: 30px;
 	background: #353B3C;
 	color: #EEF0F2;
+
 }
 
 footer li{
 	list-style-type: none;
+	padding: 5px 5px 5px 0;
+	margin: 0;
 }
 
 footer li a{
 	text-decoration: none;
 	color: #EEF0F2;
+
+	
 }
 
 footer h3{
@@ -67,6 +73,8 @@ section{
 	padding-bottom: 10px;
 	
 }
+
+
 
 .socials{
 	font-size: 25px;
