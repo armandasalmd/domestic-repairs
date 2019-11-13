@@ -14,6 +14,12 @@ body {
 	color: rgb(156, 95, 44);
 	border-radius: 8px;
 	padding: 1em;
+	margin-top: 8px;
+}
+
+.form-container {
+	position: relative;
+	padding: 20px 0px;
 }
 
 /* ============================
@@ -82,6 +88,7 @@ h1.title {
 }
 
 .submit-button:hover {
+	cursor: pointer;
 	background: linear-gradient(120deg, #709988, #337a17);
 	cursor: pointer;
 }
@@ -109,40 +116,44 @@ h1.title {
 	START Contact Cards and Social
 	========================== */
 
-	.contacts {
-		max-width: 1600px;
-		margin: 0 auto;
-	}
-	
-	.card {
-		max-width: 530px;
-		padding: 0px;
-		border-radius: 5px;
-		background-color: #ecf0f1;
-	}
-	
-	.card-head {
-		width: 100%;
-		height: auto;
-		text-align: center;
-		color: black;
-		font-size: 18px;
-		padding: 5px 0px;
-		border-radius: 5px;
-		border-bottom: 2px solid black;
-		font-family: 'Livvic';
-	}
-	
-	.card-head > h4 {
-		margin: 0;
-	}
-	
-	.card-body {
-		background-color: white;
-		margin: 0;
-		padding: 0;
-	}
-	
-	.card-footer {
-		margin: 0;
-	}
+.contacts {
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+.card {
+	max-width: 530px;
+	padding: 0px;
+	border-radius: 5px;
+	background-color: #ecf0f1;
+}
+
+.card-head {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	color: black;
+	font-size: 18px;
+	padding: 5px 0px;
+	border-radius: 5px;
+	border-bottom: 2px solid black;
+	font-family: 'Livvic';
+}
+
+.card-head > h4 {
+	margin: 0;
+}
+
+.card-body {
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.card-footer {
+	margin: 0;
+} 
+
+/* ============================
+	END Contact Cards and Social
+	========================== */
