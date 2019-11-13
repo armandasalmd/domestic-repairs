@@ -63,6 +63,12 @@ footer a:hover{
 
 }
 
+footer li{
+	list-style-type: none;
+	padding: 5px 5px 5px 0;
+	margin: 0;
+}
+
 section{
 	background: #353B3C;
 	grid-column: 1/5;
