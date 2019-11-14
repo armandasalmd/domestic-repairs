@@ -6,8 +6,57 @@
     {{> navbar}}
     {{> aside}}
     <div id="rootContainer">
-        <h1>Place a new order/ Report a fault HERE</h1>
-        <p>this route is secure</p>
+        <h2>Report a new fault</h2>
+        <div class="form-container">
+            <form action="/order/create" method="POST">
+                <!-- type of appliance -->
+                <section>
+                    <h3>Type of appliance</h3>
+                    <div>
+                        <select>
+                            <option value="toilet">Toilets</option>
+                            <option value="kitchen">Kitchen</option>
+                        </select>
+                        <p> or </p>
+                        <input type="text" />
+                        <button onclick="clearAppliance()">clear</button>
+                    </div>
+                </section>
+                <!-- appliance age -->
+                <section>
+                    <h3>Appliance age</h3>
+                    <div>
+                        <select>
+                            <option value="0">brand new</option>
+                            <option value="1">1 year</option>
+                            <option value="2">2 years</option>
+                            <option value="3">3 years</option>
+                            <option value="4">4 years</option>
+                            <option value="5">5 years</option>
+                            <option value="6">6 years</option>
+                            <option value="7">7 years</option>
+                            <option value="8">8 years</option>
+                            <option value="9">9 years</option>
+                            <option value="10">10 years</option>
+                        </select>
+                    </div>
+                </section>
+                <!-- appliance manufacturer -->
+                <section>
+                    <h3>Appliance manufacturer</h3>
+                    <div>
+                        <select>
+                            <option value="0">Gerda</option>
+                            <option value="1">Beko</option>
+                            <option value="2">Samsung</option>
+                        </select>
+                        <p> or </p>
+                        <input type="text" />
+                        <button onclick="clearAppliance()">clear</button>
+                    </div>
+                </section>
+            </form>
+        </div>
     </div>
     {{> footer}}
 </body>
