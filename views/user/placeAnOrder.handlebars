@@ -12,8 +12,9 @@
                 <h3 class="section-title">Type of appliance</h3>
                 <section>
                     <select name="applianceType">
-                        <option value="toilet">Toilets</option>
-                        <option value="kitchen">Kitchen</option>
+                        {{#each aType}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
                     </select>
                     <p class="mx-8"> or </p>
                     <input name="applianceTypeCustom" type="text" placeholder="custom type" />
@@ -23,9 +24,9 @@
                 <h3 class="section-title">Appliance manufacturer</h3>
                 <section>
                     <select name="applianceManufacturer">
-                        <option value="0">Gerda</option>
-                        <option value="1">Beko</option>
-                        <option value="2">Samsung</option>
+                        {{#each aManufacturer}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
                     </select>
                     <p class="mx-8"> or </p>
                     <input name="applianceTypeCustom" type="text" placeholder="custom manufacturer" />
@@ -35,17 +36,9 @@
                 <h3 class="section-title">Appliance age</h3>
                 <section>
                     <select name="applianceAge">
-                        <option value="0">brand new</option>
-                        <option value="1">1 year</option>
-                        <option value="2">2 years</option>
-                        <option value="3">3 years</option>
-                        <option value="4">4 years</option>
-                        <option value="5">5 years</option>
-                        <option value="6">6 years</option>
-                        <option value="7">7 years</option>
-                        <option value="8">8 years</option>
-                        <option value="9">9 years</option>
-                        <option value="10">10 years</option>
+                        {{#each aAge}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
                     </select>
                 </section>
 
@@ -54,7 +47,7 @@
                     <textarea name="issue" rows="4" cols="50" placeholder="Issue goes here"></textarea>
                 </section>
                 <section>
-                    <input type="button" onclick="clearAll()" value="Clear all"/>
+                    <input type="button" onclick="clearAll()" value="Clear all" />
                     <input type="submit" />
                 </section>
             </form>
@@ -66,4 +59,5 @@
 <script>
 
 </script>
+
 </html>

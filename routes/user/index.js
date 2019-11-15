@@ -1,12 +1,13 @@
 const Router = require('koa-router'); // const Router = require('koa-router');
 const menus = require('../../modules/menus');
+const dropdowns = require('../../modules/dropdowns');
 
 const router = new Router();
 const pathPrefix = '/user';
 
-router.get(`${pathPrefix}/`, async (ctx) => {
+router.get(`${pathPrefix}/`, async ctx => {
 	try {
-		console.log(ctx.session.authorised)
+		console.log(ctx.session.authorised);
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in
@@ -25,7 +26,7 @@ router.get(`${pathPrefix}/`, async (ctx) => {
 	}
 });
 
-router.get(`${pathPrefix}/contacts`, async (ctx) => {
+router.get(`${pathPrefix}/contacts`, async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
@@ -45,7 +46,7 @@ router.get(`${pathPrefix}/contacts`, async (ctx) => {
 	}
 });
 
-router.get(`${pathPrefix}/order/new`, async (ctx) => {
+router.get(`${pathPrefix}/order/new`, async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
@@ -55,7 +56,10 @@ router.get(`${pathPrefix}/order/new`, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: menus.user
+			sidebarSections: menus.user,
+			aType: dropdowns.applianceType,
+			aManufacturer: dropdowns.applianceManufacturer,
+			aAge: dropdowns.applianceAge
 		};
 
 		await ctx.render('user/placeAnOrder', data);
@@ -64,7 +68,7 @@ router.get(`${pathPrefix}/order/new`, async (ctx) => {
 	}
 });
 
-router.get(`${pathPrefix}/test`, async (ctx) => {
+router.get(`${pathPrefix}/test`, async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
