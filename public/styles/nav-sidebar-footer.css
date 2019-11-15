@@ -4,7 +4,7 @@ body {
 		'header header'
 		'nav article'
 		'nav footer';
-	grid-template-rows: 64px 2fr 1fr;
+	grid-template-rows: 64px 3fr 1fr;
 	grid-template-columns: 20% 1fr;
 	
 	
@@ -20,7 +20,7 @@ body {
 }
 #rootContainer {
 	grid-area: article;
-	padding: 8px 16px;
+	padding: 8px 24px;
 }
 #navContainer {
 	grid-area: nav;
@@ -145,14 +145,15 @@ form .button{
 
 .dark-card h3 {
 	margin: 32px 0 0 0;
-	color: #6c6d6b;
+	color: #c0c5bb;
 	padding-left: 4px;
 }
 
 
 aside#navContainer {
-	background: #202325;
-	font-family: sans-serif;
+	/* #202325*/
+	background: linear-gradient(120deg, #2c6e12, #23664a);
+	font-family: "Livvic" !important;
 }
 
 #navContainer ul {
@@ -164,24 +165,25 @@ aside#navContainer {
 	color: rgba(231, 229, 229, 0.88);
 	list-style: none;
 	padding: 12px 10px;
-	border-bottom: 1px solid rgba(100,100,100, 0.4);
+	margin-right: 16px;
+	border-bottom: 1px solid #04522e;
 }
 
 #navContainer ul li:hover {
 	color: rgba(207, 204, 204, 0.88);
-	background: #353a3b;
+	background: #348352;
 }
 
 .separator {
 	margin: 6px auto 0 auto;
 	width: 60%;
 	height: 2px;
-	background: rgb(43, 104, 48);
+	background: rgb(25, 56, 28);
 }
 
 .dark-card a {
 	text-decoration: none;
-	color: #afb4af;
+	color: #dfe6e9;
 	
 }
 
@@ -201,3 +203,4 @@ aside#navContainer {
 /* ============================
 	END Sidebar
 	=========================== */
+
