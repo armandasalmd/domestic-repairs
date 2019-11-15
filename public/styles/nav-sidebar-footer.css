@@ -4,7 +4,7 @@ body {
 		'header header'
 		'nav article'
 		'nav footer';
-	grid-template-rows: 64px 2fr 1fr;
+	grid-template-rows: 64px 3fr 1fr;
 	grid-template-columns: 20% 1fr;
 	
 	
@@ -20,7 +20,7 @@ body {
 }
 #rootContainer {
 	grid-area: article;
-	padding: 8px 16px;
+	padding: 8px 24px;
 }
 #navContainer {
 	grid-area: nav;
