@@ -1,35 +1,35 @@
-    {{#if_eq navbarType 'offline'}}
-    <header>
-	    <nav class="main-container">
-		    <h1 class="logo">Domestic <i class="fa fa-magic" aria-hidden="true"></i> Repairs</h1>
-		    <ul style="margin:0px" class="links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/services">Reviews</a></li>
-                <li><a href="/contacts">Contact Us</a></li>
-			    <li class="tooltips"><a href="/login" class="ls-btn">Login/Signup</a>
-					<!--<form method="POST" action="/" class="tooltiptext" id="drop-content">
+{{#if_eq navbarType 'offline'}}
+<header>
+    <nav class="main-container">
+        <h1 class="logo">Domestic <i class="fa fa-magic" aria-hidden="true"></i> Repairs</h1>
+        <ul style="margin:0px" class="links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Reviews</a></li>
+            <li><a href="/contacts">Contact Us</a></li>
+            <li class="tooltips"><a href="/login" class="ls-btn">Login/Signup</a>
+                <!--<form method="POST" action="/" class="tooltiptext" id="drop-content">
 						<input type="text" name="username" id="username" placeholder="Username">
 						<br />
 						<input type="password" name="password" id="password" placeholder="Password">
 						<button type="submit" class="btn btn-primary">Login</button>
 					</form>-->
-			    </li>
-            </ul>
-	    </nav>
-    </header>
-    {{/if_eq}}
+            </li>
+        </ul>
+    </nav>
+</header>
+{{/if_eq}}
 
 
-    {{#if_eq navbarType 'online'}}
-    <header id="headerContainer">
-        <nav class="main-container" >
-            <h1 class="logo">Domestic <i class="fa fa-magic" aria-hidden="true"></i> Repairs</h1>
-            <ul style="margin:0px" class="links">
-                <li><a href="/">Home</a></li>
-                <li><i class="fa fa-bell" aria-hidden="true"></i></li>
-                <li>Welcome, user<i class="fa fa-chevron-down" aria-hidden="true"></i></li>
-            </ul>
-        </nav>
+{{#if_eq navbarType 'online'}}
+<header id="headerContainer">
+    <nav class="main-container">
+        <h1 class="logo">Domestic <i class="fa fa-magic" aria-hidden="true"></i> Repairs</h1>
+        <ul style="margin:0px" class="links">
+            <li><a href="/">Home</a></li>
+            <li><i class="fa fa-bell" aria-hidden="true"></i></li>
+            <li>Welcome, {{username}}<i class="fa fa-chevron-down" aria-hidden="true"></i></li>
+        </ul>
+    </nav>
 
-    </header>
-    {{/if_eq}}
+</header>
+{{/if_eq}}
