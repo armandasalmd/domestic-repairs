@@ -1,7 +1,9 @@
 const Router = require('koa-router'); // const Router = require('koa-router');
-
+const menus = require('../../modules/menus');
 const router = new Router();
 const pathPrefix = '/tech';
+
+
 
 router.get(`${pathPrefix}/`, async (ctx) => {
 	try {
@@ -12,14 +14,20 @@ router.get(`${pathPrefix}/`, async (ctx) => {
 		const data = {
 			title: 'Technician dashboard',
 			layout: 'nav-sidebar-footer',
-			username: username
-		};
+			navbarType: 'online',
+			sidebarSections: menus.technician
 
+		};
 		if (ctx.query.msg) data.msg = ctx.query.msg;
 		await ctx.render('technician/index', data);
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}
+
+
+
+
+
 });
 
 module.exports = router;
