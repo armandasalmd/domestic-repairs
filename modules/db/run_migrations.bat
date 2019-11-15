@@ -1,7 +1,7 @@
 @echo off
 title SQL table migration script
 
-cd "C:\Users\Armandas\Desktop\5001CEM\modules\db\migrations"
+cd "C:\Users\barka\Desktop\5001CEM\modules\db\migrations"
 
 sqlite3 ../../../test.db < user.sql
 sqlite3 ../../../test.db < address.sql
