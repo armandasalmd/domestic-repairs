@@ -1,0 +1,2 @@
+INSERT INTO user VALUES ('test', 'Test Thorn', 'test@test.test', '$2b$10$yrdm7vfDlSbbQwOLS3U4uujvI0v9Oyn4ze85SnzaTieOZAcybcPhq', '07914603507', 'user');
+INSERT INTO user VALUES ('tech', 'Tech Thorn', 'tech@tech.tech', '$2b$10$yrdm7vfDlSbbQwOLS3U4uujvI0v9Oyn4ze85SnzaTieOZAcybcPhq', '07914303509', 'tech');
