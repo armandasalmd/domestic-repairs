@@ -25,8 +25,8 @@ function getUserSidebarMenu() {
 					link: '/logout'
 				},
 				{
-					title: 'tests',
-					link: '/user/test'
+					title: 'Settings',
+					link: '/user/settings'
 				}
 			]
 		}

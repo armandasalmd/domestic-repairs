@@ -281,3 +281,68 @@ form input, form textarea {
 /* ============================
 	END Report a fault form
 	========================== */
+
+	/* ============================
+	START TECH list jobs CARDS
+	========================== */
+
+
+.pending{
+	background:#fff;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	color: #c7dfcf;
+	
+}
+
+.pending p{
+	padding: 5px;
+}
+
+.pending article:hover{
+	box-shadow:  0 1px 5px  #2d2522;
+}
+.pending article{
+	text-align: center;
+	padding: 20px;
+	margin: 10px;
+	border-radius: 15px;
+	font-size: 15px;
+	font-family: "Livvic" !important;
+	color: #000;
+	background: linear-gradient(135deg, #cfcaca, #c7dfcf);
+}
+
+.pending article button{
+	font-family: 'Open Sans', sans-serif;
+	padding: 5px;
+	display: block;
+	width: 100%;
+	background: linear-gradient(#2c6e12, #23664a);
+	border-radius: 2px;
+	border: none;
+	color: #c7dfcf;
+	font-size: 15px;
+	margin-bottom: 0;
+	align-items: end;
+
+}
+
+.pending .head {
+	padding-top: 20px;
+	background: #fff;
+	text-align: left;
+	color: #000;
+	font-family: "Livvic" !important; ;
+}
+
+
+
+
+
+
+
+
+	/* ============================
+	END TECH list jobs CARDS
+	========================== */
