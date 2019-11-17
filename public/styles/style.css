@@ -358,7 +358,7 @@ form input, form textarea {
 }
 
 .progress table{
-	border: 1px solid #565656;
+	
 	font-family: "Livvic" !important;
 	font-size: 15px;
 	border-collapse: collapse;
@@ -368,21 +368,28 @@ form input, form textarea {
 }
 
 .progress th{
-	background: linear-gradient(#2c6e12, #23664a);
-	border: 1px solid #000;
+	
+	font-weight: 800;
 	padding: 10px;
+	color: #000;
 }
 
-.progress td{
-	border: 1px solid #565656;
-	padding: 10px;
+.progress th:hover{
+	box-shadow: none;
+}
 
+.progress th, tr{
+	border-bottom: 1px solid #fff;	
 }
 
 .progress tr{
 	
-	background: linear-gradient(#cfcaca, #c7dfcf);
+	padding: 10px;
+
+	background: #d2d2d2;
 }
+
+
 
 
 
