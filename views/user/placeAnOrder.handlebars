@@ -6,11 +6,58 @@
     {{> navbar}}
     {{> aside}}
     <div id="rootContainer">
-        <h1>Place a new order/ Report a fault HERE</h1>
-        <p>this route is secure</p>
+        <h1 class="page-title">Report a new fault</h1>
+        <div class="card-container">
+            <form action="/user/order/new" method="POST" class="form-inline" id="report-form">
+                <h3 class="section-title">Type of appliance</h3>
+                <section>
+                    <select name="applianceType">
+                        {{#each aType}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <p class="mx-8"> or </p>
+                    <input name="applianceTypeCustom" type="text" placeholder="custom type" />
+                    <!--<input type="button" onclick="clearAppliance()" value="Clear">-->
+                </section>
+
+                <h3 class="section-title">Appliance manufacturer</h3>
+                <section>
+                    <select name="applianceManufacturer">
+                        {{#each aManufacturer}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <p class="mx-8"> or </p>
+                    <input name="applianceTypeCustom" type="text" placeholder="custom manufacturer" />
+                    <!--<input type="button" onclick="clearManufacturer()" value="Clear"/>-->
+                </section>
+
+                <h3 class="section-title">Appliance age</h3>
+                <section>
+                    <select name="applianceAge">
+                        {{#each aAge}}
+                        <option value="{{@index}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </section>
+
+                <h3 class="section-title">Describe an issue</h3>
+                <section>
+                    <textarea name="issue" rows="4" cols="50" placeholder="Issue goes here"></textarea>
+                </section>
+                <section>
+                    <input type="button" onclick="clearAll()" value="Clear all" />
+                    <input type="submit" />
+                </section>
+            </form>
+        </div>
     </div>
     {{> footer}}
 </body>
 {{> scripts}}
+<script>
+
+</script>
 
 </html>

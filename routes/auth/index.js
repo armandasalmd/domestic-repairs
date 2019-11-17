@@ -14,7 +14,7 @@ const { dbName } = require('../../constants');
  * @name Register Page
  * @route {GET} /register
  */
-router.get('/register', async (ctx) => {
+router.get('/register', async ctx => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -33,19 +33,17 @@ router.get('/register', async (ctx) => {
  * @name Register Script
  * @route {POST} /register
  */
-router.post('/register', async (ctx) => {
+router.post('/register', async ctx => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;
 		// data validation
-		if (!Valid.name(body.name)) 
+		if (!Valid.name(body.name))
 			throw new Error('Name must include first and last names');
 		if (!Valid.email(body.email))
 			throw new Error('Enter valid email address');
-		if (!Valid.user(body.user))
-			throw new Error('Username is to short');
-		if (!Valid.pass(body.pass))
-			throw new Error('Password is to short');
+		if (!Valid.user(body.user)) throw new Error('Username is to short');
+		if (!Valid.pass(body.pass)) throw new Error('Password is to short');
 
 		// call the functions in the module
 		const user = await new User(dbName);
@@ -59,7 +57,7 @@ router.post('/register', async (ctx) => {
 	}
 });
 
-router.get('/login', async (ctx) => {
+router.get('/login', async ctx => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -70,13 +68,11 @@ router.get('/login', async (ctx) => {
 	await ctx.render('auth/login', data);
 });
 
-router.post('/login', async (ctx) => {
+router.post('/login', async ctx => {
 	try {
 		const body = ctx.request.body;
-		if (!body.user) 
-			throw new Error('Username cannot be empty');
-		if (!body.pass)
-			throw new Error('Password cannot be empty');
+		if (!body.user) throw new Error('Username cannot be empty');
+		if (!body.pass) throw new Error('Password cannot be empty');
 		const user = await new User(dbName);
 		await user.login(body.user, body.pass);
 		ctx.session.authorised = true;
@@ -88,7 +84,7 @@ router.post('/login', async (ctx) => {
 	}
 });
 
-router.get('/logout', async (ctx) => {
+router.get('/logout', async ctx => {
 	ctx.session.authorised = null;
 	ctx.session.user = null;
 	ctx.redirect('/');

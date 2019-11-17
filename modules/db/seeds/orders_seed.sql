@@ -1,0 +1,3 @@
+INSERT INTO orders (appliance_type, appliance_age, appliance_manufacturer, user_issue, status, user_id, technician_id) VALUES ('Digital camera', 5, 'Samsung', 'It doesnt start for me, I think that battery is dead', 'pending', 'test', 'tech');
+INSERT INTO orders (appliance_type, appliance_age, appliance_manufacturer, user_issue, status, user_id, technician_id) VALUES ('Ceiling fan', 8, 'Electrolux', 'Spinning with weird noises', 'pending', 'test', 'tech');
+INSERT INTO orders (appliance_type, appliance_age, appliance_manufacturer, user_issue, status, user_id, technician_id) VALUES ('Computer', 0, 'Asus', 'I experience a lot of lags. Please reinstall my windows', 'pending', 'test', 'tech');
