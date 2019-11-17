@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+{{> head}}
+
+<body>
+    {{> navbar}}
+    {{> aside}}
+    <div id="rootContainer">
+        <h1>{{title}}</h1>
+        <h4>Welcome, <span style="color:green">{{username}}</span></h4>
+
+
+
+        <section class="progress">
+            <section class="head">
+                <h2>Orders in Progress</h4>
+            </section>
+
+
+            <table>
+                <th>Order ID</th>
+                <th>Type</th>
+                <th>Age</th>
+                <th>Manufacturer</th>
+                <th>Issue Description</th>
+                <th>Quote Description</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Cost</th>
+
+                {{#each orders}}
+
+                <tr>
+                    <td>
+                        {{order_id}}
+                    </td>
+                    <td>
+                        {{appliance_type}}
+                    </td>
+                    <td>
+                        {{appliance_age}}
+                    </td>
+                    <td>
+                        {{appliance_manufacturer}}
+                    </td>
+                    <td>
+                        {{user_issue}}
+                    </td>
+                    <td>
+                        {{description}}
+                    </td>
+                    <td>
+                        {{time_from}}
+                    </td>
+                    <td>
+                        {{time_to}}
+                    </td>
+                    <td>
+                        {{cost}}
+                    </td>
+
+
+
+
+
+
+                </tr>
+                {{/each}}
+
+
+
+
+
+
+
+
+
+            </table>
+
+
+
+            <!---
+            <section class="head">
+                <h2>Orders Completed</h4>
+            </section>
+
+            {{#each orders}}
+            <article>
+                <p>Order ID: {{order_id}}</p>
+                <p>Type: {{appliance_type}}</p>
+                <p>Age: {{appliance_age}}</p>
+                <p>Manufacturer: {{appliance_manufacturer}}</p>
+
+
+                <button action="#">Provide Quote</button>
+
+
+
+            </article>
+            {{/each}}-->
+        </section>
+
+
+
+
+        <p><a href="/logout">Want to logout?</a></p>
+    </div>
+    {{> footer}}
+</body>
+{{> scripts}}
+
+
+</html>

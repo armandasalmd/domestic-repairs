@@ -333,7 +333,55 @@ form input, form textarea {
 	background: #fff;
 	text-align: left;
 	color: #000;
-	font-family: "Livvic" !important; ;
+	font-family: "Livvic" !important;
+}
+
+
+	/* ============================
+	END TECH list jobs CARDS
+	========================== */
+
+
+		/* ============================
+	START TECH TABLE jobs CARDS
+	========================== */
+
+.progress{
+	background: #fff;
+}
+.progress .head{
+	padding-top: 20px;
+	background: #fff;
+	text-align: left;
+	color: #000;
+	font-family: "Livvic" !important;
+}
+
+.progress table{
+	border: 1px solid #565656;
+	font-family: "Livvic" !important;
+	font-size: 15px;
+	border-collapse: collapse;
+	color: #000;
+	
+	
+}
+
+.progress th{
+	background: linear-gradient(#2c6e12, #23664a);
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+.progress td{
+	border: 1px solid #565656;
+	padding: 10px;
+
+}
+
+.progress tr{
+	
+	background: linear-gradient(#cfcaca, #c7dfcf);
 }
 
 
@@ -343,6 +391,8 @@ form input, form textarea {
 
 
 
-	/* ============================
-	END TECH list jobs CARDS
+
+
+			/* ============================
+	END TECH TABLE jobs CARDS
 	========================== */

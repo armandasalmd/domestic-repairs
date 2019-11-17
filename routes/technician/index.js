@@ -44,7 +44,7 @@ router.get(`${pathPrefix}/order/manage`, async (ctx) => {
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
 
-		const sql = 'SELECT * FROM orders WHERE status="in progress"'
+		const sql = 'SELECT * FROM orders, quotes WHERE status="in progress" and status_quote="accepted"'
 		const db = await Database.open(dbName)
 		const info = await db.all(sql)
 		await db.close()
