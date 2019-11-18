@@ -308,7 +308,7 @@ form input, form textarea {
 	margin: 10px;
 	border-radius: 15px;
 	font-size: 15px;
-	font-family: "Livvic" !important;
+	font-family: "Helvetica" sans-serif;
 	color: #000;
 	background: linear-gradient(135deg, #cfcaca, #c7dfcf);
 }
@@ -343,7 +343,7 @@ form input, form textarea {
 
 
 		/* ============================
-	START TECH TABLE jobs CARDS
+	START TECH TABLE jobs
 	========================== */
 
 .progress{
@@ -359,7 +359,7 @@ form input, form textarea {
 
 .progress table{
 	
-	font-family: "Livvic" !important;
+	font-family: "Helvetica" sans-serif;
 	font-size: 15px;
 	border-collapse: collapse;
 	color: #000;
@@ -369,7 +369,7 @@ form input, form textarea {
 
 .progress th{
 	
-	font-weight: 800;
+	font-weight:  700;
 	padding: 10px;
 	color: #000;
 }
@@ -390,6 +390,54 @@ form input, form textarea {
 }
 
 
+		/* ============================
+	END TECH TABLE jobs 
+	========================== */
+
+
+			/* ============================
+	START TECH PROFILE PIC
+	========================== */
+
+.profilePic{
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	
+	background: #fff;
+	padding:0;
+}
+
+.profilePic article{
+	font-size: 20px;
+	font-family: "Helvetica" sans-serif;
+	
+	text-align: left;
+	color: black;	
+}
+
+.profilePic .head{
+	padding-top: 20px;
+	background: #fff;
+	text-align: left;
+	color: #000;
+	font-family: "Livvic" !important;
+
+}
+
+.profilePic img{
+	display: block;
+	padding: 0;
+	margin: auto;
+}
+
+.profilePic p{
+	padding: 12px;
+}
+
+
+
+
+
 
 
 
@@ -401,5 +449,5 @@ form input, form textarea {
 
 
 			/* ============================
-	END TECH TABLE jobs CARDS
+	END TECH PROFILE PIC
 	========================== */
