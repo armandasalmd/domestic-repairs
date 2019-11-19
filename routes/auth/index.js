@@ -14,7 +14,7 @@ const { dbName } = require('../../constants');
  * @name Register Page
  * @route {GET} /register
  */
-router.get('/register', async ctx => {
+router.get('/register', async (ctx) => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -33,7 +33,7 @@ router.get('/register', async ctx => {
  * @name Register Script
  * @route {POST} /register
  */
-router.post('/register', async ctx => {
+router.post('/register', async (ctx) => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;
@@ -47,17 +47,17 @@ router.post('/register', async ctx => {
 
 		// call the functions in the module
 		const user = await new User(dbName);
-		await user.register(body.user, body.pass);
+		await user.register(body.user, body.name, body.email, body.pass);
 		// await user.uploadPicture(path, type)
 		// redirect to the logintest page
-		ctx.redirect('/login');
+		ctx.redirect('/login/?msg=Successfully registered, please login');
 	} catch (err) {
 		return ctx.redirect(`/register/?msg=${err.message}`);
 		//await ctx.render('error', { message: err.message });
 	}
 });
 
-router.get('/login', async ctx => {
+router.get('/login', async (ctx) => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -68,23 +68,29 @@ router.get('/login', async ctx => {
 	await ctx.render('auth/login', data);
 });
 
-router.post('/login', async ctx => {
+router.post('/login', async (ctx) => {
 	try {
 		const body = ctx.request.body;
 		if (!body.user) throw new Error('Username cannot be empty');
 		if (!body.pass) throw new Error('Password cannot be empty');
 		const user = await new User(dbName);
-		await user.login(body.user, body.pass);
+		const response = await user.login(body.user, body.pass);
+
 		ctx.session.authorised = true;
-		ctx.session.user = body.user;
-		return ctx.redirect('/user');
+
+		ctx.session.username = response.username;
+		ctx.session.fullName = response.fullName;
+		ctx.session.email = response.email;
+		ctx.session.type = response.type;
+
+		return ctx.redirect(`/${response.type}`);
 	} catch (err) {
 		return ctx.redirect(`/login/?msg=${err.message}`);
 		//await ctx.render('error', { message: err.message });
 	}
 });
 
-router.get('/logout', async ctx => {
+router.get('/logout', async (ctx) => {
 	ctx.session.authorised = null;
 	ctx.session.user = null;
 	ctx.redirect('/');

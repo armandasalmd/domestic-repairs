@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS address;
-
-CREATE TABLE address (
+CREATE TABLE IF NOT EXISTS address (
     street TEXT NOT NULL,
     city TEXT NOT NULL,
     postcode TEXT NOT NULL,
