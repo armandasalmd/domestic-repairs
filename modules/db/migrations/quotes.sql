@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS quotes;
-
-CREATE TABLE quotes (
+CREATE TABLE IF NOT EXISTS quotes (
     cost TEXT NOT NULL,
     description TEXT NOT NULL,
     status TEXT NOT NULL,
