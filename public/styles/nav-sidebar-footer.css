@@ -167,7 +167,6 @@ aside#navContainer {
 #navContainer ul li {
 	color: rgba(231, 229, 229, 0.88);
 	list-style: none;
-	padding: 12px 10px;
 	margin-right: 16px;
 	border-bottom: 1px solid #04522e;
 }
@@ -185,6 +184,8 @@ aside#navContainer {
 }
 
 .dark-card a {
+	display: block;
+	padding: 12px 10px;
 	text-decoration: none;
 	color: #dfe6e9;
 }
