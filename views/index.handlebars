@@ -4,9 +4,7 @@
 
 <body>
 	{{> navbar}}
-	<div>
-
-
+	<div class="rootContainer">
 		<div class="Carousel">
 			<button class="Carousel__button Carousel__button--left is-hidden">
 				<img src="/avatars/back.svg" alt="">
@@ -62,6 +60,48 @@
 				<button class="Carousel__indicator"></button>
 				<button class="Carousel__indicator"></button>
 			</div>
+		</div>
+		<div>
+			<section class="top-display">
+				<h1>Welcome to Domestic Repairs!</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed iaculis lorem, eu convallis nulla.
+					Lorem
+					Ipsum dolor sit amet.</p>
+				<form>
+					<fieldset>
+						<button type="button">Learn More!</button>
+					</fieldset>
+				</form>
+			</section>
+
+			<!-- Start using today -->
+			<section class="reasons">
+				<h1>Start using it today</h1>
+				<article>
+					<!-- Account Creation -->
+					<header>
+						<h1><i class="fa fa-briefcase" aria-hidden="true"></i></h1>
+						<p>Our accounts are free to create! If you'd like to take advantage of our
+							services on a pay-per-job basis, create an account now!</p>
+						<a class="btn" href="/register">Sign Up Today!</a>
+					</header>
+					<!-- Subscription Notice -->
+					<header>
+						<h1><i class="fa fa-flag" aria-hidden="true"></i></h1>
+						<p>Take advantage of our subscriptions! Our free package entitles you to
+							quick and easy quotes while our most advanced packages offer great discounts, such as free
+							service checks and fittings!</p>
+
+					</header>
+					<!-- Sign In -->
+					<header>
+						<h1><i class="fa fa-user-circle" aria-hidden="true"></i></h1>
+						<p>If you already have an account with us use the button below to log in and
+							view your new dashboard!</p>
+						<a class="btn" href="/login">Sign In!</a>
+					</header>
+				</article>
+			</section>
 		</div>
 	</div>
 	<script src="/scripts/home.js" type="text/javascript"></script>

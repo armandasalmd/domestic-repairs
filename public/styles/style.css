@@ -60,6 +60,51 @@ body {
 	cursor: pointer;
 }
 
+/* Second section on index.handlbars - reasons to join */
+
+.reasons {
+	background-color: white;
+	max-width: 1600px;
+	margin: 0 auto;
+	font-family: 'Livvic';
+}
+
+.reasons > article {
+	margin: 20px auto;
+}
+
+.reasons > h1, .reasons > article > header > h1 {
+	font-size: 2rem;
+	color: #353B3C;
+	padding: 5px 0px;
+}
+
+.reasons > article > header {
+	background-color: white;
+	color: #353B3C;
+	font-size: initial;
+	display: table-cell;
+	max-width: 533px;
+	height: auto;
+	padding: 1rem;
+}
+
+.reasons > article > header > p {
+	padding: 0px 20px;
+}
+
+.reasons a.btn {
+	display: inline-block;
+	border: 0;
+	background-color: #2C6E12;
+	color: white;
+	padding: 10px 15px;
+	margin: 5px 0px;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	text-decoration: none;
+}
+
 /* ============================
 	START Login and Register
 	=========================== */
