@@ -8,7 +8,7 @@ function getUserSidebarMenu() {
 					link: '/user'
 				},
 				{
-					title: 'Place an order',
+					title: 'New order',
 					link: '/user/order/new'
 				}
 			]
@@ -21,12 +21,12 @@ function getUserSidebarMenu() {
 					link: '/user/contacts'
 				},
 				{
-					title: 'Log out',
-					link: '/logout'
+					title: 'Account settings',
+					link: '/user/settings'
 				},
 				{
-					title: 'Settings',
-					link: '/user/settings'
+					title: 'Log out',
+					link: '/logout'
 				}
 			]
 		}
@@ -44,7 +44,7 @@ function getTechSidebarMenu() {
 				},
 				{
 					title: 'Manage orders',
-					link: '/tech/order/manage'
+					link: '/tech/manage'
 				}
 			]
 		},
@@ -54,6 +54,10 @@ function getTechSidebarMenu() {
 				{
 					title: 'Contacts',
 					link: '/tech/contacts'
+				},
+				{
+					title: 'Account settings',
+					link: '/tech/settings'
 				},
 				{
 					title: 'Log out',

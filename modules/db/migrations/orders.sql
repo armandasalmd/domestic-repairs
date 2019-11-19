@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS orders;
-
-CREATE TABLE orders (
+CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER PRIMARY KEY AUTOINCREMENT,
     appliance_type TEXT NOT NULL,
     appliance_age INTEGER NOT NULL,
