@@ -1,4 +1,4 @@
 module.exports = {
-	dbName: 'website.db',
+	dbName: 'database.db',
 	defaultPort: 3000
 };

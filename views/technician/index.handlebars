@@ -8,11 +8,42 @@
     <div id="rootContainer">
         <h1>{{title}}</h1>
         <h4>Welcome, <span style="color:green">{{username}}</span></h4>
-        <p>This is the TECHNICIAN dashboard. this route is secure</p>
-        <p><a href="/logout">Want to logout?</a></p>
+        <section class="temporary-form-for-quote">
+            <form action="/tech/quote" method="POST">
+                <textarea name="quote" placeholder="Provide a quote"></textarea>
+                <input name="price" type="text" placeholder="Price" />
+                <input name="order_id" type="text" placeholder="Order Id" />
+                <input type="submit" />
+            </form>
+        </section>
+        <section class="pending">
+            <section class="head">
+                <h2>Unallocated Orders</h4>
+            </section>
+            {{#each orders}}
+            <article>
+                <p>Order ID: {{order_id}}</p>
+                <p>Type: {{appliance_type}}</p>
+                <p>Age: {{appliance_age}}</p>
+                <p>Manufacturer: {{appliance_manufacturer}}</p>
+
+
+                <button action="#">Provide Quote</button>
+
+
+
+            </article>
+            {{/each}}
+        </section>
+
+
+
+
+        <p><a href="/logout" style="align-text:right; color:#000;">Want to logout?</a></p>
     </div>
     {{> footer}}
 </body>
 {{> scripts}}
+
 
 </html>

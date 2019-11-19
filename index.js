@@ -15,6 +15,7 @@ require('./views/helpers'); // register handlebars
 /* IMPORT ROUTES */
 const authRouter = require('./routes/auth/index');
 const landingRouter = require('./routes/landing');
+const common = require('./routes/common');
 const userRouter = require('./routes/user/index');
 const technicianRouter = require('./routes/technician/index');
 
@@ -59,12 +60,14 @@ app.use(
 );
 
 // Applying routes to the app
-app.use(landingRouter.routes()); // public route set
 app.use(authRouter.routes()); // public route set
+app.use(landingRouter.routes()); // public route set
+app.use(common.routes()); // authorized routes (any user)
 app.use(userRouter.routes()); // authorized routes (must be user type of user)
 app.use(technicianRouter.routes()); // authorized routes (must be user type of technician)
 
 const { defaultPort: port } = require('./constants');
 
-
-module.exports = app.listen(port, async () => console.log(`listening on port ${port}`));
+module.exports = app.listen(port, async () =>
+	console.log(`listening on port ${port}`)
+);
