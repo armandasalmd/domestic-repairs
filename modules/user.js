@@ -4,7 +4,14 @@ const mime = require('mime-types');
 const sqlite = require('sqlite-async');
 const saltRounds = 10;
 
+/**
+ * Model class for User table
+ */
 module.exports = class User {
+	/**
+	 * Initializes the model creating User table in database if not exists
+	 * @param {Object} dbName Database file name ending .db
+	 */
 	constructor(dbName = '../database.db') {
 		return (async () => {
 			this.db = await sqlite.open(dbName);
@@ -22,6 +29,17 @@ module.exports = class User {
 		})();
 	}
 
+	/**
+	 * Updates User table in database with a new
+	 * record if not empty values passed
+	 * @param {string} username Username
+	 * @param {string} fullName First and last names
+	 * @param {string} email Valid email address
+	 * @param {string} password Plain password
+	 * @param {string} phoneNo User phone number
+	 * @param {string} type Account type (user|tech)
+	 * @throws {Error} If register was unsuccessful
+	 */
 	async register(
 		username,
 		fullName,
@@ -58,6 +76,14 @@ module.exports = class User {
 		//await fs.copy(path, `public/avatars/${username}.${fileExtension}`)
 	}
 
+	/**
+	 * Performs login checking records in database
+	 * @param {string} username Username from login form
+	 * @param {string} password Plain password
+	 * @throws {Error} If login was unsuccessful
+	 * @returns {Object} Json object containing session data for user
+	 * {username, fullName, email, type}
+	 */
 	async login(username, password) {
 		try {
 			let sql = `SELECT count(username) AS count FROM user WHERE username='${username}';`;
