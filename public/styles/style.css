@@ -93,9 +93,9 @@ body {
 	padding: 0px 20px;
 }
 
-.reasons a.btn {
+a.btn {
 	display: inline-block;
-	border: 0;
+	border: 2px solid #2c6e12;
 	background-color: #2C6E12;
 	color: white;
 	padding: 10px 15px;
@@ -103,6 +103,10 @@ body {
 	border-radius: 5px;
 	font-size: 0.9rem;
 	text-decoration: none;
+}
+
+a.btn:hover {
+	background-color: #337A17;
 }
 
 /* ============================
