@@ -1,13 +1,24 @@
-const Router = require('koa-router'); // const Router = require('koa-router');
+const Router = require('koa-router');
 const menus = require('../../modules/menus');
 const dropdowns = require('../../modules/dropdowns');
 
-const router = new Router();
-const pathPrefix = '/user';
+const router = new Router({ prefix: '/user' });
 
-router.get(`${pathPrefix}/`, async ctx => {
+/**
+ * Matches everything that starts with /user
+ * Acts as a middleware to protect the route
+ */
+router.use(async (ctx, next) => {
+	if (ctx.session.authorised === true && ctx.session.type === 'user') {
+		await next(); // user is authorized, search for next route
+	} else {
+		ctx.status = 401;
+		ctx.body = 'Unauthorized access blocked';
+	}
+});
+
+router.get('/', async ctx => {
 	try {
-		console.log(ctx.session.authorised);
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in
@@ -26,33 +37,13 @@ router.get(`${pathPrefix}/`, async ctx => {
 	}
 });
 
-router.get(`${pathPrefix}/contacts`, async ctx => {
+router.get('/order/new', async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in
 		const data = {
-			title: 'Contacts',
-			layout: 'nav-sidebar-footer',
-			navbarType: 'online',
-			username: ctx.session.user,
-			sidebarSections: menus.user
-		};
-
-		if (ctx.query.msg) data.msg = ctx.query.msg;
-		await ctx.render('contacts', data);
-	} catch (err) {
-		await ctx.render('error', { message: err.message });
-	}
-});
-
-router.get(`${pathPrefix}/order/new`, async ctx => {
-	try {
-		if (ctx.session.authorised !== true)
-			return ctx.redirect('/login?msg=you need to log in');
-		// if user is logged in
-		const data = {
-			title: 'Contacts',
+			title: 'New order',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
@@ -68,21 +59,4 @@ router.get(`${pathPrefix}/order/new`, async ctx => {
 	}
 });
 
-router.get(`${pathPrefix}/test`, async ctx => {
-	try {
-		if (ctx.session.authorised !== true)
-			return ctx.redirect('/login?msg=you need to log in');
-		// if user is logged in
-		const data = {
-			title: 'test',
-			layout: 'nav-sidebar-footer',
-			navbarType: 'online',
-			sidebarSections: menus.user
-		};
-
-		await ctx.render('user/test', data);
-	} catch (err) {
-		await ctx.render('error', { message: err.message });
-	}
-});
 module.exports = router;

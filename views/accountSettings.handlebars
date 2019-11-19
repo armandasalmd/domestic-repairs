@@ -4,10 +4,11 @@
 
 <body>
     {{> navbar}}
+    {{#if_eq navbarType 'online' }}
     {{> aside}}
+    {{/if_eq}}
     <div id="rootContainer">
-        <h1>this is a test or something</h1>
-    
+        <h1>This is my settings page</h1>
     </div>
     {{> footer}}
 </body>

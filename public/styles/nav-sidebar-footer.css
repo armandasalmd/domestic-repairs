@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Livvic';
+	src: url('/styles/fonts/Livvic/Livvic-Regular.ttf') format('truetype');
+  }
+
 body {
 	display: grid;
 	grid-template-areas:
@@ -33,7 +38,8 @@ footer {
 	padding-bottom: 0;
 	padding-top: 0;
 	background: #353B3C;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: "Livvic" !important;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	
@@ -63,6 +69,12 @@ footer a:hover{
 
 }
 
+footer li{
+	list-style-type: none;
+	padding: 5px 5px 5px 0;
+	margin: 0;
+}
+
 section{
 	background: #353B3C;
 	grid-column: 1/5;
@@ -71,6 +83,11 @@ section{
 	font-size:10px;
 	padding-bottom: 10px;
 }
+
+article .logo{
+	padding-bottom: 80px;	
+}
+
 
 .socials{
 	font-size: 25px;
