@@ -54,19 +54,20 @@ router.get('/manage', async ctx => {
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
 
-		let tableInProgress;
+		let tableInProgress = {};
 		try {
 			//
 			//const sql = 'SELECT * FROM orders, quotes WHERE order_status="in progress" and status_quote="accepted"';
 			const sql = `SELECT * FROM orders INNER JOIN quotes 
 				ON quotes.order_id = orders.order_id WHERE orders.technician_id = '${ctx.session.username}'`;
 			const db = await Database.open(dbName);
-			const info = await db.all(sql);
+			tableInProgress = await db.all(sql);
 			await db.close();
-			console.log(info);
 		} catch (err) {
+			console.log(err.message);
 			tableInProgress = {};
 		}
+		console.log(tableInProgress);
 
 		const data = {
 			title: 'Manage your orders',

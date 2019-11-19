@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'Livvic';
 	src: url('/styles/fonts/Livvic/Livvic-Regular.ttf') format('truetype');
-  }
+}
 
 body {
 	display: grid;
@@ -11,8 +11,7 @@ body {
 		'nav footer';
 	grid-template-rows: 64px 3fr 1fr;
 	grid-template-columns: 20% 1fr;
-	
-	
+
 	height: 100vh;
 	margin: 0;
 }
@@ -31,92 +30,86 @@ body {
 	grid-area: nav;
 }
 
-
 footer {
 	bottom: 0;
-	
+
 	padding-bottom: 0;
 	padding-top: 0;
-	background: #353B3C;
+	background: #353b3c;
 	/*font-family: 'Open Sans', sans-serif;*/
-	font-family: "Livvic" !important;
+	font-family: 'Livvic' !important;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	
 }
 
-footer article{
+footer article {
 	padding: 30px;
-	background: #353B3C;
-	color: #EEF0F2;
+	background: #353b3c;
+	color: #eef0f2;
 }
 
-footer li{
+footer li {
 	list-style-type: none;
 }
 
-footer li a{
+footer li a {
 	text-decoration: none;
-	color: #EEF0F2;
+	color: #eef0f2;
 }
 
-footer h3{
-	color:#2ECC71;
+footer h3 {
+	color: #2ecc71;
 }
 
-footer a:hover{
+footer a:hover {
 	text-decoration: underline;
-
 }
 
-footer li{
+footer li {
 	list-style-type: none;
 	padding: 5px 5px 5px 0;
 	margin: 0;
 }
 
-section{
-	background: #353B3C;
+section {
+	background: #353b3c;
 	grid-column: 1/5;
 	text-align: center;
-	color: #EEF0F2;
-	font-size:10px;
+	color: #eef0f2;
+	font-size: 10px;
 	padding-bottom: 10px;
 }
 
-article .logo{
-	padding-bottom: 80px;	
+article .logo {
+	padding-bottom: 80px;
 }
 
-
-.socials{
+.socials {
 	font-size: 25px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	padding: 0;
 }
 
-.fa-phone, .fa-envelope{
+.fa-phone,
+.fa-envelope {
 	font-size: 17px;
 }
 
-p a{
-	color: #EEF0F2;
+p a {
+	color: #eef0f2;
 	text-decoration: none;
 }
 
-
-input{
+input {
 	padding: 10px;
 	margin: 10px 0px 10px 0;
 	border: none;
-	
 }
 
-form .button{
+form .button {
 	display: block;
 	border-radius: 2px;
-	
 }
 
 /* Stack the layout on small devices/viewports. */
@@ -131,7 +124,7 @@ form .button{
 		grid-template-columns: 1fr;
 	}
 
-	footer{
+	footer {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
@@ -160,11 +153,10 @@ form .button{
 	padding-left: 4px;
 }
 
-
 aside#navContainer {
 	/* #202325*/
 	background: linear-gradient(120deg, #2c6e12, #23664a);
-	font-family: "Livvic" !important;
+	font-family: 'Livvic' !important;
 }
 
 #navContainer ul {
@@ -195,7 +187,6 @@ aside#navContainer {
 .dark-card a {
 	text-decoration: none;
 	color: #dfe6e9;
-	
 }
 
 .menu-card {
@@ -214,4 +205,3 @@ aside#navContainer {
 /* ============================
 	END Sidebar
 	=========================== */
-
