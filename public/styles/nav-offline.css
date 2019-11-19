@@ -3,10 +3,10 @@
   src: url('/styles/fonts/Livvic/Livvic-Regular.ttf') format('truetype');
 }
 
-header {
+header#offline-nav, header#headerContainer {
     width: 100%;
     max-height: 64px;
-    background: #353B3C !important;
+    background: #353B3C;
     font-family: "Livvic" !important;
   }
   
@@ -20,7 +20,7 @@ header {
     justify-content: center;
     flex-direction: row;
     color: #ffffff;
-    background: #353B3C !important;
+    background: #353B3C;
   }
   
   .logo {
