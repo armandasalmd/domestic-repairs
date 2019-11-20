@@ -6,7 +6,7 @@ const menus = require('../modules/menus');
 /**
  * Two paths accepted: /user/contacts or /tech/contacts
  */
-router.get(/^\/((user)|(tech))\/(contacts)$/, async (ctx) => {
+router.get(/^\/((user)|(tech))\/(contacts)$/, async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=You need to log in');
@@ -16,7 +16,8 @@ router.get(/^\/((user)|(tech))\/(contacts)$/, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: menus.user
+			sidebarSections:
+				ctx.session.type === 'user' ? menus.user : menus.technician
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -26,7 +27,7 @@ router.get(/^\/((user)|(tech))\/(contacts)$/, async (ctx) => {
 	}
 });
 
-router.get(/^\/((user)|(tech))\/(settings)$/, async (ctx) => {
+router.get(/^\/((user)|(tech))\/(settings)$/, async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=You need to log in');
@@ -36,7 +37,8 @@ router.get(/^\/((user)|(tech))\/(settings)$/, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: menus.user
+			sidebarSections:
+				ctx.session.type === 'user' ? menus.user : menus.technician
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;

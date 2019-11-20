@@ -13,7 +13,7 @@
                 <section>
                     <select name="applianceType">
                         {{#each aType}}
-                        <option value="{{@index}}">{{this}}</option>
+                        <option value="{{this}}">{{this}}</option>
                         {{/each}}
                     </select>
                     <p class="mx-8"> or </p>
@@ -25,11 +25,11 @@
                 <section>
                     <select name="applianceManufacturer">
                         {{#each aManufacturer}}
-                        <option value="{{@index}}">{{this}}</option>
+                        <option value="{{this}}">{{this}}</option>
                         {{/each}}
                     </select>
                     <p class="mx-8"> or </p>
-                    <input name="applianceTypeCustom" type="text" placeholder="custom manufacturer" />
+                    <input name="applianceManufacturerCustom" type="text" placeholder="custom manufacturer" />
                     <!--<input type="button" onclick="clearManufacturer()" value="Clear"/>-->
                 </section>
 
@@ -42,7 +42,7 @@
                     </select>
                 </section>
 
-                <h3 class="section-title">Describe an issue</h3>
+                <h3 class=" section-title">Describe an issue</h3>
                 <section>
                     <textarea name="issue" rows="4" cols="50" placeholder="Issue goes here"></textarea>
                 </section>

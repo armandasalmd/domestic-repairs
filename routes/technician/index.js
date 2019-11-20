@@ -4,26 +4,42 @@ const Database = require('sqlite-async');
 
 const router = new Router({ prefix: '/tech' });
 const dbName = require('../../constants').dbName;
+const Orders = require('../../modules/orders');
+const Quotes = require('../../modules/quotes');
+
+/**
+ * Matches everything that starts with /user
+ * Acts as a middleware to protect the route
+ */
+router.use(async (ctx, next) => {
+	if (ctx.session.authorised === true && ctx.session.type === 'tech') {
+		await next(); // user is authorized, search for next route
+	} else {
+		return ctx.redirect('/login?msg=Please login');
+		/*ctx.status = 401;
+		ctx.body = 'Unauthorized access blocked';*/
+	}
+});
 
 router.get('/', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
-		const username = ctx.session.user; // logged person username
-
-		const sql = 'SELECT * FROM orders WHERE status="pending"';
+		const username = ctx.session.username; // logged person username
+		/*const sql = 'SELECT * FROM orders WHERE order_status="pending";';
 		const db = await Database.open(dbName);
 		const info = await db.all(sql);
 		await db.close();
-		console.log(info);
-
+		console.log(info);*/
+		const mOrders = await new Orders(dbName);
+		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			sidebarSections: menus.technician,
-			orders: info,
+			orders: results,
 			username: username
 		};
 
@@ -41,18 +57,20 @@ router.get('/manage', async (ctx) => {
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
 
-		let tableInProgress;
+		let tableInProgress = {};
 		try {
-			// SELECT * FROM orders INNER JOIN quotes ON quotes.order_id = orders.order_id WHERE orders.technician_id = '${tech}'
-			const sql =
-				'SELECT * FROM orders, quotes WHERE status="in progress" and status_quote="accepted"';
+			//
+			//const sql = 'SELECT * FROM orders, quotes WHERE order_status="in progress" and status_quote="accepted"';
+			const sql = `SELECT * FROM orders INNER JOIN quotes 
+				ON quotes.order_id = orders.order_id WHERE orders.technician_id = '${ctx.session.username}'`;
 			const db = await Database.open(dbName);
-			const info = await db.all(sql);
+			tableInProgress = await db.all(sql);
 			await db.close();
-			console.log(info);
 		} catch (err) {
+			console.log(err.message);
 			tableInProgress = {};
 		}
+		console.log(tableInProgress);
 
 		const data = {
 			title: 'Manage your orders',
@@ -67,6 +85,23 @@ router.get('/manage', async (ctx) => {
 		await ctx.render('technician/manage', data);
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
+	}
+});
+
+router.post('/quote', async (ctx) => {
+	try {
+		const f = ctx.request.body;
+		/*const f = {
+			quote: ctx.body.quote,
+			price: ctx.body.price,
+			order_id: ctx.body.order_id
+		};*/
+		const mQuotes = await new Quotes(dbName);
+		mQuotes.provideQuote(f.order_id, f.quote, f.price);
+		ctx.redirect('/tech?msg=Successfuly provided a quote');
+		// Cannot%20read%20property%20%27order_id%27%20of%20undefined
+	} catch (err) {
+		ctx.redirect(`/tech?msg=${err.message}`);
 	}
 });
 

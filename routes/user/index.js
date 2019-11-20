@@ -1,6 +1,9 @@
+/* IMPORT CUSTOM MODULES */
 const Router = require('koa-router');
+const Orders = require('../../modules/orders');
 const menus = require('../../modules/menus');
 const dropdowns = require('../../modules/dropdowns');
+const { dbName } = require('../../constants');
 
 const router = new Router({ prefix: '/user' });
 
@@ -9,7 +12,7 @@ const router = new Router({ prefix: '/user' });
  * Acts as a middleware to protect the route
  */
 router.use(async (ctx, next) => {
-	if (ctx.session.authorised === true || ctx.session.type === 'user') {
+	if (ctx.session.authorised === true && ctx.session.type === 'user') {
 		await next(); // user is authorized, search for next route
 	} else {
 		ctx.status = 401;
@@ -56,6 +59,42 @@ router.get('/order/new', async (ctx) => {
 		await ctx.render('user/placeAnOrder', data);
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
+	}
+});
+
+router.post('/order/new', async (ctx) => {
+	try {
+		// extract the data from the request
+		const body = ctx.request.body;
+		// TODO: data validation
+
+		// call the functions in the module
+		const mOrders = await new Orders(dbName);
+		const f = {
+			aType:
+				body.applianceTypeCustom === ''
+					? body.applianceType
+					: body.applianceTypeCustom,
+			aManufacturer:
+				body.applianceManufacturerCustom === ''
+					? body.applianceManufacturer
+					: body.applianceManufacturerCustom,
+			aAge: body.applianceAge,
+			issue: body.issue
+		};
+		await mOrders.addNewOrder(
+			ctx.session.username,
+			f.aType,
+			f.aManufacturer,
+			f.aAge,
+			f.issue
+		);
+		// await user.uploadPicture(path, type)
+		// redirect to the logintest page
+		ctx.redirect('/user/order/new?msg=Successfully added');
+	} catch (err) {
+		return ctx.redirect(`/user/order/new?msg=${err.message}`);
+		//await ctx.render('error', { message: err.message });
 	}
 });
 
