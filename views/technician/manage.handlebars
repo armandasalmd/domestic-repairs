@@ -71,21 +71,53 @@
                 <h2>Orders Completed</h4>
             </section>
 
-            <!--
-            {{#each orders}}
-            <article>
-                <p>Order ID: {{order_id}}</p>
-                <p>Type: {{appliance_type}}</p>
-                <p>Age: {{appliance_age}}</p>
-                <p>Manufacturer: {{appliance_manufacturer}}</p>
+            <table>
+                <th>Order ID</th>
+                <th>Type</th>
+                <th>Age</th>
+                <th>Manufacturer</th>
+                <th>Issue Description</th>
+                <th>Quote Description</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Cost</th>
 
+                {{#each ordersCompleted}}
 
-                <button action="#">Provide Quote</button>
+                <tr>
+                    <td>
+                        {{order_id}}
+                    </td>
+                    <td>
+                        {{appliance_type}}
+                    </td>
+                    <td>
+                        {{appliance_age}}
+                    </td>
+                    <td>
+                        {{appliance_manufacturer}}
+                    </td>
+                    <td>
+                        {{user_issue}}
+                    </td>
+                    <td>
+                        {{description}}
+                    </td>
+                    <td>
+                        {{time_from}}
+                    </td>
+                    <td>
+                        {{time_to}}
+                    </td>
 
+                    <td>
+                        {{cost}}
+                    </td>
 
+                </tr>
+                {{/each}}
 
-            </article>
-            {{/each}}-->
+            </table>
         </section>
 
 
