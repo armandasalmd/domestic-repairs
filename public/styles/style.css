@@ -575,3 +575,12 @@ tr {
 	END TECH PROFILE PIC
 	========================== */
 
+section.head h2 {
+	font-size: 2.2em;
+}
+
+section.head h3 {
+	font-size: 1.7em;
+	font-family: Arial;
+	font-weight: 200;
+}

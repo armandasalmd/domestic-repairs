@@ -39,8 +39,7 @@ router.get('/', async (ctx) => {
 		console.log(info);*/
 
 		const mOrders = await new Orders(dbName);
-		const mQuotes = await new Quotes(dbName);
-		const quote = await mQuotes.getQuotesByUsername(username);
+
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -48,7 +47,6 @@ router.get('/', async (ctx) => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
-			quote: quote,
 			username: username
 		};
 
@@ -70,6 +68,10 @@ router.get('/manage', async (ctx) => {
 		// if technician is logged in
 		const username = ctx.session.username; // logged person username
 		const mOrders = await new Orders(dbName);
+		const mQuotes = await new Quotes(dbName);
+		let filterq = 'all';
+		if (ctx.request.query.filterq)
+			filterq = ctx.request.query.filterq;
 
 		// list of jobs in progress
 		const progress = await mOrders.getOrdersByStatus(
@@ -82,6 +84,9 @@ router.get('/manage', async (ctx) => {
 			'completed',
 			username
 		);
+		// get Array<Object> where object contains:
+		// cost, description, order_id, quote_status, time_from, time_to, user_issue
+		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
 
 		const data = {
 			title: 'Manage your orders',
@@ -90,7 +95,9 @@ router.get('/manage', async (ctx) => {
 			sidebarSections: menus.technician,
 			ordersInProgress: progress,
 			ordersInCompleted: completed,
-			username: username
+			quotes,
+			username,
+			filterQuotes: filterq
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;

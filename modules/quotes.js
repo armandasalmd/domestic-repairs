@@ -58,23 +58,25 @@ class Quotes {
 	 * @param {string} techUsername Technician username
 	 * @returns {Array<Object>} Database response
 	 */
-	async getQuotesByUsername(techUsername) {
+	async getQuotesByUsername(techUsername, status='all') {
 		try {
 			if (techUsername.length === 0)
 				throw new Error('missing technician username');
 			// TODO: validate that name provided is technician type but not user
-			//
-			const sql = `SELECT quotes.cost, quotes.description, quotes.quote_status, 
-                quotes.time_from, quotes.time_to, quotes.order_id 
-                FROM quotes INNER JOIN orders ON orders.order_id = quotes.order_id 
-                WHERE orders.technician_id = '${techUsername}';`;
+			let sql = `SELECT quotes.cost, quotes.description, quotes.quote_status, 
+				quotes.time_from, quotes.time_to, quotes.order_id, orders.user_issue
+				FROM quotes INNER JOIN orders ON orders.order_id = quotes.order_id 
+				WHERE orders.technician_id = '${techUsername}'`;
+			if (status !== 'all') {
+				sql = `${sql} AND quotes.quote_status='${status}'`;
+			}
+			sql += ';';
 			const data = await this.db.all(sql);
 			return data;
 		} catch (err) {
 			throw err;
 		}
 	}
-};
-
+}
 
 module.exports = Quotes;
