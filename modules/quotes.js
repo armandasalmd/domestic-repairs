@@ -63,9 +63,9 @@ class Quotes {
 			if (techUsername.length === 0)
 				throw new Error('missing technician username');
 			// TODO: validate that name provided is technician type but not user
-			let sql = `SELECT quotes.cost, quotes.description, quotes.quote_status,
+			let sql = `SELECT quotes.cost, quotes.description, quotes.quote_status, 
 				quotes.time_from, quotes.time_to, quotes.order_id, orders.user_issue
-				FROM quotes INNER JOIN orders ON orders.order_id = quotes.order_id
+				FROM quotes INNER JOIN orders ON orders.order_id = quotes.order_id 
 				WHERE orders.technician_id = '${techUsername}'`;
 			if (status !== 'all') {
 				sql = `${sql} AND quotes.quote_status='${status}'`;

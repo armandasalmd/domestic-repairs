@@ -16,6 +16,8 @@ _Remember_: What is the scrum all about? - **improvement**
 -   `npm install`
 -   `npm start` **_Done_**
 
+-   `git config core.hooksPath .githooks`_\*optional - enables githooks_
+
 #### Useful links:
 
 -   [Task description - Github](https://github.coventry.ac.uk/web/assignment-topics/blob/master/02%20Domestic%20Repairs.md)
@@ -24,10 +26,11 @@ _Remember_: What is the scrum all about? - **improvement**
 -   Team main communication tool - **_What's App_**!
 
 #### Agile conventions:
--   *Feature* - given tasks by the exercise
--   *Epic story* - a page
--   *User story* - a particular page component (i.e. navbar, table, etc...)
--   *Task* - specific and precise tasks for US
+
+-   _Feature_ - given tasks by the exercise
+-   _Epic story_ - a page
+-   _User story_ - a particular page component (i.e. navbar, table, etc...)
+-   _Task_ - specific and precise tasks for US
 
 Any questions? Ask me, [Armandas Barkauskas](https://www.instagram.com/armandasbarkauskas/) _(barkausa)_
 
