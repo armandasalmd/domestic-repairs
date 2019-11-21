@@ -8,8 +8,9 @@ const Orders = require('../../modules/orders');
 const Quotes = require('../../modules/quotes');
 
 /**
- * Matches everything that starts with /user
+ * Matches everything that starts with /tech
  * Acts as a middleware to protect the route
+ * @route /tech/*
  */
 router.use(async (ctx, next) => {
 	if (ctx.session.authorised === true && ctx.session.type === 'tech') {
@@ -21,6 +22,10 @@ router.use(async (ctx, next) => {
 	}
 });
 
+/**
+ * @path {GET} /tech
+ * @returns {string} technician dashboard page
+ */
 router.get('/', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -32,7 +37,9 @@ router.get('/', async (ctx) => {
 		const info = await db.all(sql);
 		await db.close();
 		console.log(info);*/
+
 		const mOrders = await new Orders(dbName);
+		const quote = await mOrders.getQuotesByUsername(username);
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -40,6 +47,7 @@ router.get('/', async (ctx) => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
+			quote: quote,
 			username: username
 		};
 
@@ -50,6 +58,10 @@ router.get('/', async (ctx) => {
 	}
 });
 
+/**
+ * @path {GET} /tech/manage
+ * @returns {string} technician manage orders page
+ */
 router.get('/manage', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -57,12 +69,15 @@ router.get('/manage', async (ctx) => {
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
 
+
+		//list of job in progress
+
 		let tableInProgress = {};
 		try {
 			//
-			//const sql = 'SELECT * FROM orders, quotes WHERE order_status="in progress" and status_quote="accepted"';
+			/*const sql = `SELECT * FROM orders, quotes WHERE order_status="in progress" and orders.technician_id = '${ctx.session.username}'`;*/
 			const sql = `SELECT * FROM orders INNER JOIN quotes 
-				ON quotes.order_id = orders.order_id WHERE orders.technician_id = '${ctx.session.username}'`;
+			ON quotes.order_id = orders.order_id WHERE order_status="in progress" and orders.technician_id = '${ctx.session.username}'`;
 			const db = await Database.open(dbName);
 			tableInProgress = await db.all(sql);
 			await db.close();
@@ -72,13 +87,35 @@ router.get('/manage', async (ctx) => {
 		}
 		console.log(tableInProgress);
 
+
+		// list of jobs completed
+
+		let tableCompleted = {};
+		try {
+
+			/*const sql = `SELECT * FROM orders, quotes WHERE order_status="completed"`;*/
+
+			const sql = `SELECT * FROM orders INNER JOIN quotes 
+			ON quotes.order_id = orders.order_id WHERE order_status="pending" and orders.technician_id = '${ctx.session.username}'`;
+			const db = await Database.open(dbName);
+			tableCompleted = await db.all(sql);
+			await db.close();
+		} catch (err) {
+			console.log(err.message);
+			tableCompleted = {};
+		}
+		console.log(tableCompleted);
+
+
 		const data = {
 			title: 'Manage your orders',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: tableInProgress,
+			ordersCompleted: tableCompleted,
 			username: username
+
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -88,6 +125,11 @@ router.get('/manage', async (ctx) => {
 	}
 });
 
+/**
+ * Interacts with a Quote model to insert data into database
+ * @path {POST} /tech/quote
+ * @throws {Error} if form data was incorect
+ */
 router.post('/quote', async (ctx) => {
 	try {
 		const f = ctx.request.body;

@@ -1,3 +1,8 @@
+/**
+ * Gives menu objects for User account type
+ * that are being rendered in sidebar menu
+ * @returns {Array<Object>}
+ */
 function getUserSidebarMenu() {
 	return [
 		{
@@ -33,6 +38,11 @@ function getUserSidebarMenu() {
 	];
 }
 
+/**
+ * Gives menu objects for Technician account type
+ * that are being rendered in sidebar menu
+ * @returns {Array<Object>}
+ */
 function getTechSidebarMenu() {
 	return [
 		{

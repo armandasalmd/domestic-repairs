@@ -29,7 +29,6 @@ router.get('/register', async (ctx) => {
 
 /**
  * The script to process new user registrations.
- *
  * @name Register Script
  * @route {POST} /register
  */
@@ -57,6 +56,10 @@ router.post('/register', async (ctx) => {
 	}
 });
 
+/**
+ * Returns login page HTML
+ * @route {GET} /login
+ */
 router.get('/login', async (ctx) => {
 	const data = {
 		title: 'Please log in',
@@ -68,6 +71,11 @@ router.get('/login', async (ctx) => {
 	await ctx.render('auth/login', data);
 });
 
+/**
+ * Handlers login form submit event
+ * @route {POST} /login
+ * @throws {Error} if failed to login and redirect to login page
+ */
 router.post('/login', async (ctx) => {
 	try {
 		const body = ctx.request.body;
@@ -90,6 +98,10 @@ router.post('/login', async (ctx) => {
 	}
 });
 
+/**
+ * Performs logout, clears session data
+ * @route {GET} /logout
+ */
 router.get('/logout', async (ctx) => {
 	ctx.session.authorised = null;
 	ctx.session.user = null;

@@ -8,7 +8,7 @@ module.exports = class Quotes {
 	 * Initializes the model creating Quotes table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
 	 */
-	constructor(dbName = '../database.db') {
+	constructor(dbName = ':memory:') {
 		const f = async () => {
 			this.db = await sqlite.open(dbName);
 			const sql = `CREATE TABLE IF NOT EXISTS quotes (
@@ -57,7 +57,9 @@ module.exports = class Quotes {
 	}
 
 	/**
-	 *
+	 * Queries Quotes table records filtered by technicial name
+	 * @param {string} techUsername Technician username
+	 * @returns {Array<Object>} Database response
 	 */
 	async getQuotesByUsername(techUsername) {
 		try {

@@ -28,6 +28,10 @@ router.get('/', async (ctx) => {
 	}
 });
 
+/**
+ * @path {GET} /contacts
+ * @returns {string} returns default contacts page
+ */
 router.get('/contacts', async (ctx) => {
 	try {
 		if (ctx.session.authorised === true) {

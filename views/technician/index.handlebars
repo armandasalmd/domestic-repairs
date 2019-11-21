@@ -8,6 +8,22 @@
     <div id="rootContainer">
         <h1>{{title}}</h1>
         <h4>Welcome, <span style="color:green">{{username}}</span></h4>
+
+        <section class="head">
+            <h2>My Profile</h4>
+        </section>
+
+        <section class="profilePic">
+
+
+
+            <article>
+                <img src="/avatars/avatar.png" alt="logo" width=150px>
+            </article>
+
+
+        </section>
+
         <section class="temporary-form-for-quote">
             <form action="/tech/quote" method="POST">
                 <textarea name="quote" placeholder="Provide a quote"></textarea>
@@ -16,10 +32,14 @@
                 <input type="submit" />
             </form>
         </section>
+
+        <section class="head">
+            <h2>Unallocated Orders</h4>
+        </section>
+
         <section class="pending">
-            <section class="head">
-                <h2>Unallocated Orders</h4>
-            </section>
+
+
             {{#each orders}}
             <article>
                 <p>Order ID: {{order_id}}</p>
