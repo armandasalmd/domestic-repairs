@@ -475,11 +475,12 @@ form textarea {
 	align-items: end;
 }
 
-.pending .head {
+ .head {
 	padding-top: 20px;
 	background: #fff;
 	text-align: left;
 	color: #000;
+	font-size: 10px;
 	font-family: 'Livvic' !important;
 }
 
@@ -494,13 +495,7 @@ form textarea {
 .progress {
 	background: #fff;
 }
-.progress .head {
-	padding-top: 20px;
-	background: #fff;
-	text-align: left;
-	color: #000;
-	font-family: 'Livvic' !important;
-}
+
 
 .progress table {
 	font-family: 'Livvic' !important;
@@ -571,27 +566,7 @@ tr {
 	margin: auto;
 }
 
-.profilePic p{
-	padding: 12px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			/* ============================
 	END TECH PROFILE PIC
 	========================== */
-/* ============================
-	END TECH TABLE jobs CARDS
-	========================== */
+

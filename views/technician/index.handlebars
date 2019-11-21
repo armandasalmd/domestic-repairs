@@ -9,23 +9,19 @@
         <h1>{{title}}</h1>
         <h4>Welcome, <span style="color:green">{{username}}</span></h4>
 
+        <section class="head">
+            <h2>My Profile</h4>
+        </section>
 
         <section class="profilePic">
 
-            <section class="head">
-                <h2>My Profile</h4>
-            </section>
+
 
             <article>
                 <img src="/avatars/avatar.png" alt="logo" width=150px>
             </article>
 
-            <article>
-                <p>Username: </p>
-                <p>Email: </p>
-                <p>Password: </p>
 
-            </article>
         </section>
 
         <section class="temporary-form-for-quote">
@@ -36,11 +32,14 @@
                 <input type="submit" />
             </form>
         </section>
+
+        <section class="head">
+            <h2>Unallocated Orders</h4>
+        </section>
+
         <section class="pending">
 
-            <section class="head">
-                <h2>Unallocated Orders</h4>
-            </section>
+
             {{#each orders}}
             <article>
                 <p>Order ID: {{order_id}}</p>
