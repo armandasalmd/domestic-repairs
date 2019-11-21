@@ -1,7 +1,15 @@
+/**
+ * Gives a default list of appliance manufacturers
+ * @returns {Array<string>}
+ */
 function getApplianceManufacturer() {
 	return ['Whirlpool', 'Electrolux', 'General Electric', 'LG', 'Samsung'];
 }
 
+/**
+ * Gives a default list of appliance types
+ * @returns {Array<string>}
+ */
 function getApplianceType() {
 	return [
 		'Air conditioner',
@@ -22,6 +30,10 @@ function getApplianceType() {
 	];
 }
 
+/**
+ * Gives a list of appliance ages from 1 year to 10 years
+ * @returns {Array<string>}
+ */
 function getApplianceAge(limit) {
 	const result = [];
 	for (let i = 0; i < limit; i++) {

@@ -4,9 +4,10 @@ const router = new Router();
 const menus = require('../modules/menus');
 
 /**
- * Two paths accepted: /user/contacts or /tech/contacts
+ * @path {GET} /user/contacts OR /tech/contacts
+ * @returns {string} contacts page HTML
  */
-router.get(/^\/((user)|(tech))\/(contacts)$/, async ctx => {
+router.get(/^\/((user)|(tech))\/(contacts)$/, async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=You need to log in');
@@ -27,7 +28,11 @@ router.get(/^\/((user)|(tech))\/(contacts)$/, async ctx => {
 	}
 });
 
-router.get(/^\/((user)|(tech))\/(settings)$/, async ctx => {
+/**
+ * @path {GET} /user/settings OR /tech/settings
+ * @returns {string} settings page HTML
+ */
+router.get(/^\/((user)|(tech))\/(settings)$/, async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=You need to log in');
