@@ -39,7 +39,8 @@ router.get('/', async (ctx) => {
 		console.log(info);*/
 
 		const mOrders = await new Orders(dbName);
-		const quote = await mOrders.getQuotesByUsername(username);
+		const mQuotes = await new Quotes(dbName);
+		const quote = await mQuotes.getQuotesByUsername(username);
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -87,7 +88,6 @@ router.get('/manage', async (ctx) => {
 			sidebarSections: menus.technician,
 			ordersInProgress: progress,
 			ordersInCompleted: completed,
-
 			username: username
 
 		};

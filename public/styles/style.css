@@ -494,10 +494,15 @@ form textarea {
 
 .progress {
 	background: #fff;
+	text-align: center;
+	
 }
 
 
 .progress table {
+	
+	width: 100%;
+	
 	font-family: 'Livvic' !important;
 	font-size: 15px;
 	border-collapse: collapse;
