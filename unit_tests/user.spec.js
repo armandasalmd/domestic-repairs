@@ -19,7 +19,7 @@ describe('register()', () => {
 	test('register a duplicate username', async (done) => {
 		expect.assertions(1);
 		const account = await new Accounts();
-		const register = await account.register(
+		await account.register(
 			'doej',
 			'Doen Joe',
 			'test@test.test',

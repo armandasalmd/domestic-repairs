@@ -69,6 +69,10 @@ module.exports = class User {
 		}
 	}
 
+	getDatabase() {
+		return this.db;
+	}
+
 	async uploadPicture(path, mimeType) {
 		const extension = mime.extension(mimeType);
 		console.log(`path: ${path}`);

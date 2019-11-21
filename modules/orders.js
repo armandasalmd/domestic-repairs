@@ -42,8 +42,7 @@ module.exports = class Orders {
 		try {
 			if (username.length === 0) throw new Error('missing username');
 			if (aType.length === 0) throw new Error('missing appliance type');
-			if (aManufacturer.length === 0)
-				throw new Error('missing appliance manufacturer');
+			if (aManufacturer.length === 0) throw new Error('missing appliance manufacturer');
 			if (aAge.length === 0) throw new Error('missing age');
 			if (issue.length === 0) throw new Error('missing issue');
 			const sql = `INSERT INTO orders (
@@ -65,7 +64,7 @@ module.exports = class Orders {
 	/**
 	 * Finds order records filtered by status
 	 * @param {string} status Value that is used to filter order table by status
-	 * @return {Array<Object>} Orders filtered by status
+	 * @returns {Array<Object>} Orders filtered by status
 	 */
 	async getOrdersByStatus(status) {
 		try {
