@@ -23,12 +23,10 @@
                 <th>Age</th>
                 <th>Manufacturer</th>
                 <th>Issue Description</th>
-                <th>Quote Description</th>
-                <th>Start</th>
-                <th>Finish</th>
-                <th>Cost</th>
 
-                {{#each orders}}
+
+
+                {{#each ordersInProgress}}
 
                 <tr>
                     <td>
@@ -46,18 +44,7 @@
                     <td>
                         {{user_issue}}
                     </td>
-                    <td>
-                        {{description}}
-                    </td>
-                    <td>
-                        {{time_from}}
-                    </td>
-                    <td>
-                        {{time_to}}
-                    </td>
-                    <td>
-                        {{cost}}
-                    </td>
+
 
                 </tr>
                 {{/each}}
@@ -83,12 +70,9 @@
                 <th>Age</th>
                 <th>Manufacturer</th>
                 <th>Issue Description</th>
-                <th>Quote Description</th>
-                <th>Start</th>
-                <th>Finish</th>
-                <th>Cost</th>
 
-                {{#each ordersCompleted}}
+
+                {{#each ordersInCompleted}}
 
                 <tr>
                     <td>
@@ -106,19 +90,7 @@
                     <td>
                         {{user_issue}}
                     </td>
-                    <td>
-                        {{description}}
-                    </td>
-                    <td>
-                        {{time_from}}
-                    </td>
-                    <td>
-                        {{time_to}}
-                    </td>
 
-                    <td>
-                        {{cost}}
-                    </td>
 
                 </tr>
                 {{/each}}
