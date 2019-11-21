@@ -68,43 +68,16 @@ router.get('/manage', async (ctx) => {
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
+		const mOrders = await new Orders(dbName);
+
+		// list of jobs in progress
+		const progress = await mOrders.getOrdersByStatus('in progress');
 
 
-		//list of job in progress
-
-		let tableInProgress = {};
-		try {
-			//
-			/*const sql = `SELECT * FROM orders, quotes WHERE order_status="in progress" and orders.technician_id = '${ctx.session.username}'`;*/
-			const sql = `SELECT * FROM orders INNER JOIN quotes 
-			ON quotes.order_id = orders.order_id WHERE order_status="in progress" and orders.technician_id = '${ctx.session.username}'`;
-			const db = await Database.open(dbName);
-			tableInProgress = await db.all(sql);
-			await db.close();
-		} catch (err) {
-			console.log(err.message);
-			tableInProgress = {};
-		}
-		console.log(tableInProgress);
+		// list of jobs in completed
+		const completed = await mOrders.getOrdersByStatus('completed');
 
 
-		// list of jobs completed
-
-		let tableCompleted = {};
-		try {
-
-			/*const sql = `SELECT * FROM orders, quotes WHERE order_status="completed"`;*/
-
-			const sql = `SELECT * FROM orders INNER JOIN quotes 
-			ON quotes.order_id = orders.order_id WHERE order_status="pending" and orders.technician_id = '${ctx.session.username}'`;
-			const db = await Database.open(dbName);
-			tableCompleted = await db.all(sql);
-			await db.close();
-		} catch (err) {
-			console.log(err.message);
-			tableCompleted = {};
-		}
-		console.log(tableCompleted);
 
 
 		const data = {
@@ -112,8 +85,9 @@ router.get('/manage', async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			sidebarSections: menus.technician,
-			orders: tableInProgress,
-			ordersCompleted: tableCompleted,
+			ordersInProgress: progress,
+			ordersInCompleted: completed,
+
 			username: username
 
 		};
