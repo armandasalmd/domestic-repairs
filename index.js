@@ -2,7 +2,7 @@
 
 /* MODULE IMPORTS */
 const Koa = require('koa');
-const logger = require('koa-logger');
+// const logger = require('koa-logger');
 const views = require('koa-views');
 const staticDir = require('koa-static');
 const bodyParser = require('koa-bodyparser');
@@ -37,11 +37,11 @@ app.use(async (ctx, next) => {
 app.keys = ['darkSecret'];
 app.use(staticDir('public'));
 app.use(bodyParser());
-app.use(async (ctx, next) => {
+/*app.use(async (ctx, next) => {
 	console.log('*'); // adding extra line between request logs in console
 	await next();
 });
-app.use(logger());
+app.use(logger());*/
 app.use(session(app));
 app.use(
 	views(`${__dirname}/views`, {

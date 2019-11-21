@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
 	displayName: 'test',
 	verbose: true,
@@ -12,8 +10,5 @@ module.exports = {
 			statements: 0
 		}
 	},
-	testPathIgnorePatterns: [
-		'/node_modules/',
-		'/__tests__/fixtures/',
-	]
-}
+	testPathIgnorePatterns: ['/node_modules/', '/__tests__/fixtures/']
+};

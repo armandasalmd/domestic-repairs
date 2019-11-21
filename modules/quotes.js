@@ -44,8 +44,10 @@ class Quotes {
 			if (quote.length === 0) throw new Error('missing quote');
 			if (price.length === 0) throw new Error('missing price');
 			if (!price.includes('£')) price = `£${price}`;
-			/*INSERT INTO quotes VALUES ('£5', 'Dont worry, an easy fix', 'accepted', '2019-10-15 10:00:00', '2019-10-22 12:00:00', 6);*/
-			const sql = `INSERT INTO quotes VALUES ('${price}', '${quote}', 'pending', '${timeFrom}', '${timeTo}', '${orderId}')`;
+			/*INSERT INTO quotes VALUES ('£5', 'Dont worry, an easy fix', 'accepted',
+				'2019-10-15 10:00:00', '2019-10-22 12:00:00', 6);*/
+			const sql = `INSERT INTO quotes VALUES ('${price}', '${quote}', 
+				'pending', '${timeFrom}', '${timeTo}', '${orderId}')`;
 			await this.db.run(sql);
 			return true;
 		} catch (err) {

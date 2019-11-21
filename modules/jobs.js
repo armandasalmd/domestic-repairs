@@ -4,8 +4,9 @@ module.exports = class Job {
 	constructor(dbJob = ':memory:') {
 		return async () => {
 			this.db = await sqlite.open(dbJob);
-			const sql =
-				'CREATE TABLE IF NOT EXISTS jobs (jobid INTEGER PRIMARY KEY AUTOINCREMENT, manufacturer TEXT, type TEXT, age INT, issue TEXT, status TEXT, techid INT, datetimefrom DATETIME, datetimeto DATETIME);';
+			const sql = `CREATE TABLE IF NOT EXISTS jobs (jobid INTEGER PRIMARY KEY AUTOINCREMENT, 
+				manufacturer TEXT, type TEXT, age INT, issue TEXT, status TEXT, 
+				techid INT, datetimefrom DATETIME, datetimeto DATETIME);`;
 			await this.db.run(sql);
 			return this;
 		};
@@ -18,7 +19,8 @@ module.exports = class Job {
 			if (type.length === 0) throw new Error('Choose appliance type');
 			if (age.length === 0) throw new Error('Enter appliance age');
 			if (issue.length === 0) throw new Error('Enter issue description'); // make optional?
-			const sql = `INSERT INTO jobs(manufacturer, type, age, issue, status) VALUES("${manufacturer}", "${type}", "${age}", "${issue}", "Submitted")`;
+			const sql = `INSERT INTO jobs(manufacturer, type, age, issue, status) VALUES("${manufacturer}", 
+				"${type}", "${age}", "${issue}", "Submitted")`;
 			await this.db.run(sql);
 			return true;
 		} catch (err) {
@@ -38,7 +40,8 @@ module.exports = class Job {
 				throw new Error(
 					`Technician with ID "${technicianID}" does not exist`
 				);
-			sql = `UPDATE TABLE jobs SET (status, techid ,datetimefrom, datetimeto) = ("Processed", "${technicianID}", "${datefrom}", "${dateto}")`;
+			sql = `UPDATE TABLE jobs SET (status, techid ,datetimefrom, datetimeto) = 
+				("Processed", "${technicianID}", "${datefrom}", "${dateto}")`;
 			sql = `INSERT INTO techs(job, techid) VALUES("${jobID}", "${technicianID}"`;
 		} catch (err) {
 			throw err;
