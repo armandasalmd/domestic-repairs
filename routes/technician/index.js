@@ -37,7 +37,9 @@ router.get('/', async (ctx) => {
 		const info = await db.all(sql);
 		await db.close();
 		console.log(info);*/
+
 		const mOrders = await new Orders(dbName);
+		const quote = await mOrders.getQuotesByUsername(username);
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -45,6 +47,7 @@ router.get('/', async (ctx) => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
+			quote: quote,
 			username: username
 		};
 
@@ -112,6 +115,7 @@ router.get('/manage', async (ctx) => {
 			orders: tableInProgress,
 			ordersCompleted: tableCompleted,
 			username: username
+
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
