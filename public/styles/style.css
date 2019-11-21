@@ -475,11 +475,12 @@ form textarea {
 	align-items: end;
 }
 
-.pending .head {
+ .head {
 	padding-top: 20px;
 	background: #fff;
 	text-align: left;
 	color: #000;
+	font-size: 10px;
 	font-family: 'Livvic' !important;
 }
 
@@ -493,16 +494,15 @@ form textarea {
 
 .progress {
 	background: #fff;
-}
-.progress .head {
-	padding-top: 20px;
-	background: #fff;
-	text-align: left;
-	color: #000;
-	font-family: 'Livvic' !important;
+	text-align: center;
+	
 }
 
+
 .progress table {
+	
+	width: 100%;
+	
 	font-family: 'Livvic' !important;
 	font-size: 15px;
 	border-collapse: collapse;
@@ -530,6 +530,48 @@ tr {
 	background: #d2d2d2;
 }
 
-/* ============================
-	END TECH TABLE jobs CARDS
+
+		/* ============================
+	END TECH TABLE jobs 
 	========================== */
+
+
+			/* ============================
+	START TECH PROFILE PIC
+	========================== */
+
+.profilePic{
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	
+	background: #fff;
+	padding:0;
+}
+
+.profilePic article{
+	font-size: 20px;
+	font-family: "Helvetica" sans-serif;
+	
+	text-align: left;
+	color: black;	
+}
+
+.profilePic .head{
+	padding-top: 20px;
+	background: #fff;
+	text-align: left;
+	color: #000;
+	font-family: "Livvic" !important;
+
+}
+
+.profilePic img{
+	display: block;
+	padding: 0;
+	margin: auto;
+}
+
+			/* ============================
+	END TECH PROFILE PIC
+	========================== */
+

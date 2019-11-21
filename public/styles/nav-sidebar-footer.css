@@ -71,7 +71,7 @@ footer li {
 	margin: 0;
 }
 
-section {
+footer section {
 	background: #353b3c;
 	grid-column: 1/5;
 	text-align: center;

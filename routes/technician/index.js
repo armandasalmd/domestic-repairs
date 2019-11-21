@@ -37,7 +37,10 @@ router.get('/', async (ctx) => {
 		const info = await db.all(sql);
 		await db.close();
 		console.log(info);*/
+
 		const mOrders = await new Orders(dbName);
+		const mQuotes = await new Quotes(dbName);
+		const quote = await mQuotes.getQuotesByUsername(username);
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -45,6 +48,7 @@ router.get('/', async (ctx) => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
+			quote: quote,
 			username: username
 		};
 
@@ -65,29 +69,27 @@ router.get('/manage', async (ctx) => {
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
 		const username = ctx.session.user; // logged person username
+		const mOrders = await new Orders(dbName);
 
-		let tableInProgress = {};
-		try {
-			//
-			//const sql = 'SELECT * FROM orders, quotes WHERE order_status="in progress" and status_quote="accepted"';
-			const sql = `SELECT * FROM orders INNER JOIN quotes 
-				ON quotes.order_id = orders.order_id WHERE orders.technician_id = '${ctx.session.username}'`;
-			const db = await Database.open(dbName);
-			tableInProgress = await db.all(sql);
-			await db.close();
-		} catch (err) {
-			console.log(err.message);
-			tableInProgress = {};
-		}
-		console.log(tableInProgress);
+		// list of jobs in progress
+		const progress = await mOrders.getOrdersByStatus('in progress');
+
+
+		// list of jobs in completed
+		const completed = await mOrders.getOrdersByStatus('completed');
+
+
+
 
 		const data = {
 			title: 'Manage your orders',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			sidebarSections: menus.technician,
-			orders: tableInProgress,
+			ordersInProgress: progress,
+			ordersInCompleted: completed,
 			username: username
+
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
