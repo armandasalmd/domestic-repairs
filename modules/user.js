@@ -12,7 +12,7 @@ module.exports = class User {
 	 * Initializes the model creating User table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
 	 */
-	constructor(dbName = '../database.db') {
+	constructor(dbName = ':memory:') {
 		return (async () => {
 			this.db = await sqlite.open(dbName);
 			// we need this table to store the user accounts

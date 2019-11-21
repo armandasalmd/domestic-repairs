@@ -8,7 +8,7 @@ module.exports = class Orders {
 	 * Initializes the model creating Orders table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
 	 */
-	constructor(dbName = '../database.db') {
+	constructor(dbName = ':memory:') {
 		const f = async () => {
 			this.db = await sqlite.open(dbName);
 			const sql = `CREATE TABLE IF NOT EXISTS orders (

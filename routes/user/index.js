@@ -10,6 +10,7 @@ const router = new Router({ prefix: '/user' });
 /**
  * Matches everything that starts with /user
  * Acts as a middleware to protect the route
+ * @route /user/*
  */
 router.use(async (ctx, next) => {
 	if (ctx.session.authorised === true && ctx.session.type === 'user') {
@@ -20,6 +21,10 @@ router.use(async (ctx, next) => {
 	}
 });
 
+/**
+ * @path {GET} /tech
+ * @returns {string} user dashboard page
+ */
 router.get('/', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -40,6 +45,10 @@ router.get('/', async (ctx) => {
 	}
 });
 
+/**
+ * @path {GET} /user/order/new
+ * @returns {string} create new order form page
+ */
 router.get('/order/new', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -62,6 +71,11 @@ router.get('/order/new', async (ctx) => {
 	}
 });
 
+/**
+ * Interacts with a Order model to insert data into database
+ * @path {POST} /user/order/new
+ * @throws {Error} if form data was incorect
+ */
 router.post('/order/new', async (ctx) => {
 	try {
 		// extract the data from the request

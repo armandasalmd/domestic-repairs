@@ -8,8 +8,9 @@ const Orders = require('../../modules/orders');
 const Quotes = require('../../modules/quotes');
 
 /**
- * Matches everything that starts with /user
+ * Matches everything that starts with /tech
  * Acts as a middleware to protect the route
+ * @route /tech/*
  */
 router.use(async (ctx, next) => {
 	if (ctx.session.authorised === true && ctx.session.type === 'tech') {
@@ -21,6 +22,10 @@ router.use(async (ctx, next) => {
 	}
 });
 
+/**
+ * @path {GET} /tech
+ * @returns {string} technician dashboard page
+ */
 router.get('/', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -50,6 +55,10 @@ router.get('/', async (ctx) => {
 	}
 });
 
+/**
+ * @path {GET} /tech/manage
+ * @returns {string} technician manage orders page
+ */
 router.get('/manage', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
@@ -112,6 +121,11 @@ router.get('/manage', async (ctx) => {
 	}
 });
 
+/**
+ * Interacts with a Quote model to insert data into database
+ * @path {POST} /tech/quote
+ * @throws {Error} if form data was incorect
+ */
 router.post('/quote', async (ctx) => {
 	try {
 		const f = ctx.request.body;
