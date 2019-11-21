@@ -1,9 +1,5 @@
 const sqlite = require('sqlite-async');
-
-/**
- * Model class for Orders table
- */
-module.exports = class Orders {
+class Orders {
 	/**
 	 * Initializes the model creating Orders table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
@@ -26,7 +22,33 @@ module.exports = class Orders {
 			await this.db.run(sql);
 			return this;
 		};
-		return f();
+		//return f();
+	}
+
+	setDatabase(database) {
+		this.db = database;
+	}
+
+	getDatabase() {
+		return this.db;
+	}
+
+	/**
+	 * Adds new record to Order table with provided details
+	 * @param {string} username Customer username
+	 * @param {string} aType Appliance type (i.e. Oven)
+	 * @param {string} aManufacturer Appliance manufacturer (i.e. Electrolux)
+	 * @param {number} aAge Appliance age (i.e. 5 years)
+	 * @param {string} issue Problem description provided by user
+	 * @throws {Error} If operation was unsuccessful
+	 */
+	async addNewOrder(object) {
+		try {
+			this.addNewOrder(...object);
+			return true;
+		} catch (err) {
+			throw err;
+		}
 	}
 
 	/**
@@ -42,8 +64,10 @@ module.exports = class Orders {
 		try {
 			if (username.length === 0) throw new Error('missing username');
 			if (aType.length === 0) throw new Error('missing appliance type');
-			if (aManufacturer.length === 0) throw new Error('missing appliance manufacturer');
-			if (aAge.length === 0) throw new Error('missing age');
+			if (aManufacturer.length === 0)
+				throw new Error('missing appliance manufacturer');
+			if (aAge < 0 || aAge > 10)
+				throw new Error('age must be between 0 and 10');
 			if (issue.length === 0) throw new Error('missing issue');
 			const sql = `INSERT INTO orders (
                 appliance_type, appliance_age, 
@@ -66,12 +90,17 @@ module.exports = class Orders {
 	 * @param {string} status Value that is used to filter order table by status
 	 * @returns {Array<Object>} Orders filtered by status
 	 */
-	async getOrdersByStatus(status) {
+	async getOrdersByStatus(status, technician = undefined) {
 		try {
 			if (!['pending', 'in progress', 'completed'].includes(status))
 				throw new Error('invalid state');
 
-			const sql = `SELECT * FROM orders WHERE order_status="${status}";`;
+			let sql = '';
+			if (technician !== undefined) {
+				sql = `SELECT * FROM orders WHERE order_status="${status}" AND technician_id="${technician}";`;
+			} else {
+				sql = `SELECT * FROM orders WHERE order_status="${status}";`;
+			}
 			const data = await this.db.all(sql);
 			if (data !== null) return data;
 			else throw new Error('SQL returned empty object');
@@ -80,3 +109,5 @@ module.exports = class Orders {
 		}
 	}
 };
+
+module.exports = Orders;

@@ -4,10 +4,7 @@ const mime = require('mime-types');
 const sqlite = require('sqlite-async');
 const saltRounds = 10;
 
-/**
- * Model class for User table
- */
-module.exports = class User {
+class User {
 	/**
 	 * Initializes the model creating User table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
@@ -109,3 +106,6 @@ module.exports = class User {
 		}
 	}
 };
+
+
+module.exports = User;

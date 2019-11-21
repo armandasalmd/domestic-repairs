@@ -1,9 +1,6 @@
 const sqlite = require('sqlite-async');
 
-/**
- * Model class for Orders table
- */
-module.exports = class Address {
+class Address {
 	/**
 	 * Initializes the model creating Address table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
@@ -14,6 +11,10 @@ module.exports = class Address {
 		return this.init(dbName);
 	}
 
+	/**
+	 * Open database file and Creates empty table
+	 * @param {string} dbName Database file name
+	 */
 	async init(dbName = ':memory:') {
 		this.db = await sqlite.open(dbName);
 		const sql = `CREATE TABLE IF NOT EXISTS address (
@@ -29,6 +30,7 @@ module.exports = class Address {
 
 	/**
 	 * Searches database to retrieve Address associated to the user
+	 * @param {string} username Usernane
 	 * @example
 	 * // getAddressByUsername('test');
 	 * { street: 'Street 42 road', city: 'Wonderland',
@@ -53,6 +55,10 @@ module.exports = class Address {
 
 	/**
 	 * Updates or Adds an address for a given user
+	 * @param {string} street Full address with house number
+	 * @param {string} city City name
+	 * @param {string} postcode Postcode associated to street address
+	 * @param {string} username Username that address belongs to
 	 * @returns {boolean} database operation was successful
 	 */
 	async addAddress(street, city, postcode, username) {
@@ -84,7 +90,12 @@ module.exports = class Address {
 		}
 	}
 
+	/**
+	 * Closes database connection
+	 */
 	async close() {
 		await this.db.close();
 	}
-};
+}
+
+module.exports = Address;

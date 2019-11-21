@@ -1,9 +1,6 @@
 const sqlite = require('sqlite-async');
 
-/**
- * Model class for Quotes table
- */
-module.exports = class Quotes {
+class Quotes {
 	/**
 	 * Initializes the model creating Quotes table in database if not exists
 	 * @param {Object} dbName Database file name ending .db
@@ -78,3 +75,6 @@ module.exports = class Quotes {
 		}
 	}
 };
+
+
+module.exports = Quotes;

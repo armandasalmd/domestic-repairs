@@ -68,18 +68,20 @@ router.get('/manage', async (ctx) => {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
-		const username = ctx.session.user; // logged person username
+		const username = ctx.session.username; // logged person username
 		const mOrders = await new Orders(dbName);
 
 		// list of jobs in progress
-		const progress = await mOrders.getOrdersByStatus('in progress');
-
+		const progress = await mOrders.getOrdersByStatus(
+			'in progress',
+			username
+		);
 
 		// list of jobs in completed
-		const completed = await mOrders.getOrdersByStatus('completed');
-
-
-
+		const completed = await mOrders.getOrdersByStatus(
+			'completed',
+			username
+		);
 
 		const data = {
 			title: 'Manage your orders',
@@ -89,7 +91,6 @@ router.get('/manage', async (ctx) => {
 			ordersInProgress: progress,
 			ordersInCompleted: completed,
 			username: username
-
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
