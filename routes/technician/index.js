@@ -24,9 +24,9 @@ router.use(async (ctx, next) => {
 
 /**
  * @path {GET} /tech
- * @returns {string} technician dashboard page
+ * @returns {string} Technician dashboard page
  */
-router.get('/', async (ctx) => {
+router.get('/', async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
@@ -39,8 +39,7 @@ router.get('/', async (ctx) => {
 		console.log(info);*/
 
 		const mOrders = await new Orders(dbName);
-		const mQuotes = await new Quotes(dbName);
-		const quote = await mQuotes.getQuotesByUsername(username);
+
 		const results = await mOrders.getOrdersByStatus('pending');
 		const data = {
 			title: 'Technician dashboard',
@@ -48,7 +47,6 @@ router.get('/', async (ctx) => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
-			quote: quote,
 			username: username
 		};
 
@@ -63,13 +61,16 @@ router.get('/', async (ctx) => {
  * @path {GET} /tech/manage
  * @returns {string} technician manage orders page
  */
-router.get('/manage', async (ctx) => {
+router.get('/manage', async ctx => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
 		const username = ctx.session.username; // logged person username
 		const mOrders = await new Orders(dbName);
+		const mQuotes = await new Quotes(dbName);
+		let filterq = 'all';
+		if (ctx.request.query.filterq) filterq = ctx.request.query.filterq;
 
 		// list of jobs in progress
 		const progress = await mOrders.getOrdersByStatus(
@@ -82,6 +83,9 @@ router.get('/manage', async (ctx) => {
 			'completed',
 			username
 		);
+		// get Array<Object> where object contains:
+		// cost, description, order_id, quote_status, time_from, time_to, user_issue
+		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
 
 		const data = {
 			title: 'Manage your orders',
@@ -90,7 +94,9 @@ router.get('/manage', async (ctx) => {
 			sidebarSections: menus.technician,
 			ordersInProgress: progress,
 			ordersInCompleted: completed,
-			username: username
+			quotes,
+			username,
+			filterQuotes: filterq
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -105,7 +111,7 @@ router.get('/manage', async (ctx) => {
  * @path {POST} /tech/quote
  * @throws {Error} if form data was incorect
  */
-router.post('/quote', async (ctx) => {
+router.post('/quote', async ctx => {
 	try {
 		const f = ctx.request.body;
 		/*const f = {

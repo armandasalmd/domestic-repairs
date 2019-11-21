@@ -22,7 +22,7 @@ class Orders {
 			await this.db.run(sql);
 			return this;
 		};
-		//return f();
+		return f();
 	}
 
 	setDatabase(database) {
@@ -108,6 +108,6 @@ class Orders {
 			throw err;
 		}
 	}
-};
+}
 
 module.exports = Orders;
