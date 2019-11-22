@@ -91,6 +91,11 @@ article .logo {
 	padding: 0;
 }
 
+.socials i:hover{
+	color: #2ecc71
+}
+
+
 .fa-phone,
 .fa-envelope {
 	font-size: 17px;
@@ -101,16 +106,26 @@ p a {
 	text-decoration: none;
 }
 
-input {
+footer form input {
 	padding: 10px;
 	margin: 10px 0px 10px 0;
 	border: none;
+	width: 92%;
 }
 
 form .button {
 	display: block;
 	border-radius: 2px;
+	font-family: 'Livvic' !important;
+	width: auto;
+
 }
+
+form .button:hover{
+	background: #2ecc71;
+	color: white;
+}
+
 
 /* Stack the layout on small devices/viewports. */
 @media all and (max-width: 850px) {

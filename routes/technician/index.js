@@ -73,16 +73,10 @@ router.get('/manage', async ctx => {
 		if (ctx.request.query.filterq) filterq = ctx.request.query.filterq;
 
 		// list of jobs in progress
-		const progress = await mOrders.getOrdersByStatus(
-			'in progress',
-			username
-		);
+		const progress = await mOrders.getOrdersByStatus('in progress');
 
 		// list of jobs in completed
-		const completed = await mOrders.getOrdersByStatus(
-			'completed',
-			username
-		);
+		const completed = await mOrders.getOrdersByStatus('completed');
 		// get Array<Object> where object contains:
 		// cost, description, order_id, quote_status, time_from, time_to, user_issue
 		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
@@ -95,7 +89,7 @@ router.get('/manage', async ctx => {
 			ordersInProgress: progress,
 			ordersInCompleted: completed,
 			quotes,
-			username,
+			username: username,
 			filterQuotes: filterq
 		};
 
