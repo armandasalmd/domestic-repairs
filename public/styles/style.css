@@ -466,13 +466,17 @@ form textarea {
 	padding: 5px;
 	display: block;
 	width: 100%;
-	background: #2c6e12;
+	background: #353b3c;
 	border-radius: 2px;
 	border: none;
 	color: #c7dfcf;
 	font-size: 15px;
 	margin-bottom: 0;
 	align-items: end;
+}
+
+.pending article button:hover{
+background: #2c6e12;
 }
 
  .head {
@@ -543,12 +547,49 @@ tr {
 
 .profilePic{
 	display: grid;
-	grid-template-columns: 1fr 3fr;
-	
-	background: #fff;
+	grid-template-rows: 1fr;
+	font-family: 'Livvic' !important;
+	border: 1px solid #e6e1e1;
 	padding:0;
+	border-radius: 7px;
 }
 
+.profilePic .welcome{
+	border-radius: 7px 7px 0 0;
+	padding: 0 0 0 15px;
+	background: #cfcaca;
+}
+
+.profilePic .welcome h4{
+	margin: 10px;
+}
+
+.profilePic .img{
+	margin: auto;
+	padding: 0;
+}
+
+.profilePic .info{
+	padding: 0 0 0 15px;
+	text-align: center;
+}
+
+.profilePic .edit {
+	text-align: center;
+	border-top: 1px solid #e6e1e1;
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 0 0 7px 7px;
+	color: #2c6e12;
+}
+
+
+
+.profilePic .edit:hover, a:hover{
+	background: #2c6e12;
+	color: white;
+}
+/*
 .profilePic article{
 	font-size: 20px;
 	font-family: "Helvetica" sans-serif;
@@ -570,7 +611,7 @@ tr {
 	display: block;
 	padding: 0;
 	margin: auto;
-}
+}*/
 
 			/* ============================
 	END TECH PROFILE PIC

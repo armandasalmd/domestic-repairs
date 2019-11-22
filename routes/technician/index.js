@@ -32,6 +32,8 @@ router.get('/', async ctx => {
 			return ctx.redirect('/login?msg=you need to log in');
 		// if technician is logged in
 		const username = ctx.session.username; // logged person username
+		const email = ctx.session.email; // logged person email
+
 		/*const sql = 'SELECT * FROM orders WHERE order_status="pending";';
 		const db = await Database.open(dbName);
 		const info = await db.all(sql);
@@ -47,6 +49,7 @@ router.get('/', async ctx => {
 			navbarType: 'online',
 			sidebarSections: menus.technician,
 			orders: results,
+			email: email,
 			username: username
 		};
 
