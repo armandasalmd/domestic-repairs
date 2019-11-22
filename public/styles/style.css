@@ -585,10 +585,16 @@ tr {
 
 
 
-.profilePic .edit:hover, a:hover{
+.profilePic .edit:hover {
 	background: #2c6e12;
 	color: white;
 }
+
+.profilePic .edit a:hover {
+
+	color: white;
+}
+
 /*
 .profilePic article{
 	font-size: 20px;
