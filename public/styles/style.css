@@ -580,15 +580,22 @@ tr {
 	text-decoration: none;
 	padding: 10px;
 	border-radius: 0 0 7px 7px;
-	color: #2c6e12;
+	color: #000;
+	
 }
 
 
 
-.profilePic .edit:hover, a:hover{
+.profilePic .edit:hover {
 	background: #2c6e12;
 	color: white;
 }
+
+.profilePic .edit a:hover {
+
+	color: white;
+}
+
 /*
 .profilePic article{
 	font-size: 20px;
