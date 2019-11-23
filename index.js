@@ -66,7 +66,8 @@ app.use(common.routes()); // authorized routes (any user)
 app.use(userRouter.routes()); // authorized routes (must be user type of user)
 app.use(technicianRouter.routes()); // authorized routes (must be user type of technician)
 
-const { defaultPort: port } = require('./constants');
+const { defaultPort } = require('./constants');
+const port = process.env.PORT || defaultPort;
 
 module.exports = app.listen(port, async () =>
 	console.log(`listening on port ${port}`)
