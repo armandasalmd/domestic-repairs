@@ -7,8 +7,8 @@
 		"node": "12.x"
 	},
 	"scripts": {
-		"start": "nodemon ./src/server/server.js",
-		"production": "node ./src/server/server.js",
+		"start": "nodemon ./index.js",
+		"production": "node ./index.js",
 		"acceptance": "jest --coverage --detectOpenHandles",
 		"jsdoc": "node_modules/.bin/jsdoc -c jsdoc.conf",
 		"linter": "node_modules/.bin/eslint .",
