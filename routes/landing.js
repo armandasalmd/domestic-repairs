@@ -51,4 +51,22 @@ router.get('/contacts', async (ctx) => {
 	}
 });
 
+router.get('/reviews', async (ctx) => {
+	try {
+		if (ctx.session.authorised === true) {
+			ctx.session.authorised = null;
+			ctx.session.user = null;
+		}
+		const data = {
+			title: 'Reviews',
+			layout: 'nav-footer',
+			navbarType: 'offline'
+		};
+
+		await ctx.render('reviews', data);
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+});
+
 module.exports = router;
