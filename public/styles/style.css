@@ -683,3 +683,7 @@ section.review > footer > ul > li > a:hover {
 	color: #2c6e12;
 	transition: 0.5s;	
 }
+
+section.review i.fa-star {
+	color: #ff9f43;
+}
