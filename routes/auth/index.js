@@ -14,7 +14,7 @@ const { dbName } = require('../../constants');
  * @name Register Page
  * @route {GET} /register
  */
-router.get('/register', async (ctx) => {
+router.get('/register', async ctx => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -32,7 +32,7 @@ router.get('/register', async (ctx) => {
  * @name Register Script
  * @route {POST} /register
  */
-router.post('/register', async (ctx) => {
+router.post('/register', async ctx => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;
@@ -60,7 +60,7 @@ router.post('/register', async (ctx) => {
  * Returns login page HTML
  * @route {GET} /login
  */
-router.get('/login', async (ctx) => {
+router.get('/login', async ctx => {
 	const data = {
 		title: 'Please log in',
 		layout: 'nav-footer',
@@ -76,7 +76,7 @@ router.get('/login', async (ctx) => {
  * @route {POST} /login
  * @throws {Error} if failed to login and redirect to login page
  */
-router.post('/login', async (ctx) => {
+router.post('/login', async ctx => {
 	try {
 		const body = ctx.request.body;
 		if (!body.user) throw new Error('Username cannot be empty');
@@ -87,7 +87,7 @@ router.post('/login', async (ctx) => {
 		ctx.session.authorised = true;
 
 		ctx.session.username = response.username;
-		ctx.session.fullName = response.fullName;
+		ctx.session.fullname = response.fullName;
 		ctx.session.email = response.email;
 		ctx.session.type = response.type;
 
@@ -102,7 +102,7 @@ router.post('/login', async (ctx) => {
  * Performs logout, clears session data
  * @route {GET} /logout
  */
-router.get('/logout', async (ctx) => {
+router.get('/logout', async ctx => {
 	ctx.session.authorised = null;
 	ctx.session.user = null;
 	ctx.redirect('/');

@@ -53,7 +53,8 @@ app.use(
 				footer: `${__dirname}/views/partials/footer`,
 				head: `${__dirname}/views/partials/head`,
 				navbar: `${__dirname}/views/partials/navbar`,
-				scripts: `${__dirname}/views/partials/scripts`
+				scripts: `${__dirname}/views/partials/scripts`,
+				orderCard: `${__dirname}/views/partials/orderCard`
 			}
 		}
 	})
