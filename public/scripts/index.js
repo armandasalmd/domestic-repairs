@@ -1,4 +1,4 @@
-// empty
+/* eslint-disable */
 function clearAll() {
-    document.getElementById('report-form').reset();
+	document.getElementById('report-form').reset();
 }

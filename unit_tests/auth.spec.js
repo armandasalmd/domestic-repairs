@@ -1,6 +1,11 @@
 const server = require('../index');
 const request = require('supertest');
 
+String.prototype.replaceAll = function (search, replacement) {
+	const target = this;
+	return target.split(search).join(replacement);
+};
+
 // close the server after each test
 afterEach(() => {
 	server.close();
@@ -15,26 +20,32 @@ describe('login requests', () => {
 	});
 
 	test('empty username', async (done) => {
-		const res = await request(server).post('/login').send({user: '', pass: 'test123'});
-		expect(res.header.location).toBe('/login/?msg=Username cannot be empty');
+		const res = await request(server).post('/login').send({ user: '', pass: 'test123' });
+		const answer = '/login/?msg=Username cannot be empty';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
+
 		done();
 	});
 
 	test('empty password', async (done) => {
-		const res = await request(server).post('/login').send({user: 'tesdadst', pass: ''});
-		expect(res.header.location).toBe('/login/?msg=Password cannot be empty');
+		const res = await request(server).post('/login').send({ user: 'tesdadst', pass: '' });
+		const answer = '/login/?msg=Password cannot be empty';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
+
 		done();
 	});
 
 	test('posting wrong username', async (done) => {
-		const res = await request(server).post('/login').send({user: 'tesdadst', pass: 'test123'});
-		expect(res.header.location).toBe('/login/?msg=User does not exist');
+		const res = await request(server).post('/login').send({ user: 'tesdadst', pass: 'test123' });
+		const answer = '/login/?msg=User does not exist';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 
 	test('posting wrong password', async (done) => {
-		const res = await request(server).post('/login').send({user: 'test', pass: 'test123333'});
-		expect(res.header.location).toBe('/login/?msg=Wrong password');
+		const res = await request(server).post('/login').send({ user: 'test', pass: 'test123333' });
+		const answer = '/login/?msg=Wrong password';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 });
@@ -56,10 +67,12 @@ describe('register request', () => {
 			pass: 'test123'
 		};
 		let res = await request(server).post('/register').send(form);
-		expect(res.header.location).toBe('/register/?msg=Name must include first and last names');
+		const answer = '/register/?msg=Name must include first and last names';
+
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		form.name = undefined;
 		res = await request(server).post('/register').send(form);
-		expect(res.header.location).toBe('/register/?msg=Name must include first and last names');
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 
@@ -71,7 +84,9 @@ describe('register request', () => {
 			pass: 'test123'
 		};
 		const res = await request(server).post('/register').send(form);
-		expect(res.header.location).toBe('/register/?msg=Enter valid email address');
+		const answer = '/register/?msg=Enter valid email address';
+
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 
@@ -83,7 +98,8 @@ describe('register request', () => {
 			pass: 'test123'
 		};
 		const res = await request(server).post('/register').send(form);
-		expect(res.header.location).toBe('/register/?msg=Username is to short');
+		const answer = '/register/?msg=Username is to short';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 
@@ -95,7 +111,8 @@ describe('register request', () => {
 			pass: 't'
 		};
 		const res = await request(server).post('/register').send(form);
-		expect(res.header.location).toBe('/register/?msg=Password is to short');
+		const answer = '/register/?msg=Password is to short';
+		expect([answer, answer.replaceAll(' ', '%20')]).toContain(res.header.location);
 		done();
 	});
 

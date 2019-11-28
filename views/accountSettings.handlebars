@@ -3,14 +3,74 @@
 {{> head}}
 
 <body>
-    {{> navbar}}
-    {{#if_eq navbarType 'online' }}
-    {{> aside}}
-    {{/if_eq}}
-    <div id="rootContainer">
-        <h1>This is my settings page</h1>
-    </div>
-    {{> footer}}
+	{{> navbar}}
+	{{#if_eq navbarType 'online' }}
+	{{> aside}}
+	{{/if_eq}}
+	<div id="rootContainer">
+		<div class="settings-card" id="first-settings-card">
+			<h3>Personal detail</h3>
+			<form action="#" method="POST">
+				<p><label for="firstName">First name</label>
+					<input type="text" name="fname" placeholder="First name" required>
+				</p>
+				<p><label for="lastName">Last name</label>
+					<input type="text" name="lname" placeholder="Last name" required>
+				</p>
+				<p><label for="phoneNumber">Phome number</label>
+					<input type="tel" name="number" placeholder="+44730*****18" required>
+				</p>
+				<div class="align-right">
+					<input type="reset" value="Cancel">
+					<input type="submit" value="Save">
+				</div>
+			</form>
+		</div>
+		<div class="settings-card">
+			<h3>Account details</h3>
+			<form action="#" method="POST" onsubmit="return MyFun()">
+				<p><label for="userName">Username</label>
+					<input type="text" name="username" id="username" value="smith23" disabled>
+				</p>
+				<p><label for="emailAdress">email address</label>
+					<input type="email" name="email" id="email" value="smith23@gmail.com" disabled>
+				</p>
+				<p><label for="firstName">Change password</label>
+					<input type="password" name="password" id="password" placeholder="Current password" required>
+				</p>
+				<p><label for="newPassword"></label>
+					<input type="password" id="passwords" value="" placeholder="New password" required>
+				</p>
+				<span id="messages" style="color: red;"></span>
+				<p><label for="repeatNewPassword"></label>
+					<input type="password" id="passwordss" value="" placeholder="Repeat new password" required>
+				</p>
+				<span id="messagess"> </span>
+				<div class="align-right">
+					<input type="submit" value="Change">
+				</div>
+			</form><br><br><br>
+		</div>
+		<div class="settings-card">
+			<h3>Address details</h3>
+			<form action="#" method="POST">
+				<p><label for="address">Address</label>
+					<input type="text" name="address" placeholder="which road" required>
+				</p>
+				<p><label for="city">City</label>
+					<input type="text" name="city" placeholder="which city" required>
+				</p>
+				<p><label for="postalCode">Postal code</label>
+					<input type="text" name="Pcode" placeholder="Postal code" required>
+				</p>
+				<div class="align-right">
+					<input type="reset" value="Cancel">
+					<input type="submit" value="Save">
+				</div>
+			</form>
+		</div>
+	</div>
+	{{> footer}}
 </body>
 {{> scripts}}
 

@@ -1,5 +1,5 @@
 const sqlite = require('sqlite-async');
-const Database = require('sqlite-async');
+
 class Orders {
 	/**
 	 * Initializes the model creating Orders table in database if not exists
@@ -67,7 +67,8 @@ class Orders {
 			if (aType.length === 0) throw new Error('missing appliance type');
 			if (aManufacturer.length === 0)
 				throw new Error('missing appliance manufacturer');
-			if (aAge < 0 || aAge > 10)
+			const maxAge = 10;
+			if (aAge < 0 || aAge > maxAge)
 				throw new Error('age must be between 0 and 10');
 			if (issue.length === 0) throw new Error('missing issue');
 			const sql = `INSERT INTO orders (
