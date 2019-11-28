@@ -38,7 +38,7 @@ handlebars.registerHelper('list', (items, options) => {
 			name: 'Armandas'
 		};
 */
-handlebars.registerHelper('if_eq', function(a, b, opts) {
+handlebars.registerHelper('if_eq', function (a, b, opts) {
 	if (a === b) {
 		return opts.fn(this);
 	} else {

@@ -25,17 +25,28 @@ router.use(async (ctx, next) => {
  * @path {GET} /tech
  * @returns {string} user dashboard page
  */
-router.get('/', async ctx => {
+router.get('/', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in
+		const mOrders = await new Orders(dbName);
+
+		const username = ctx.session.username;
+		const pendingCards = await mOrders.getOrdersByStatusAndUsername('pending', username)
+		const inProgressCards = await mOrders.getOrdersByStatusAndUsername('in progress', username)
+		const completedCards = await mOrders.getOrdersByStatusAndUsername('completed', username)
+
 		const data = {
 			title: 'User dashboard',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
-			name: ctx.session.fullname,
-			sidebarSections: menus.user
+			username: ctx.session.user,
+			fullname: ctx.session.fullName,
+			sidebarSections: menus.user,
+			pendingCards,
+			inProgressCards,
+			completedCards
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -49,7 +60,7 @@ router.get('/', async ctx => {
  * @path {GET} /user/order/new
  * @returns {string} create new order form page
  */
-router.get('/order/new', async ctx => {
+router.get('/order/new', async (ctx) => {
 	try {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
@@ -58,7 +69,8 @@ router.get('/order/new', async ctx => {
 			title: 'New order',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
-			name: ctx.session.fullname,
+			username: ctx.session.user,
+			fullname: ctx.session.fullName,
 			sidebarSections: menus.user,
 			aType: dropdowns.applianceType,
 			aManufacturer: dropdowns.applianceManufacturer,
@@ -76,7 +88,7 @@ router.get('/order/new', async ctx => {
  * @path {POST} /user/order/new
  * @throws {Error} if form data was incorect
  */
-router.post('/order/new', async ctx => {
+router.post('/order/new', async (ctx) => {
 	try {
 		// extract the data from the request
 		const body = ctx.request.body;

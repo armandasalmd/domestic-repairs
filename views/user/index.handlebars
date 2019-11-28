@@ -6,11 +6,73 @@
     {{> navbar}}
     {{> aside}}
     <div id="rootContainer">
-        <h1 class="page-title">Pending orders</h1>
+
+        <!-- SECTION 1: pending orders -->
+        <h1 class="page-title">Status of <span style="color:#3d3a3a">pending</span> orders</h1>
         <section class="pending">
-            {{> orderCard}}
+            {{#each pendingCards}}
+            <article>
+                <p><span class="bold">Order ID {{id}}:</span> {{appliance_type}}</p>
+                <p><span class="bold">Age:</span> {{appliance_age}}</p>
+                <p><span class="bold">Manufacturer:</span> {{appliance_manufacturer}}</p>
+                <p><span class="bold">Issue:</span> {{user_issue}}</p>
+                <p><span class="bold">Order status: </span><span style="color:red;">{{order_status}}</span></p>
+                <hr>
+                {{#if_eq quote_status 'pending'}}
+                <p><span class="bold">Quote:</span> {{description}}</p>
+                <p><span class="bold">Price:</span> {{cost}}</p>
+                <p><span class="bold">Technician ID:</span> {{technician_id}}</p>
+                <hr>
+                <a class="a-btn green" href="/user/quote/accept/{{id}}">Accept</a>
+                <a class="a-btn red" href="/user/quote/reject/{{id}}">Reject</a>
+                {{else}}
+                <a class="a-btn orange" href="/user/order/remove/{{id}}">Remove order</a>
+                {{/if_eq}}
+
+            </article>
+            {{/each}}
+
         </section>
 
+        <!-- SECTION 2: in progress orders -->
+        <h1 class="page-title">Status of <span style="color:orange">in progress</span> orders</h1>
+        <section class="pending">
+            {{#each inProgressCards}}
+            <article>
+                <p><span class="bold">Order ID {{id}}:</span> {{appliance_type}}</p>
+                <p><span class="bold">Age:</span> {{appliance_age}}</p>
+                <p><span class="bold">Manufacturer:</span> {{appliance_manufacturer}}</p>
+                <p><span class="bold">Issue:</span> {{user_issue}}</p>
+                <p><span class="bold">Order status: </span><span style="color:rgb(187, 121, 0);">{{order_status}}</span>
+                </p>
+                <hr>
+                <p><span class="bold">Quote:</span> {{description}}</p>
+                <p><span class="bold">Price:</span> {{cost}}</p>
+                <p><span class="bold">Technician ID:</span> {{technician_id}}</p>
+
+            </article>
+            {{/each}}
+        </section>
+
+        <!-- SECTION 3: completed orders -->
+        <h1 class="page-title">Status of <span style="color:green">completed</span> orders</h1>
+        <section class="pending">
+            {{#each completedCards}}
+            <article>
+                <p><span class="bold">Order ID {{id}}:</span> {{appliance_type}}</p>
+                <p><span class="bold">Age:</span> {{appliance_age}}</p>
+                <p><span class="bold">Manufacturer:</span> {{appliance_manufacturer}}</p>
+                <p><span class="bold">Issue:</span> {{user_issue}}</p>
+                <p><span class="bold">Order status: </span><span style="color:green;">{{order_status}}</span>
+                </p>
+                <hr>
+                <p><span class="bold">Quote:</span> {{description}}</p>
+                <p><span class="bold">Price:</span> {{cost}}</p>
+                <p><span class="bold">Technician ID:</span> {{technician_id}}</p>
+
+            </article>
+            {{/each}}
+        </section>
     </div>
     {{> footer}}
 </body>

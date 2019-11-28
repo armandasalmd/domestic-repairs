@@ -1,3 +1,5 @@
+const { maxApplianceAge } = require('../constants');
+
 /**
  * Gives a default list of appliance manufacturers
  * @returns {Array<string>}
@@ -34,7 +36,7 @@ function getApplianceType() {
  * Gives a list of appliance ages from 1 year to 10 years
  * @returns {Array<string>}
  */
-function getApplianceAge(limit) {
+function getApplianceAge(limit = maxApplianceAge) {
 	const result = [];
 	for (let i = 0; i < limit; i++) {
 		if (i === 0) result.push('Brand new');
@@ -50,5 +52,5 @@ function getApplianceAge(limit) {
 module.exports = {
 	applianceType: getApplianceType(),
 	applianceManufacturer: getApplianceManufacturer(),
-	applianceAge: getApplianceAge(10)
+	applianceAge: getApplianceAge()
 };

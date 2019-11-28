@@ -1,4 +1,5 @@
 const sqlite = require('sqlite-async');
+
 class Orders {
 	/**
 	 * Initializes the model creating Orders table in database if not exists
@@ -66,7 +67,8 @@ class Orders {
 			if (aType.length === 0) throw new Error('missing appliance type');
 			if (aManufacturer.length === 0)
 				throw new Error('missing appliance manufacturer');
-			if (aAge < 0 || aAge > 10)
+			const maxAge = 10;
+			if (aAge < 0 || aAge > maxAge)
 				throw new Error('age must be between 0 and 10');
 			if (issue.length === 0) throw new Error('missing issue');
 			const sql = `INSERT INTO orders (
@@ -108,6 +110,102 @@ class Orders {
 			throw err;
 		}
 	}
+
+	/**
+	 * Updates status for provided order_id
+	 * @param {string} technician Technician username
+	 * @param {string} order_id Order Id
+	 * @param {string} order_status status of ['pending', 'in progress', 'completed']
+	 */
+	async updateOrderStatus(technician = undefined, orderId, orderStatus) {
+		try {
+			if (!['pending', 'in progress', 'completed'].includes(orderStatus))
+				throw new Error('invalid state');
+			const sql = `UPDATE orders SET order_status="${orderStatus}" 
+				WHERE order_id="${orderId}" AND technician_id="${technician}";`;
+			await this.db.run(sql);
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	/**
+	 * 
+	 * @param {string} status Value that is used to filter order table by status 
+	 * @param {*} username Additional filtering parameter
+	 * @return {Array<Object>} An array of objects containing an order with attached quote if exists
+	 */
+	async getOrdersByStatusAndUsername(status, username) {
+		try {
+			if (!['pending', 'in progress', 'completed'].includes(status))
+				throw new Error('invalid state');
+			if (!username)
+				throw new Error('invalid username');
+			let sql = `SELECT *, orders.order_id as id FROM orders 
+				LEFT JOIN quotes ON orders.order_id=quotes.order_id 
+				WHERE orders.user_id="${username}" 
+				AND orders.order_status="${status}"
+				ORDER BY orders.order_id DESC;`;
+			const data = await this.db.all(sql);
+
+			/*const selectById = (list, orderId) => {
+				const result = [];
+				for (let i = 0; i < list.length; i++) {
+					if (list[i].order_id === orderId)
+						result.push(list[i]);
+				}
+				return result;
+			}
+
+			const filterOrders = (list) => {
+				const result = [];
+				let orderQuotes;
+				for (let i = 0; i < list.length; i++) {
+					orderQuotes = selectById(list, list[i].id);
+					let orderQuotesPending = orderQuotes.filter((quote) => quote.quote_status === 'pending');
+					if (orderQuotesPending.length > 0) {
+						result.push(orderQuotesPending[0]);
+					} else if (orderQuotesPending.length > 0) {
+						let quote = orderQuotesPending[0];
+						//quote.cost = null;
+						quote.description = null;
+						quote.quote_status = null;
+						quote.time_from = null;
+						quote.time_to = null;
+						result.push(quote);
+					}
+				}
+				return result;
+			}*/
+
+			if (data !== null) {
+				return data;
+			}
+			else throw new Error('SQL returned empty object');
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	/**
+	 * Deletes order along with quotes associated to provided id
+	 * @param {string} orderId Order id
+	 */
+	async deleteOrderCascadingQuotes(orderId) {
+		try {
+			if (!orderId)
+				throw new Error('missing order id');
+			// delete all quotes associated to order
+			let sql = `DELETE FROM quotes WHERE order_id="${orderId}";`;
+			await this.db.run(sql);
+			// delete an order with id = orderId
+			sql = `DELETE FROM orders WHERE order_id="${orderId}";`;
+			await this.db.run(sql);
+		} catch (err) {
+			throw err;
+		}
+	}
+
 }
 
 module.exports = Orders;

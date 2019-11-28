@@ -8,6 +8,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+span.bold {
+	font-weight: 600;
+	color: #2d2522;
+}
+
 .msg {
 	border: 2px solid rgb(212, 140, 45);
 	font-weight: bold;
@@ -506,7 +511,7 @@ background: #2c6e12;
 .progress table {
 	
 	width: 100%;
-	
+	text-align: center;
 	font-family: 'Livvic' !important;
 	font-size: 15px;
 	border-collapse: collapse;
@@ -533,6 +538,40 @@ tr {
 	padding: 10px;
 
 	background: #d2d2d2;
+}
+
+.dropdown{
+	border-radius: 3px;
+	font-family: 'Livvic' !important;
+	padding: 2px;
+}
+
+.progress form button {
+	background: #2c6e12;
+	font-family: 'Livvic' !important;
+	margin-top: 10px;
+	padding: 7px;
+	color: white;
+	border-radius: 7px;
+	border: none;
+	margin-right: 20px;
+}
+
+.progress form button:hover{
+	background: #27ae60;
+
+}
+
+.progress form a{
+	text-decoration: none;
+	background: #2c6e12;
+	font-size: 13px;;
+	font-family: 'Livvic' !important;
+	margin-top: 10px;
+	padding: 7px;
+	color: white;
+	border-radius: 7px;
+	border: none;
 }
 
 
@@ -632,58 +671,4 @@ section.head h3 {
 	font-size: 1.7em;
 	font-family: Arial;
 	font-weight: 200;
-}
-
-/* REVIEWS */
-section.review {
-	display: inline-block;
-	background-color: lightgray;
-	width: 300px;
-	height: auto;
-	padding: 5px 20px;
-	margin: 10px;
-	font-family: 'Livvic';
-	text-align: left;
-	color: initial;
-	font-size: 1rem;
-}
-
-section.review > footer {
-	background-color: transparent;
-	display: block;
-}
-
-section.review > h1 {
-	width: 100%;
-	text-align: left;
-}
-
-section.review > footer > h1  {
-	text-align: right;
-	width: 100%;
-}
-
-section.review > footer > ul {
-	list-style-type: none;
-	padding: 0;
-	font-size: 14px;
-	color: gray;
-}
-
-section.review > footer > ul > li {
-	padding: 2px;
-}
-
-section.review > footer > ul > li > a {
-	text-decoration: none;
-	color: green;
-}
-
-section.review > footer > ul > li > a:hover {
-	color: #2c6e12;
-	transition: 0.5s;	
-}
-
-section.review i.fa-star {
-	color: #ff9f43;
 }

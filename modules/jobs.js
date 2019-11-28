@@ -54,7 +54,7 @@ module.exports = class Job {
 			const data = await this.db.get(sql);
 			if (data.ticket === 0)
 				throw new Error(`Ticket under ID "${jobID}" does not exist`);
-			sql = `UPDATE TABLE jobs SET (status, ,datetimefrom, datetimeto) = ("Completed", "NULL", "NULL")`;
+			sql = 'UPDATE TABLE jobs SET (status, ,datetimefrom, datetimeto) = ("Completed", "NULL", "NULL")';
 		} catch (err) {
 			throw err;
 		}
