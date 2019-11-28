@@ -1,4 +1,5 @@
 const sqlite = require('sqlite-async');
+const Database = require('sqlite-async');
 class Orders {
 	/**
 	 * Initializes the model creating Orders table in database if not exists
@@ -107,6 +108,26 @@ class Orders {
 		} catch (err) {
 			throw err;
 		}
+	}
+
+	/**
+	 * Updates status for provided order_id
+	 * @param {string} technician Technician username
+	 * @param {string} order_id Order Id
+	 * @param {string} order_status status of ['pending', 'in progress', 'completed']
+	 */
+	async updateOrderStatus(technician = undefined, order_id, order_status) {
+		try {
+			if (!['pending', 'in progress', 'completed'].includes(order_status))
+				throw new Error('invalid state');
+			const sql = `UPDATE orders SET order_status="${order_status}" WHERE order_id="${order_id}" AND technician_id="${technician}";`
+			const data = await this.db.run(sql);
+		} catch (err) {
+			throw err;
+		}
+		/*const sql = `UPDATE orders SET order_status="completed" WHERE order_status="in progress" AND technician_id="${technician}";`
+		const data = await this.db.all(sql);
+		console.log(data)*/
 	}
 }
 

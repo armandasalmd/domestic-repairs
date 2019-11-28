@@ -506,7 +506,7 @@ background: #2c6e12;
 .progress table {
 	
 	width: 100%;
-	
+	text-align: center;
 	font-family: 'Livvic' !important;
 	font-size: 15px;
 	border-collapse: collapse;
@@ -533,6 +533,40 @@ tr {
 	padding: 10px;
 
 	background: #d2d2d2;
+}
+
+.dropdown{
+	border-radius: 3px;
+	font-family: 'Livvic' !important;
+	padding: 2px;
+}
+
+.progress form button {
+	background: #2c6e12;
+	font-family: 'Livvic' !important;
+	margin-top: 10px;
+	padding: 7px;
+	color: white;
+	border-radius: 7px;
+	border: none;
+	margin-right: 20px;
+}
+
+.progress form button:hover{
+	background: #27ae60;
+
+}
+
+.progress form a{
+	text-decoration: none;
+	background: #2c6e12;
+	font-size: 13px;;
+	font-family: 'Livvic' !important;
+	margin-top: 10px;
+	padding: 7px;
+	color: white;
+	border-radius: 7px;
+	border: none;
 }
 
 
