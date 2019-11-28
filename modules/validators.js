@@ -1,10 +1,12 @@
+const { validation: v } = require('../constants');
+
 /**
  * Checks if name is greater or equeal to 4
  * @param {string} data String to validate
  * @returns {Boolean} Validation successful
  */
 function validName(data) {
-	return data && data.includes(' ') && data.length >= 5;
+	return data && data.includes(' ') && data.length >= v.minNameLength;
 }
 
 /**
@@ -14,7 +16,7 @@ function validName(data) {
  */
 function validEmail(data) {
 	// coult implement regex match
-	return data && data.includes('@') && data.length >= 6;
+	return data && data.includes('@') && data.length >= v.minEmailLength;
 }
 
 /**
@@ -23,7 +25,7 @@ function validEmail(data) {
  * @returns {Boolean} Validation successful
  */
 function validUsername(data) {
-	return data && data.length >= 4;
+	return data && data.length >= v.minUserLength;
 }
 
 /**
@@ -32,7 +34,7 @@ function validUsername(data) {
  * @returns {Boolean} Validation successful
  */
 function validPassword(data) {
-	return data && data.length >= 4;
+	return data && data.length >= v.minPasswordLength;
 }
 
 module.exports = {

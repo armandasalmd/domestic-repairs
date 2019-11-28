@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const menus = require('../../modules/menus');
-const Database = require('sqlite-async');
+// const Database = require('sqlite-async');
 
 const router = new Router({ prefix: '/tech' });
 const dbName = require('../../constants').dbName;
