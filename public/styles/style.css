@@ -8,6 +8,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+span.bold {
+	font-weight: 600;
+	color: #2d2522;
+}
+
 .msg {
 	border: 2px solid rgb(212, 140, 45);
 	font-weight: bold;

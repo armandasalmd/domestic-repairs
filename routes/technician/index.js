@@ -50,7 +50,8 @@ router.get('/', async ctx => {
 			sidebarSections: menus.technician,
 			orders: results,
 			email: email,
-			username: username
+			username: username,
+			fullname: ctx.session.fullName
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -95,6 +96,7 @@ router.get('/manage', async ctx => {
 			ordersInCompleted: completed,
 			quotes,
 			username: username,
+			fullname: ctx.session.fullName,
 			filterQuotes: filterq
 		};
 

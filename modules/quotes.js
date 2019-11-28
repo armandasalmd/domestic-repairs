@@ -79,6 +79,39 @@ class Quotes {
 			throw err;
 		}
 	}
+
+	/**
+	 * Changes the quote status for associated with orderId
+	 * also changes order status accordingly
+	 * @param {string} orderId Order Id associated with quote
+	 * @param {string} status Status to be updated
+	 * @returns {void} Void
+	 */
+	async changeQuoteStatus(orderId, status) {
+		try {
+			// validation
+			if (orderId.length === 0)
+				throw new Error('missing order id');
+			if (!['pending', 'accepted', 'rejected'].includes(status))
+				throw new Error('invalid state');
+			// updating quote status
+			let sql = `UPDATE quotes SET quote_status="${status}" WHERE order_id="${orderId}";`;
+			await this.db.run(sql);
+			// updating order status accordingly
+			let orderStatus;
+			if (status === 'pending') {
+				orderStatus = 'pending';
+			} else if (status === 'accepted') {
+				orderStatus = 'in progress';
+			} else if (status === 'rejected') {
+				orderStatus = 'pending';
+			}
+			sql = `UPDATE orders SET order_status="${orderStatus}" WHERE order_id="${orderId}";`;
+			await this.db.run(sql);
+		} catch (err) {
+			throw err;
+		}
+	}
 }
 
 module.exports = Quotes;
