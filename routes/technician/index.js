@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const menus = require('../../modules/menus');
-// const Database = require('sqlite-async');
+//const Database = require('sqlite-async');
 
 const router = new Router({ prefix: '/tech' });
 const dbName = require('../../constants').dbName;
@@ -83,6 +83,8 @@ router.get('/manage', async ctx => {
 		// get Array<Object> where object contains:
 		// cost, description, order_id, quote_status, time_from, time_to, user_issue
 		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
+		//const update = await mUpdate.updateJobs(username);
+
 
 		const data = {
 			title: 'Manage your orders',
@@ -103,6 +105,7 @@ router.get('/manage', async ctx => {
 	}
 });
 
+
 /**
  * Interacts with a Quote model to insert data into database
  * @path {POST} /tech/quote
@@ -122,6 +125,36 @@ router.post('/quote', async ctx => {
 		// Cannot%20read%20property%20%27order_id%27%20of%20undefined
 	} catch (err) {
 		ctx.redirect(`/tech?msg=${err.message}`);
+	}
+});
+
+/**
+ * Changes order status where technician_id and order_id matches the records
+ * @path {POST} /tech/order/status/update
+ * @throws {Error} if wrong status code was provided
+ */
+router.post('/order/status/update', async ctx => {
+	try {
+		// the logic goes here
+		const techUsername = ctx.session.username;
+		const f = ctx.request.body;
+		const mOrders = await new Orders(dbName);
+
+		if (f.order0) {
+			// update first record
+			mOrders.updateOrderStatus(techUsername, f.order0, f.status0);
+		}
+		if (f.order1) {
+			// update second record
+			mOrders.updateOrderStatus(techUsername, f.order1, f.status1);
+		}
+		if (f.order2) {
+			// update thrird record
+			mOrders.updateOrderStatus(techUsername, f.order2, f.status2);
+		}
+		ctx.redirect('/tech/manage?msg=Successfuly changed the statuses');
+	} catch (err) {
+		ctx.redirect(`/tech/manage?msg=${err.message}`);
 	}
 });
 

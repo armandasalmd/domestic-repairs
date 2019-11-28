@@ -14,34 +14,50 @@
             <section class="head">
                 <h2>Orders in Progress</h4>
             </section>
-            <table>
-                <th>Order ID</th>
-                <th>Type</th>
-                <th>Age</th>
-                <th>Manufacturer</th>
-                <th>Issue Description</th>
+            <form style="text-align:right;" method="POST" action="/tech/order/status/update">
+                <table>
+                    <th>Order ID</th>
+                    <th>Type</th>
+                    <th>Age</th>
+                    <th>Manufacturer</th>
+                    <th>Issue Description</th>
+                    <th>Order Status</th>
 
-                {{#each ordersInProgress}}
-                <tr>
-                    <td>
-                        {{order_id}}
-                    </td>
-                    <td>
-                        {{appliance_type}}
-                    </td>
-                    <td>
-                        {{appliance_age}}
-                    </td>
-                    <td>
-                        {{appliance_manufacturer}}
-                    </td>
-                    <td>
-                        {{user_issue}}
-                    </td>
-                </tr>
-                {{/each}}
+                    {{#each ordersInProgress}}
+                    <tr>
+                        <input type="hidden" name="order{{@index}}" value="{{order_id}}" />
+                        <td>
+                            {{order_id}}
+                        </td>
+                        <td>
+                            {{appliance_type}}
+                        </td>
+                        <td>
+                            {{appliance_age}}
+                        </td>
+                        <td>
+                            {{appliance_manufacturer}}
+                        </td>
+                        <td>
+                            {{user_issue}}
+                        </td>
+                        <td>
 
-            </table>
+                            <select name="status{{@index}}" class="dropdown">
+                                <option value="in progress">In Progress
+                                </option>
+                                <option value="completed">Completed
+                                </option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    {{/each}}
+
+                </table>
+                <a href="/tech/manage">Clear</a>
+                <button style="display: inline-block; margin-top: 8px;">Submit</button>
+            </form>
         </section>
         <!-- END First section -->
         <!-- START Second section -->
@@ -86,21 +102,24 @@
         <!-- END Second section -->
         <!-- START Third section -->
         <section class="progress">
-            <section class="head" >
+            <section class="head">
                 <h2 style="margin-bottom:0;">My quotes</h4>
-                <span>
-                    <form class="form-inline" method="GET" action="/tech/manage">
-                        <section>
-                            <h3>Filter status:</h3>
-                            <select name="filterq" id="filterq" onchange="this.form.submit()">
-                                <option value="all">All</option>
-                                <option {{#if_eq filterQuotes 'pending'}}selected{{/if_eq}} value="pending">Pending</option>
-                                <option {{#if_eq filterQuotes 'accepted'}}selected{{/if_eq}} value="accepted">Accepted</option>
-                                <option {{#if_eq filterQuotes 'rejected'}}selected{{/if_eq}} value="rejected">Rejected</option>
-                            </select>
-                        </section>
-                    </form>
-                </span>
+                    <span>
+                        <form class="form-inline" method="GET" action="/tech/manage">
+                            <section>
+                                <h3>Filter status:</h3>
+                                <select name="filterq" id="filterq" onchange="this.form.submit()">
+                                    <option value="all">All</option>
+                                    <option {{#if_eq filterQuotes 'pending'}}selected{{/if_eq}} value="pending">Pending
+                                    </option>
+                                    <option {{#if_eq filterQuotes 'accepted'}}selected{{/if_eq}} value="accepted">
+                                        Accepted</option>
+                                    <option {{#if_eq filterQuotes 'rejected'}}selected{{/if_eq}} value="rejected">
+                                        Rejected</option>
+                                </select>
+                            </section>
+                        </form>
+                    </span>
             </section>
 
             <table>
