@@ -1,5 +1,6 @@
 module.exports = {
-	dbName: 'database.db',
+	dbName: 'test.db',
+	dbTest: 'test.db',
 	defaultPort: 3000,
 	maxApplianceAge: 10,
 	validation: {
