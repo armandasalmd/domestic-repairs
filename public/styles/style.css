@@ -68,7 +68,7 @@ span.bold {
 /* Second section on index.handlbars - reasons to join */
 
 .reasons {
-	background-color: lightgray;
+	background-color: #f1f2f6;
 	width: 100%;
 	font-family: 'Livvic';
 }
@@ -81,9 +81,13 @@ span.bold {
 .reasons > h1,
 .reasons > article > header > h1 {
 	font-size: 2rem;
-	color: #353b3c;
+	color: #0B7A24;
 	padding: 40px 0px 10px 0px;
 	margin: 0;
+}
+
+.reasons > article > header > h1 {
+	color: #353b3c;
 }
 
 .reasons > article > header {
@@ -846,7 +850,7 @@ section.modal input[type='date']::-webkit-inner-spin-button{
 section.modal input[type='date']:focus,
 section.modal input[type='number']:focus {
 	outline: none;
-	border: 2px solid green;
+	border: 2px solid #0B7A24;
 }
 
 .d-modal {
@@ -863,7 +867,7 @@ section.white-section-right {
 	max-width: 1600px;
 	margin: 0 auto;
 	text-align: center;
-	padding: 40px 20px;
+	padding: 60px 20px;
 }
 
 section.white-section-left {
@@ -893,7 +897,8 @@ section.white-section-left > h1,
 section.white-section-right > h1 {
 	grid-area: title;
 	font-size: 2rem;
-	color: green;
+	color: #0B7A24;
+	font-family: 'Livvic';
 }
 
 section.white-section-left > p,
@@ -905,4 +910,36 @@ section.white-section-right > p {
 	margin: 0 auto;
 	text-align: left;
 	line-height: 1.5rem;
+}
+
+/* services */
+section.services {
+	background-color: #f1f2f6;
+	max-width: 100%;
+	padding: 40px 20px;
+	text-align: center;
+	font-family: 'Livvic';
+}
+
+section.services > h1 {
+	color: #0B7A24;
+	font-size: 2rem;
+}
+
+section.services > article {
+	background-color: white;
+	display: inline-block;
+	margin: 20px;
+	text-align: center;
+	padding: 2px;
+}
+
+section.services > article > img {
+	max-width: 250px;
+}
+
+section.services > article > h3 {
+	color: black;
+	font-size: 1rem;
+	text-align: center;
 }
