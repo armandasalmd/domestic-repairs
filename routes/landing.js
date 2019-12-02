@@ -1,5 +1,8 @@
 /* MODULE IMPORTS */
 const Router = require('koa-router');
+const sqlite = require('sqlite-async');
+
+
 const router = new Router();
 
 /**
@@ -68,5 +71,41 @@ router.get('/reviews', async (ctx) => {
 		await ctx.render('error', { message: err.message });
 	}
 });
+
+router.get('/newreview', async (ctx) => {
+	try {
+		if (ctx.session.authorised === true) {
+			ctx.session.authorised = null;
+			ctx.session.user = null;
+		}
+		const data = {
+			title: 'New Review',
+			layout: 'nav-footer',
+			navbarType: 'offline'
+		};
+
+		await ctx.render('newreview', data);
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+});
+
+router.post('/newreview', async (ctx) => {
+	try {
+		console.log(ctx.request.body);
+		const body = ctx.request.body;
+		const db = await sqlite.open('./database.db')
+		const sql = `INSERT INTO reviews(name,stars, review)
+		VALUES("${body.name}", "${body.stars}", "${body.review}");`
+		await db.run(sql);
+		await db.close();
+
+		return ctx.redirect('/reviews?msg=Successfully added');
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+
+});
+
 
 module.exports = router;
