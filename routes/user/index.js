@@ -33,9 +33,9 @@ router.get('/', async (ctx) => {
 		const mOrders = await new Orders(dbName);
 
 		const username = ctx.session.username;
-		const pendingCards = await mOrders.getOrdersByStatusAndUsername('pending', username)
-		const inProgressCards = await mOrders.getOrdersByStatusAndUsername('in progress', username)
-		const completedCards = await mOrders.getOrdersByStatusAndUsername('completed', username)
+		const pendingCards = await mOrders.getOrdersByStatusAndUsername('pending', username);
+		const inProgressCards = await mOrders.getOrdersByStatusAndUsername('in progress', username);
+		const completedCards = await mOrders.getOrdersByStatusAndUsername('completed', username);
 
 		const data = {
 			title: 'User dashboard',
