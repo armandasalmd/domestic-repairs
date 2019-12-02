@@ -68,27 +68,28 @@ span.bold {
 /* Second section on index.handlbars - reasons to join */
 
 .reasons {
-	background-color: white;
-	max-width: 1600px;
-	margin: 0 auto;
+	background-color: lightgray;
+	width: 100%;
 	font-family: 'Livvic';
 }
 
 .reasons > article {
 	margin: 20px auto;
+	max-width: 1600px;
 }
 
 .reasons > h1,
 .reasons > article > header > h1 {
 	font-size: 2rem;
 	color: #353b3c;
-	padding: 5px 0px;
+	padding: 40px 0px 10px 0px;
+	margin: 0;
 }
 
 .reasons > article > header {
-	background-color: white;
+	/* background-color: white; */
 	color: #353b3c;
-	font-size: initial;
+	font-size: 1.3rem;
 	display: table-cell;
 	max-width: 533px;
 	height: auto;
@@ -107,7 +108,7 @@ a.btn {
 	padding: 10px 15px;
 	margin: 5px 0px;
 	border-radius: 5px;
-	font-size: 0.9rem;
+	font-size: 1rem;
 	text-decoration: none;
 }
 
@@ -850,4 +851,58 @@ section.modal input[type='number']:focus {
 
 .d-modal {
 	display: block !important;
+}
+
+/* white-section */
+section.white-section-left,
+section.white-section-right {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 100px auto;
+	background-color: white;
+	max-width: 1600px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 40px 20px;
+}
+
+section.white-section-left {
+	grid-template-areas:
+		"image hd"
+		"image title"
+		"image txt"
+		"image ft";
+}
+
+section.white-section-right {
+	grid-template-areas:
+	"hd image"
+	"title image"
+	"txt image"
+	"ft image";
+}
+
+section.white-section-left > img,
+section.white-section-right > img {
+	grid-area: image;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+section.white-section-left > h1,
+section.white-section-right > h1 {
+	grid-area: title;
+	font-size: 2rem;
+	color: green;
+}
+
+section.white-section-left > p,
+section.white-section-right > p {
+	grid-area: txt;
+	font-size: 1.1rem;
+	color: gray;
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: left;
+	line-height: 1.5rem;
 }
