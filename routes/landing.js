@@ -1,7 +1,7 @@
 /* MODULE IMPORTS */
 const Router = require('koa-router');
 const sqlite = require('sqlite-async');
-
+const { dbName } = require('../constants');
 
 const router = new Router();
 
@@ -54,16 +54,41 @@ router.get('/contacts', async (ctx) => {
 	}
 });
 
+class reviews {
+    /** 
+    *
+    * @return {Array<Object>} An array of objects containing an order with attached quote if exists
+    */
+
+	async getReviews() {
+		try {
+			this.db = await sqlite.open(dbName);
+			let sql = `SELECT name, stars, review from reviews;`;
+			const data = await this.db.all(sql);
+			if (data !== null) {
+				return data;
+			}
+			else throw new Error('SQL returned empty object');
+		} catch (err) {
+			throw err;
+		}
+	}
+}
+
 router.get('/reviews', async (ctx) => {
 	try {
 		if (ctx.session.authorised === true) {
 			ctx.session.authorised = null;
 			ctx.session.user = null;
 		}
+
+		const mreviews = await new reviews(dbName);
+		const reviewsCards = await mreviews.getReviews();
 		const data = {
 			title: 'Reviews',
 			layout: 'nav-footer',
-			navbarType: 'offline'
+			navbarType: 'offline',
+			reviewsCards,
 		};
 
 		await ctx.render('reviews', data);
@@ -104,6 +129,44 @@ router.post('/newreview', async (ctx) => {
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}
+
+
+
+
+
+
+
+
+	router.post('/reviews', async (ctx) => {
+		try {
+			// extract the data from the request
+			const body = ctx.request.body;
+			// TODO: data validation
+
+			// call the functions in the module
+			const mreviews = await new reviews(dbName);
+
+			const f = {
+				aname: body.name,
+				astars: body.stars,
+				areviews: body.reviews,
+
+			};
+
+			await mreviews.getReviews(
+				ctx.session.username,
+				f.aname,
+				f.astars,
+				f.areviews,
+			)
+		}
+		catch (err) {
+			return ctx.redirect(`/reviews?msg=${err.message}`);
+			//await ctx.render('error', { message: err.message });
+		}
+	});
+
+
 
 });
 
