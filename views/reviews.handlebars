@@ -12,12 +12,12 @@
 
     <div id="rootContainer">
         <h1 id="teamHeader">Your Review</h1>
-        <section class="reviews">
+        <section class="pending">
             {{#each reviewsCards}}
             <article>
-                <p><span class="bold">Order ID:</span> {{name}}</p>
-                <p><span class="bold">Age:</span> {{stars}}</p>
-                <p><span class="bold">Manufacturer:</span> {{review}}</p>
+                <p><span class="bold"></span> {{name}}</p>
+                <p><span class="bold"></span> {{stars}}/5 stars</p>
+                <p><span class="bold"></span> {{review}}</p>
                 <hr>
             </article>
             {{/each}}
