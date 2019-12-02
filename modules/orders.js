@@ -130,8 +130,8 @@ class Orders {
 	}
 
 	/**
-	 * 
-	 * @param {string} status Value that is used to filter order table by status 
+	 * Find orders with provided status and username in database
+	 * @param {string} status Value that is used to filter order table by status
 	 * @param {*} username Additional filtering parameter
 	 * @return {Array<Object>} An array of objects containing an order with attached quote if exists
 	 */
@@ -141,7 +141,7 @@ class Orders {
 				throw new Error('invalid state');
 			if (!username)
 				throw new Error('invalid username');
-			let sql = `SELECT *, orders.order_id as id FROM orders 
+			const sql = `SELECT *, orders.order_id as id FROM orders 
 				LEFT JOIN quotes ON orders.order_id=quotes.order_id 
 				WHERE orders.user_id="${username}" 
 				AND orders.order_status="${status}"
@@ -180,8 +180,9 @@ class Orders {
 
 			if (data !== null) {
 				return data;
+			} else {
+				throw new Error('SQL returned empty object');
 			}
-			else throw new Error('SQL returned empty object');
 		} catch (err) {
 			throw err;
 		}

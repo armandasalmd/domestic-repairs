@@ -14,12 +14,8 @@
 		"linter": "node_modules/.bin/eslint .",
 		"linterfix": "node_modules/.bin/eslint --fix .",
 		"test": "jest --coverage --detectOpenHandles",
-		"unit": "node_modules/.bin/jest --coverage --runInBand tests/unit/"
-	},
-	"jest": {
-		"projects": [
-			"<rootDir>/jest-test.config.js"
-		]
+		"unit": "node_modules/.bin/jest --coverage --runInBand tests/unit/",
+		"cucumber": "./cucumberTest.sh"
 	},
 	"author": "",
 	"license": "ISC",
@@ -64,5 +60,10 @@
 		"nodemon": "^1.19.4",
 		"puppeteer": "^2.0.0",
 		"supertest": "^4.0.2"
+	},
+	"jest": {
+		"projects": [
+			"<rootDir>/jest-test.config.js"
+		]
 	}
 }

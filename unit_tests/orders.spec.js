@@ -1,5 +1,5 @@
 const Orders = require('../modules/orders.js');
-const { dbName } = require('../constants');
+const { dbTest: dbName } = require('../constants');
 //const sqlite = require('sqlite-async');
 
 describe('addNewOrder()', () => {

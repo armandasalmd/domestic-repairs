@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+{{> head}}
+
+<body>
+    {{> navbar}}
+    {{#if_eq navbarType 'online' }}
+    {{> aside}}
+    {{/if_eq}}
+    <div id="rootContainer">
+        <section class="review">
+            <header>
+                <h1>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </h1>
+            </header>
+            <article>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </article>
+            <footer>
+                <h1>
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </h1>
+                <ul>
+                    <li><a href="#">Cobi Hopkins</a></li>
+                    <li>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </li>
+                    <li>24/11/19 - 11:00:01</li>
+                </ul>
+            </footer>
+        </section>
+        <a href="/newreview">Give us your review</a>
+    </div>
+    {{> footer}}
+</body>
+{{> scripts}}
+
+</html>
