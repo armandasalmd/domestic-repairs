@@ -23,6 +23,50 @@ router.use(async (ctx, next) => {
 });
 
 /**
+ * @path {get} /tech/manage 
+ * @returns {string} contacts page HTML
+ */
+router.get('/manage/print', async (ctx) => {
+	try {
+		if (ctx.session.authorised !== true)
+			return ctx.redirect('/login?msg=you need to log in');
+		// if technician is logged in
+		const username = ctx.session.username; // logged person username
+		const mOrders = await new Orders(dbName);
+		const mQuotes = await new Quotes(dbName);
+		let filterq = 'all';
+		if (ctx.request.query.filterq) filterq = ctx.request.query.filterq;
+
+		// list of jobs in progress
+		const progress = await mOrders.getOrdersByStatus('in progress', username);
+
+		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
+	
+			const data = {
+			title: 'Print Orders',
+			layout: 'nav-sidebar-footer',
+			navbarType: 'online',
+			ordersInProgress: progress,
+			username: username,
+			fullname: ctx.session.fullName,
+			filterQuotes: filterq
+			};
+
+		if (ctx.query.msg) data.msg = ctx.query.msg;
+		await ctx.render('technician/printorders', data);
+	} catch (err) {
+		await ctx.render('error', { message: err.message });
+	}
+});
+
+/**
+ * @path {GET} /tech/manage/print
+ * @returns {string} technician manage orders page
+ */
+
+
+
+/**
  * @path {GET} /tech
  * @returns {string} Technician dashboard page
  */
@@ -159,5 +203,7 @@ router.post('/order/status/update', async ctx => {
 		ctx.redirect(`/tech/manage?msg=${err.message}`);
 	}
 });
+
+
 
 module.exports = router;
