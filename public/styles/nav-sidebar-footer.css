@@ -26,6 +26,13 @@ body {
 	grid-area: article;
 	padding: 8px 24px;
 }
+
+#rootContainer2 {
+	grid-area: header;
+	padding: 60px 80px;
+}
+
+
 #navContainer {
 	grid-area: nav;
 }
