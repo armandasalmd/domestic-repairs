@@ -34,7 +34,7 @@
         </section>
         <br><br>
 
-        <button id="provideQuote" onclick="modal()">Provide a Quote</button>
+        {{!-- <button id="provideQuote" onclick="modal()">Provide a Quote</button> --}}
 
         <section class="modal" id="modal">
             <article>
@@ -50,14 +50,14 @@
                     culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <!-- 		orderid, price, date/time -->
-                <form id="quoteForm" action="" method="">
+                <form id="quoteForm" action="/tech/quote" method="POST">
                     <textarea name="" id="" cols="54" rows="2" placeholder="Additional Comments"></textarea>
                     <br />
-                    <input type="number" name="quoteValueNoTax" id="quoteValueNoTax" min="0" step="1"
-                        placeholder="OrderId" disabled />
-                    <input type="number" name="quoteValueWithTax" id="quoteValueWithTax" placeholder="Price: £0.00"
-                        min="0.00" max="2500.00" step="0.01" />
-                    <input type="date" name="quoteValueTotal" id="quoteValueTotal" placeholder="e.g.. 01/01/2019" />
+                    <input type="number" name="orderId" id="orderId" min="0" step="1" placeholder="OrderId"
+                        value="{{order_id}}" disabled />
+                    <input type="number" name="quotePrice" id="quotePrice" placeholder="Price: £0.00" min="0.00"
+                        max="2500.00" step="0.01" />
+                    <input type="date" name="quoteDate" id="quoteDate" placeholder="e.g.. 01/01/2019" />
                     </br>
                     <button class="btn" type="submit" onclick="">Send quote</button>
                 </form>
@@ -81,14 +81,14 @@
 
 
             {{#each orders}}
-            <article>
-                <p>Order ID: {{order_id}}</p>
-                <p>Type: {{appliance_type}}</p>
-                <p>Age: {{appliance_age}}</p>
-                <p>Manufacturer: {{appliance_manufacturer}}</p>
+            <article id="order{{@index}}">
+                <p class="id">Order ID: {{order_id}}</p>
+                <p class="type">Type: {{appliance_type}}</p>
+                <p class="age">Age: {{appliance_age}}</p>
+                <p class="manufacturer">Manufacturer: {{appliance_manufacturer}}</p>
 
 
-                <button action="#">Provide Quote</button>
+                <button class="orderBtn" action="#">Provide Quote</button>
 
 
 
