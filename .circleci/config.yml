@@ -6,8 +6,10 @@ workflows:
     jobs:
       - heroku/deploy-via-git:
           post-steps:
-            - run: >
-            echo "POST The command above installs Heroku, the command below deploys."
+            - run: 
+                command: >
+                    echo "POST The command above installs Heroku, the command below deploys."
           pre-steps:
-            - run: >
-            echo "PRE The command above installs Heroku, the command below deploys."
+            - run:
+                command: >
+                    echo "PRE The command above installs Heroku, the command below deploys."
