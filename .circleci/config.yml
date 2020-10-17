@@ -5,7 +5,7 @@ workflows:
     heroku_deploy:
         jobs:
             - heroku/deploy-via-git:
-                  pre-steps:
+                  post-steps:
                       - run:
                             command: >
                                 npm run linter
