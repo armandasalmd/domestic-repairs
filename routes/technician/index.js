@@ -23,7 +23,7 @@ router.use(async (ctx, next) => {
 });
 
 /**
- * @path {get} /tech/manage 
+ * @path {get} /tech/manage
  * @returns {string} contacts page HTML
  */
 router.get('/manage/print', async (ctx) => {
@@ -41,8 +41,8 @@ router.get('/manage/print', async (ctx) => {
 		const progress = await mOrders.getOrdersByStatus('in progress', username);
 
 		const quotes = await mQuotes.getQuotesByUsername(username, filterq);
-	
-			const data = {
+
+		const data = {
 			title: 'Print Orders',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
@@ -50,7 +50,7 @@ router.get('/manage/print', async (ctx) => {
 			username: username,
 			fullname: ctx.session.fullName,
 			filterQuotes: filterq
-			};
+		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
 		await ctx.render('technician/printorders', data);
@@ -63,7 +63,6 @@ router.get('/manage/print', async (ctx) => {
  * @path {GET} /tech/manage/print
  * @returns {string} technician manage orders page
  */
-
 
 
 /**
@@ -203,7 +202,6 @@ router.post('/order/status/update', async ctx => {
 		ctx.redirect(`/tech/manage?msg=${err.message}`);
 	}
 });
-
 
 
 module.exports = router;

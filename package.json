@@ -7,15 +7,15 @@
 		"node": "12.x"
 	},
 	"scripts": {
-		"start": "nodemon ./index.js",
-		"production": "node ./index.js",
 		"acceptance": "jest --coverage --detectOpenHandles",
+		"cucumber": "./cucumberTest.sh",
+		"dev": "nodemon ./index.js",
 		"jsdoc": "node_modules/.bin/jsdoc -c jsdoc.conf",
 		"linter": "node_modules/.bin/eslint .",
 		"linterfix": "node_modules/.bin/eslint --fix .",
+		"start": "node ./index.js",
 		"test": "jest --coverage --detectOpenHandles",
-		"unit": "node_modules/.bin/jest --coverage --runInBand tests/unit/",
-		"cucumber": "./cucumberTest.sh"
+		"unit": "node_modules/.bin/jest --coverage --runInBand tests/unit/"
 	},
 	"author": "",
 	"license": "ISC",

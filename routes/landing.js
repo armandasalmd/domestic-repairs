@@ -55,7 +55,7 @@ router.get('/contacts', async (ctx) => {
 });
 
 class reviews {
-    /** 
+	/**
     *
     * @return {Array<Object>} An array of objects containing an order with attached quote if exists
     */
@@ -63,12 +63,11 @@ class reviews {
 	async getReviews() {
 		try {
 			this.db = await sqlite.open(dbName);
-			let sql = `SELECT name, stars, review from reviews;`;
+			const sql = 'SELECT name, stars, review from reviews;';
 			const data = await this.db.all(sql);
 			if (data !== null) {
 				return data;
-			}
-			else throw new Error('SQL returned empty object');
+			} else throw new Error('SQL returned empty object');
 		} catch (err) {
 			throw err;
 		}
@@ -119,9 +118,9 @@ router.post('/newreview', async (ctx) => {
 	try {
 		console.log(ctx.request.body);
 		const body = ctx.request.body;
-		const db = await sqlite.open('./database.db')
+		const db = await sqlite.open('./database.db');
 		const sql = `INSERT INTO reviews(name,stars, review)
-		VALUES("${body.name}", "${body.stars}", "${body.review}");`
+		VALUES("${body.name}", "${body.stars}", "${body.review}");`;
 		await db.run(sql);
 		await db.close();
 
@@ -129,12 +128,6 @@ router.post('/newreview', async (ctx) => {
 	} catch (err) {
 		await ctx.render('error', { message: err.message });
 	}
-
-
-
-
-
-
 
 
 	router.post('/reviews', async (ctx) => {
@@ -158,14 +151,12 @@ router.post('/newreview', async (ctx) => {
 				f.aname,
 				f.astars,
 				f.areviews,
-			)
-		}
-		catch (err) {
+			);
+		} catch (err) {
 			return ctx.redirect(`/reviews?msg=${err.message}`);
 			//await ctx.render('error', { message: err.message });
 		}
 	});
-
 
 
 });
