@@ -1,4 +1,17 @@
 jobs:
+    install-node:
+        docker:
+            - image: 'cimg/base:stable'
+        steps:
+            - checkout
+            - node/install:
+                  install-yarn: true
+            - run: node --version
+
+    qa-validation:
+        executor: heroku/default
+        steps:
+            - echo "Hello world"
     deploy:
         executor: heroku/default
         steps:
@@ -9,9 +22,12 @@ jobs:
                       npm install && npm test
             - heroku/deploy-via-git
 orbs:
+    node: circleci/node@4.1.0
     heroku: circleci/heroku@1.2.2
 version: 2.1
 workflows:
     heroku_deploy:
         jobs:
+            - install-node
+            - qa-validation
             - deploy
