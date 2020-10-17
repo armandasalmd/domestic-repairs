@@ -2,14 +2,13 @@ version: 2.1
 orbs:
     heroku: circleci/heroku@1.2.2
 workflows:
-  heroku_deploy:
-    jobs:
-      - heroku/deploy-via-git:
-          post-steps:
-            - run: 
-                command: >
-                    echo "POST The command above installs Heroku, the command below deploys."
-          pre-steps:
-            - run:
-                command: >
-                    echo "PRE The command above installs Heroku, the command below deploys."
+    heroku_deploy:
+        jobs:
+            - heroku/deploy-via-git:
+                  pre-steps:
+                      - run:
+                            command: >
+                                npm run linter
+                      - run:
+                            command: >
+                                npm test
