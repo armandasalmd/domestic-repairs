@@ -5,13 +5,15 @@ jobs:
         steps:
             - checkout
             - node/install:
-                  install-yarn: true
+                  install-npm: true
             - run: node --version
 
     qa-validation:
         executor: heroku/default
         steps:
-            - echo "Hello world"
+            - run: echo "Hello world"
+            - run: npm run linter
+            - run: npm test
     deploy:
         executor: heroku/default
         steps:
