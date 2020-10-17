@@ -17,6 +17,7 @@ router.get(/^\/((user)|(tech))\/(contacts)$/, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
+			fullname: ctx.session.fullName,
 			sidebarSections:
 				ctx.session.type === 'user' ? menus.user : menus.technician
 		};
@@ -42,6 +43,7 @@ router.get(/^\/((user)|(tech))\/(settings)$/, async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
+			fullname: ctx.session.fullName,
 			sidebarSections:
 				ctx.session.type === 'user' ? menus.user : menus.technician
 		};

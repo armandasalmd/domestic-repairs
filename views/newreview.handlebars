@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+{{> head}}
+
+<body>
+    {{> navbar}}
+    {{#if_eq navbarType 'online' }}
+    {{> aside}}
+    {{/if_eq}}
+    <div id="rootContainer">
+        <h1 id="teamHeader">Give us your review</h1>
+        <div class="card-container2">
+            <form action="/newreview" method="POST" class="form-inline" id="report-form">
+                <h3 class="section-title">Name</h3>
+                <section>
+                    <input name="name" type="text" placeholder="name" />
+                </section>
+
+                <h3 class="section-title">Stars</h3>
+                <section>
+                    <select name="stars">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </section>
+
+                <h3 class=" section-title">Review</h3>
+                <section>
+                    <textarea name="review" rows="4" cols="40" placeholder="Your review"></textarea>
+                </section>
+                <section>
+                    <input type="submit" />
+                </section>
+            </form>
+        </div>
+    </div>
+    {{> footer}}
+</body>
+{{> scripts}}
+
+</html>

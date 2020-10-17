@@ -12,11 +12,14 @@ require('./views/helpers'); // register handlebars
 //const koaBody = require('koa-body')({ multipart: true, uploadDir: '.' });
 //const jimp = require('jimp')
 
+const { defaultPort } = require('./constants');
+
 /* IMPORT ROUTES */
 const authRouter = require('./routes/auth/index');
 const landingRouter = require('./routes/landing');
 const common = require('./routes/common');
 const userRouter = require('./routes/user/index');
+const userActionsRouter = require('./routes/user/actions');
 const technicianRouter = require('./routes/technician/index');
 
 const app = new Koa();
@@ -64,9 +67,9 @@ app.use(authRouter.routes()); // public route set
 app.use(landingRouter.routes()); // public route set
 app.use(common.routes()); // authorized routes (any user)
 app.use(userRouter.routes()); // authorized routes (must be user type of user)
+app.use(userActionsRouter.routes()); // authorized routes (must be user type of user)
 app.use(technicianRouter.routes()); // authorized routes (must be user type of technician)
 
-const { defaultPort } = require('./constants');
 const port = process.env.PORT || defaultPort;
 
 module.exports = app.listen(port, async () =>

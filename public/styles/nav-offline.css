@@ -8,6 +8,7 @@ header#offline-nav, header#headerContainer {
     max-height: 64px;
     background: #353B3C;
     font-family: "Livvic" !important;
+    z-index: 1000;
   }
   
   .main-container {

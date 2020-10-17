@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+{{> head}}
+
+
+
+<body>
+    {{> navbar}}
+    {{#if_eq navbarType 'online' }}
+    {{> aside}}
+    {{/if_eq}}
+
+    <div id="rootContainer">
+        <h1 id="teamHeader">Your Review</h1>
+        <section class="pending">
+            {{#each reviewsCards}}
+            <article>
+                <p><span class="bold"></span> {{name}}</p>
+                <p><span class="bold"></span> {{stars}}/5 stars</p>
+                <p><span class="bold"></span> {{review}}</p>
+                <hr>
+            </article>
+            {{/each}}
+        </section>
+
+        <br>
+        <a href="/newreview">Give us your review</a>
+
+    </div>
+    <br>
+    {{> footer}}
+</body>
+
+{{> scripts}}
+
+</html>

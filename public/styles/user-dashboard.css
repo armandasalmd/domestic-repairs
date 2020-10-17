@@ -1,0 +1,23 @@
+a.a-btn {
+	margin-top: 8px;
+	color: white;
+	text-decoration: none;
+	padding: 6px 12px;
+	border-radius: 4px;
+}
+
+a.red {
+	background-color: rgb(136, 10, 10);
+}
+
+a.green {
+	background-color: rgb(10, 117, 10);
+}
+
+a.orange {
+	background-color: rgb(177, 122, 22);
+}
+
+.pending article p {
+	margin: 4px;
+}

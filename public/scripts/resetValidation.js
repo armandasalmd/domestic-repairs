@@ -1,3 +1,4 @@
+/* eslint-disable */
 const input1 = document.getElementById('confPass');
 const input2 = document.getElementById('newPass');
 const passMsg = document.getElementById('p-msg');
@@ -7,6 +8,7 @@ input1.oninput = validate;
 input2.oninput = validate;
 
 function validate() {
+
 	if (input1.value.length < 4 || input2.value.length < 4) {
 		btn.setAttribute('disabled', true);
 		btn.setAttribute('class', 'disabled');

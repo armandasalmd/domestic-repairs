@@ -1,37 +1,52 @@
-## 5001CEM - Domestic repairs
+## Dynamic website - Domestic Repairs (University project)
 
-_Remember_: What is the scrum all about? - **improvement**
+<dl>
+  <dt>
+    Idea:
+  </dt>
+  <dd>
+    Create a dynamic website platform for a company that repairs domestic valuables
+  </dd>
+  <dt>
+    Requirements:
+  </dt>
+  <dd>
+   Form a team and work along Software Engineering principles including Agile, Testing and more
+  </dd>
+   <dt>
+    Result:
+  </dt>
+  <dd>
+    Website prototype was hosted on Heroku server, project meets Minimum Viable Product criteria but needs improvements
+  </dd>
+</dl>
 
-#### Main team focus:
+#### What have I learned?
 
-1. Completing product backlog on dev.azure.com
-1. Interface design (build bulk html, css pages using mocks)
-1. Design ERD
+- Scrum/**Agile** - coordinate a team of 5
+  - Conduct Daily scrums
+  - Create **product backlog**, prioritizing the items (Dev Azure)
+  - Attempt to Planning poker, **Sprints**, pair-programming
+- Perform Unit/Acceptance **testing**
+- [Node](https://nodejs.org/en/) process **debugging** in VS Code
+- JavaScript/**[ES6 syntax](http://es6-features.org/#Constants)**
+- Use of **MVC** pattern
+- **SQL** knowledge and sqlite3 client, ERD
+- Browser **sessions** - used with login system
+- [Handlebars](https://handlebarsjs.com/) - Html template engine
+- Create wireframes - [balsamiq](https://balsamiq.com/)
+- Css
+- [KoaJS](https://koajs.com/) (similar to expressJS) route handling
+- [JsDoc](https://jsdoc.app/) - Code documentation
+- In short, **fullstack website**
 
-#### Setup guide:
 
--   Open terminal and navigate to `Desktop` folder (or any other)
--   `git clone https://github.coventry.ac.uk/5001CEM-1920SEPJAN/5001CEM.git`
--   `cd 5001CEM && code .` **_To open in VS Code_**
--   `npm install`
--   `npm start` **_Done_**
+#### Screenshot example
+![Example image](https://i.gyazo.com/32cb292ccc5cfb0bce39b03562e556f2.jpg)
+![Example image](https://i.gyazo.com/c44a2077a88b74677feca6158a4688f1.png)
 
--   `git config core.hooksPath .githooks`_\*optional - enables githooks_
+#### Link (old version published)
+https://domestic-repairs.herokuapp.com/
 
-#### Useful links:
-
--   [Task description - Github](https://github.coventry.ac.uk/web/assignment-topics/blob/master/02%20Domestic%20Repairs.md)
--   [Agile labs - GitHub](https://github.coventry.ac.uk/agile/foundation)
--   [DevOps - Azure](https://dev.azure.com/rumentsk/5001CEM)
--   Team main communication tool - **_What's App_**!
-
-#### Agile conventions:
-
--   _Feature_ - given tasks by the exercise
--   _Epic story_ - a page
--   _User story_ - a particular page component (i.e. navbar, table, etc...)
--   _Task_ - specific and precise tasks for US
-
-Any questions? Ask me, [Armandas Barkauskas](https://www.instagram.com/armandasbarkauskas/) _(barkausa)_
-
-Good luck!
+#### Tags
+`NodeJs`,  `JavaScript`, `KoaJs`, `Sqlite3`, `eslint`, `jest`, `handlebars`, `dynamic website`, `Html`, `Css`

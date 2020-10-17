@@ -12,28 +12,85 @@
 	},
 	"rules": {
 		"arrow-body-style": 2,
-		"arrow-spacing": ["warn", { "before": true, "after": true }],
+		"arrow-spacing": [
+			"warn",
+			{
+				"before": true,
+				"after": true
+			}
+		],
 		"brace-style": 2,
-		"camelcase": [2, { "properties": "never" }],
-		"complexity": ["error", 15],
+		"camelcase": [
+			2,
+			{
+				"properties": "never"
+			}
+		],
+		"complexity": [
+			"error",
+			15
+		],
 		"eol-last": "warn",
 		"eqeqeq": "error",
-		"func-call-spacing": ["error", "never"],
+		"func-call-spacing": [
+			"error",
+			"never"
+		],
 		"global-require": "error",
 		"handle-callback-err": "warn",
-		"indent": [1, "tab", { "SwitchCase": 1 }],
-		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
-		"linebreak-style": ["warn", "windows"],
-		"max-depth": ["error", 3],
-		"max-len": ["warn", { "code": 120, "tabWidth": 4 }],
+		"indent": [
+			1,
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"key-spacing": [
+			"error",
+			{
+				"beforeColon": false,
+				"afterColon": true
+			}
+		],
+		"linebreak-style": [
+			"warn",
+			"unix"
+		],
+		"max-depth": [
+			"error",
+			3
+		],
+		"max-len": [
+			"warn",
+			{
+				"code": 120,
+				"tabWidth": 4
+			}
+		],
 		"max-lines": [
 			"warn",
-			{ "max": 150, "skipBlankLines": true, "skipComments": true }
+			{
+				"max": 150,
+				"skipBlankLines": true,
+				"skipComments": true
+			}
 		],
-		"max-lines-per-function": ["error", 200],
-		"max-nested-callbacks": ["error", 4],
-		"max-params": ["error", 6],
-		"max-statements": ["error", 20],
+		"max-lines-per-function": [
+			"error",
+			200
+		],
+		"max-nested-callbacks": [
+			"error",
+			4
+		],
+		"max-params": [
+			"error",
+			6
+		],
+		"max-statements": [
+			"error",
+			20
+		],
 		"no-cond-assign": 2,
 		"no-dupe-args": "error",
 		"no-dupe-keys": "error",
@@ -44,7 +101,16 @@
 		"no-extra-parens": 2,
 		"no-func-assign": 2,
 		"no-irregular-whitespace": 2,
-		"no-magic-numbers": [1, { "ignore": [-1, 0, 1] }],
+		"no-magic-numbers": [
+			1,
+			{
+				"ignore": [
+					-1,
+					0,
+					1
+				]
+			}
+		],
 		"no-multi-spaces": 1,
 		"no-multi-str": 1,
 		"no-unexpected-multiline": 2,
@@ -57,18 +123,35 @@
 		"prefer-arrow-callback": 1,
 		"prefer-const": 2,
 		"prefer-template": "error",
-		"quotes": [1, "single"],
-		"semi": [1, "always"],
+		"quotes": [
+			1,
+			"single"
+		],
+		"semi": [
+			1,
+			"always"
+		],
 		"space-before-blocks": [
 			"error",
-			{ "functions": "always", "keywords": "always", "classes": "always" }
+			{
+				"functions": "always",
+				"keywords": "always",
+				"classes": "always"
+			}
 		],
-		"strict": [2, "global"],
+		"strict": [
+			2,
+			"global"
+		],
 		"yoda": 2
 	},
 	"overrides": [
 		{
-			"files": ["*.test.js", "*.spec.js", "sqlite-async.js"],
+			"files": [
+				"*.test.js",
+				"*.spec.js",
+				"sqlite-async.js"
+			],
 			"rules": {
 				"global-require": "off",
 				"max-lines-per-function": "off",

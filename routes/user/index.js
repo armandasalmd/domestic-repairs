@@ -30,12 +30,23 @@ router.get('/', async (ctx) => {
 		if (ctx.session.authorised !== true)
 			return ctx.redirect('/login?msg=you need to log in');
 		// if user is logged in
+		const mOrders = await new Orders(dbName);
+
+		const username = ctx.session.username;
+		const pendingCards = await mOrders.getOrdersByStatusAndUsername('pending', username);
+		const inProgressCards = await mOrders.getOrdersByStatusAndUsername('in progress', username);
+		const completedCards = await mOrders.getOrdersByStatusAndUsername('completed', username);
+
 		const data = {
 			title: 'User dashboard',
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
-			sidebarSections: menus.user
+			fullname: ctx.session.fullName,
+			sidebarSections: menus.user,
+			pendingCards,
+			inProgressCards,
+			completedCards
 		};
 
 		if (ctx.query.msg) data.msg = ctx.query.msg;
@@ -59,6 +70,7 @@ router.get('/order/new', async (ctx) => {
 			layout: 'nav-sidebar-footer',
 			navbarType: 'online',
 			username: ctx.session.user,
+			fullname: ctx.session.fullName,
 			sidebarSections: menus.user,
 			aType: dropdowns.applianceType,
 			aManufacturer: dropdowns.applianceManufacturer,
