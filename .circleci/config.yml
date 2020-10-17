@@ -22,6 +22,5 @@ version: 2.1
 workflows:
     heroku_deploy:
         jobs:
-            - install-node
             - qa-validation
             - deploy
