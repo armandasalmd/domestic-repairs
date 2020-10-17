@@ -1,7 +1,6 @@
 jobs:
     qa-validation:
         docker:
-            - image: 'cimg/base:stable'
             - image: 'circleci/python:3.7.2-node'
         steps:
             - checkout
